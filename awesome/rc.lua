@@ -244,6 +244,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "t", function() awful.spawn("alacritty -e tmux attach #a") end,
         { description = "Spawn Tmux", group = "malte" }),
 
+    -- POWER MENU
+    awful.key({ modkey }, "0", function() awful.spawn("/home/malte/.config/polybar/blocks/scripts/powermenu.sh") end,
+        { description = "Open Powermenu", group = "malte" }),
+
     -- Brave
     awful.key({ modkey }, "b", function()
             awful.util.spawn("brave-browser")
