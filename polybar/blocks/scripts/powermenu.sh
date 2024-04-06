@@ -52,6 +52,6 @@ case $chosen in
         systemctl suspend
         ;;
     $logout)
-        awesome -q
+        awesome-client "awesome.quit()"
         ;;
 esac
