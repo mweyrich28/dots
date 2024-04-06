@@ -21,6 +21,10 @@ launch_bar() {
 		polybar -q main -c "$dir/$style/config.ini" &	
         
 	fi
+
+    nitrogen --restore
+    
+    nitrogen --restore
 }
 
 if [[ "$1" == "--material" ]]; then
@@ -74,4 +78,3 @@ else
 	EOF
 fi
 
-nitrogen --restore
