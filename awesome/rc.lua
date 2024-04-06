@@ -64,7 +64,7 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- Gaps
-beautiful.useless_gap = 7
+beautiful.useless_gap = 8
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -272,7 +272,8 @@ globalkeys = gears.table.join(
         { description = "show all windows", group = "malte" }),
 
     awful.key({ modkey }, "p", function()
-        awful.util.spawn(" rofi -show drun -disable-history -sort -show-icons")
+        -- awful.util.spawn(" rofi -show drun -disable-history -sort -show-icons")
+        awful.util.spawn("/home/malte/.config/polybar/blocks/scripts/launcher.sh")
     end),
 
     awful.key({ modkey }, "v", function()
