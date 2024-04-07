@@ -13,8 +13,6 @@ vim.g.maplocalleader = " "
 --Remap C-c to <esc>
 keymap("i", "<C-c>", "<Esc>", opts)
 
--- Oil
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -69,12 +67,13 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Telescope
-keymap("n", "<leader>pf", "<cmd>lua require'telescope.builtin'.find_files()<cr>", opts)
+keymap("n", "<leader>pf", "<cmd>lua require'telescope.builtin'.find_files {hidden = true, no_ignore = true}<cr>", opts)
 keymap("n", "<leader>pt", "<cmd>Telescope <cr>", opts)
 keymap("n", "<leader>pb", "<cmd>lua require'telescope.builtin'.buffers()<cr>", opts)
 keymap("n", "<leader>pi", "<cmd>Telescope bookmarks<cr>", opts)
 keymap("n", "<leader>ps", "<cmd>lua require'telescope.builtin'.symbols()<cr>", opts)
-keymap("n", "<leader>pr", "<cmd>Telescope live_grep<cr>", opts)
+-- keymap("n", "<leader>pr", "<cmd>lua require'telescope.builtin'.live_grep({ additional_args = { --hidden }})<cr>", opts)
+vim.keymap.set("n", "<leader>pr", function() require'telescope.builtin'.live_grep({ additional_args = { "--hidden", "--no-ignore" }}) end, {})
 keymap("n", "<leader>pw", "<cmd>Telescope grep_string<cr>", opts)
 keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.treesitter()<cr>", opts)
 

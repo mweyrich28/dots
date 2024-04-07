@@ -9,18 +9,24 @@ require('telescope').load_extension('bookmarks')
 require("telescope").load_extension("notify")
 
 telescope.setup {
-    pickers = {
-        find_files = {
-            find_command = {
-                "rg",
-                "--files",
-                "--hidden",
-                "--no-ignore-vcs",
-                "-g",
-                "!**/.git/*",
-            },
-        },
-    },
+    -- pickers = {
+    --     find_files = {
+    --         find_command = {
+    --             "rg",
+    --             "--files",
+    --             "--hidden",
+    --             "--no-ignore-vcs",
+    --             "-g",
+    --             "!**/.git/*",
+    --         },
+    --     },
+    --     live_grep = {
+    --         find_command = {
+    --             "rg",
+    --             "--no-ignore",
+    --         },
+    --     },
+    -- },
     defaults = {
         file_ignore_patterns = { "%.png", "%.jpg", "%.jpeg", "%.pdf", "%.JPG" },
         prompt_prefix = "> ",
