@@ -192,12 +192,12 @@ return packer.startup(function(use)
     }
 
     -- oil
-    -- use({
-    --     "stevearc/oil.nvim",
-    --     config = function()
-    --         require("oil").setup()
-    --     end,
-    -- })
+    use({
+        "stevearc/oil.nvim",
+        config = function()
+            require("oil").setup()
+        end,
+    })
 
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use { 'tzachar/cmp-fuzzy-buffer', requires = { 'hrsh7th/nvim-cmp', 'tzachar/fuzzy.nvim' } }

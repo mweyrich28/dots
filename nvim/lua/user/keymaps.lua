@@ -86,7 +86,9 @@ vim.api.nvim_set_keymap('i', '<C-b>', '<Esc>:lua require"user.vimwiki_link".vimw
 keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
 keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)
 
-vim.keymap.set("n", "<leader>pp", vim.cmd.NvimTreeToggle)
+-- vim.keymap.set("n", "<leader>pp", vim.cmd.NvimTreeToggle)
+-- Oil
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- Clear highlights
 keymap("n", "<leader>nh", "<cmd>nohlsearch<CR>", opts)
