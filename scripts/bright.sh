@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # Bash script to control the monitor brightness
 
 SYNTAX="\\n \\t SYNTAX:  dimmer level \\n \\t Where 'level' ranges from 0 to 100.\\n";
