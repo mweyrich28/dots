@@ -13,6 +13,15 @@ function Split(str)
     return parts
 end
 
+local function get_depth(path)
+    local path_table = Split(path)
+    local depth = 0
+    for _, _ in ipairs(path_table) do
+        depth = depth + 1
+    end
+    return depth
+end
+
 
 local function executeJob(wiki_path)
     -- Dump header into new file 
@@ -25,10 +34,11 @@ end
 function LinkVaultWiki(link_to_file_rel)
     local markdown_name = link_to_file_rel.match(link_to_file_rel, "[^/]+$")
 
+    local vault_path = vim.g.vimwiki_list[1].path
     local current_file_path = vim.fn.expand("%:p")
     local rel_path = string.match(current_file_path, ".*/vimwiki_para/(.*)")
 
-    -- check if curr_file has the same path as the current_file_path
+    -- check if curr_file has the same path as the current_file_path, return simple link
     -- remove the last part of the path (the .md part)
     local link_to = link_to_file_rel.match(link_to_file_rel, "(.*/)")
     local call_from = current_file_path.match(rel_path, "(.*/)")
@@ -37,17 +47,14 @@ function LinkVaultWiki(link_to_file_rel)
         return wiki_link
     end
 
-    local root_depth = 5 -- this should be the 'depth' of your main vimwiki folder 
-    local current_file_path_table = Split(current_file_path)
-    local relative_path = ""
 
-    local curr_depht = 0
-    for _, _ in ipairs(current_file_path_table) do
-        curr_depht = curr_depht + 1
-    end
+    -- calculate depth
+    local curr_depht = get_depth(current_file_path)
+    local vault_depth = get_depth(vault_path)
 
     -- Count the number of directories to go up
-    for i=1, curr_depht - root_depth,1 do
+    local relative_path = ""
+    for i=3, curr_depht - vault_depth,1 do
         relative_path = relative_path .. "../"
     end
 
