@@ -48,7 +48,6 @@ function LinkVaultWiki(link_to_file_rel)
     end
 
 
-    -- calculate depth
     local curr_depht = get_depth(current_file_path)
     local vault_depth = get_depth(vault_path)
 

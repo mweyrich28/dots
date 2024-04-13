@@ -72,6 +72,7 @@ keymap("n", "<leader>pt", "<cmd>Telescope <cr>", opts)
 keymap("n", "<leader>pb", "<cmd>lua require'telescope.builtin'.buffers()<cr>", opts)
 keymap("n", "<leader>pi", "<cmd>Telescope bookmarks<cr>", opts)
 keymap("n", "<leader>ps", "<cmd>lua require'telescope.builtin'.symbols()<cr>", opts)
+keymap("n", "<leader>log", "<cmd>Telescope notify<cr>", opts)
 -- keymap("n", "<leader>pr", "<cmd>lua require'telescope.builtin'.live_grep({ additional_args = { --hidden }})<cr>", opts)
 vim.keymap.set("n", "<leader>pr", function() require'telescope.builtin'.live_grep({ additional_args = { "--hidden", "--no-ignore" }}) end, {})
 keymap("n", "<leader>pw", "<cmd>Telescope grep_string<cr>", opts)
@@ -80,6 +81,8 @@ keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.treesitter()<cr>"
 -- Mapping to trigger the search for backlinks
 vim.api.nvim_set_keymap('n', '<Leader>fb', [[:lua require'user.vimwiki_backlinks'.search_backlinks()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<C-b>', '<Esc>:lua require"user.vimwiki_link".vimwiki_link()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>gn', '<Esc>:lua require"user.vimwiki_atomic_pdf".atomic_link()<CR>', { noremap = true, silent = true })
+
 
 
 -- Comment

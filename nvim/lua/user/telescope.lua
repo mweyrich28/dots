@@ -28,7 +28,7 @@ telescope.setup {
     --     },
     -- },
     defaults = {
-        file_ignore_patterns = { "%.png", "%.jpg", "%.jpeg", "%.pdf", "%.JPG" },
+        file_ignore_patterns = { "%.png", "%.jpg", "%.jpeg", "%.JPG" },
         prompt_prefix = "> ",
         selection_caret = "> ",
         path_display = { "short" },
