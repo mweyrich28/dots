@@ -557,11 +557,7 @@ awful.util.spawn_with_shell("pgrep -u $USER -x nm-applet > /dev/null || (nm-appl
 awful.spawn.with_shell("brave-browser")                                                 -- Brave
 
 -- tmux
-awful.spawn.with_shell("alacritty -e tmux new-session -s UNI -c ~/documents/vimwiki/")
-awful.spawn.with_shell("alacritty -e tmux new-session -s PROJECTS -d -c ~/projects/")
-awful.spawn.with_shell("alacritty -e tmux new-session -s CONFIG -d -c ~/.config/")
-awful.spawn.with_shell("alacritty -e tmux new-session -s WORK -d")
-awful.spawn.with_shell("alacritty -e tmux new-session -s HOME -d")
+awful.spawn.with_shell("alacritty -e tmux new-session -s HOME")
 
 
 -- NOTE: Wallpaper is set in polybar launch--config
