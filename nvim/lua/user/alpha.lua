@@ -47,14 +47,14 @@ end
 
 dashboard.section.buttons.val = {
   -- button("b", "󱞊  > Browse", ":e . <CR>" ),
-  button("p", "  > Find Projects", ":lua require('telescope').extensions.projects.projects()<CR>"),
+  -- button("p", "  > Find Projects", ":lua require('telescope').extensions.projects.projects()<CR>"),
+  button("m", "  > Markdown Wiki", ":e ~/documents/vimwiki_para/README.md<CR> :!~/.config/scripts/sync_goodnotes.sh & <CR>" ),
+  button("f", "󰱼  > Find File   ", ":Telescope find_files <CR>"),
   button("r", "󱈖  > Recent Files   ", ":Telescope oldfiles <CR>"),
-  button("m", "  > Markdown Wiki", ":e ~/documents/vimwiki_para/README.md<CR>" ),
-  button("s", "  > Edit Snippets", ":e ~/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/tex.snippets <CR>" ),
-  button("c", "  > Edit Config", ":e ~/.config/nvim/init.lua <CR><CR>"),
-  -- button("f", "󰱼  > Find File   ", ":Telescope find_files <CR>"),
+  button("g", "󱎸  > Live Grep ", ":Telescope live_grep <CR>"),
+  button("s", "  > Edit Snippets", ":e ~/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/tex.snippets <CR> :cd ~/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/ <CR>" ),
+  button("c", "  > Edit Config", ":e ~/.config/nvim/init.lua<CR> :cd ~/.config/nvim/ <CR>"),
   button("q", "  > Quit", ":qa<CR>"),
-  -- button("g", "󱎸  > Live Grep ", ":Telescope live_grep <CR>"),
 }
 dashboard.section.buttons.opts = {
   spacing = 1,
