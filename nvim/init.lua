@@ -1,6 +1,5 @@
 require "user.telescope"
 require 'user.nordic'
-require "user.project"
 require "user.impatient"
 require "user.options"
 require "user.keymaps"

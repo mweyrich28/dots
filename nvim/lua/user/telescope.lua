@@ -4,31 +4,13 @@ if not status_ok then
 end
 
 local actions = require "telescope.actions"
-
 require('telescope').load_extension('bookmarks')
 require("telescope").load_extension("notify")
 
+
 telescope.setup {
-    -- pickers = {
-    --     find_files = {
-    --         find_command = {
-    --             "rg",
-    --             "--files",
-    --             "--hidden",
-    --             "--no-ignore-vcs",
-    --             "-g",
-    --             "!**/.git/*",
-    --         },
-    --     },
-    --     live_grep = {
-    --         find_command = {
-    --             "rg",
-    --             "--no-ignore",
-    --         },
-    --     },
-    -- },
     defaults = {
-        file_ignore_patterns = { "%.png", "%.jpg", "%.jpeg", "%.JPG" },
+        file_ignore_patterns = { "%.png", "%.jpg", "%.jpeg", "%.JPG", "%.sample", "%.git", "%[^.]+$" },
         prompt_prefix = "> ",
         selection_caret = "> ",
         path_display = { "short" },
