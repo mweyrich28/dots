@@ -3,9 +3,14 @@
 !polybar/
 !polybar/blocks
 
+
 !nvim/
 !nvim/lua
 !nvim/lua/user
+
+
+!picom/
+!picom/picom.conf
 
 
 
