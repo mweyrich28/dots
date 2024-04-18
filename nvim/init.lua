@@ -24,7 +24,6 @@ require "user.todo"
 require "user.lsp"
 require "user.devcons"
 require "user.markdownprev"
--- require "user.indentline"
 require "user.zen"
 require "user.toggleterm"
 require 'user.treesitter'
@@ -33,10 +32,8 @@ require 'user.vimwiki_link'
 require 'user.vimwiki_better_sc'
 require "user.copilot"
 require 'user.harpoon'
-require "user.goto_preview"
 require "user.noice"
 require "user.notify"
 require "user.neogit"
 require "user.gruvbox"
 require 'user.nvim-tree'
-

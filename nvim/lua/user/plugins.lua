@@ -149,7 +149,7 @@ return packer.startup(function(use)
 
     -- Zen mode
     use { "folke/zen-mode.nvim" }
-    -- use { "folke/twilight.nvim" }
+    use { "folke/twilight.nvim" }
     use {
         'lewis6991/gitsigns.nvim',
     }
@@ -184,12 +184,12 @@ return packer.startup(function(use)
     })
 
 
-    use {
-        'rmagatti/goto-preview',
-        config = function()
-            require('goto-preview').setup {}
-        end
-    }
+    -- use {
+    --     'rmagatti/goto-preview',
+    --     config = function()
+    --         require('goto-preview').setup {}
+    --     end
+    -- }
 
     -- oil
     use({
@@ -208,6 +208,7 @@ return packer.startup(function(use)
     }
     }
     use 'rcarriga/nvim-notify'
+    
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
