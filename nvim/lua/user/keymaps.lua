@@ -73,7 +73,6 @@ keymap("n", "<leader>pb", "<cmd>lua require'telescope.builtin'.buffers()<cr>", o
 keymap("n", "<leader>pi", "<cmd>Telescope bookmarks<cr>", opts)
 keymap("n", "<leader>ps", "<cmd>lua require'telescope.builtin'.symbols()<cr>", opts)
 keymap("n", "<leader>log", "<cmd>Telescope notify<cr>", opts)
--- keymap("n", "<leader>pr", "<cmd>lua require'telescope.builtin'.live_grep({ additional_args = { --hidden }})<cr>", opts)
 vim.keymap.set("n", "<leader>pr", function() require'telescope.builtin'.live_grep({ additional_args = { "--hidden", "--no-ignore" }}) end, {})
 keymap("n", "<leader>pw", "<cmd>Telescope grep_string<cr>", opts)
 keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.treesitter()<cr>", opts)
@@ -82,6 +81,8 @@ keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.treesitter()<cr>"
 vim.api.nvim_set_keymap('n', '<Leader>fb', [[:lua require'user.vimwiki_backlinks'.search_backlinks()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<C-b>', '<Esc>:lua require"user.vimwiki_link".vimwiki_link()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>gn', '<Esc>:lua require"user.vimwiki_atomic_pdf".atomic_link()<CR>', { noremap = true, silent = true })
+keymap("n", "<leader>sc", "<cmd>lua WikiSc()<CR>", opts)
+keymap("n", "<leader>ii", "<cmd>lua EditImage()<CR>", opts)
 
 
 
@@ -89,7 +90,7 @@ vim.api.nvim_set_keymap('n', '<Leader>gn', '<Esc>:lua require"user.vimwiki_atomi
 keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
 keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)
 
--- vim.keymap.set("n", "<leader>pp", vim.cmd.NvimTreeToggle)
+vim.keymap.set("n", "<leader>pp", vim.cmd.NvimTreeToggle)
 -- Oil
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
@@ -120,5 +121,3 @@ keymap("n", "<leader>cp", "<cmd>Copilot enable<CR>", opts)
 vim.keymap.set("n", "<leader>o", vim.cmd.MarkdownPreview, opts)
 
 keymap("n", "<leader>lg", "<cmd>Neogit<CR>", opts)
--- better sceneshot for vimwiki
-keymap("n", "<leader>sc", "<cmd>lua WikiSc()<CR>", opts)

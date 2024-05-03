@@ -279,7 +279,14 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "v", function()
             awful.spawn("/home/malte/.config/scripts/vim_anywhere.sh")
         end,
-        { description = "Quick math equations on the fly", group = "malte" })
+        { description = "Quick math equations on the fly", group = "malte" }),
+
+    -- screenshot
+    awful.key({ modkey }, "i", function()
+            awful.spawn("/home/malte/.config/scripts/screenshot.sh")
+        end,
+        { description = "Simple screenshot script", group = "malte" })
+
 )
 -- awful.key({ modkey }, "x",
 --           function ()
@@ -557,7 +564,8 @@ awful.util.spawn_with_shell("pgrep -u $USER -x nm-applet > /dev/null || (nm-appl
 awful.spawn.with_shell("brave-browser")                                                 -- Brave
 
 -- tmux
-awful.spawn.with_shell("alacritty -e tmux new-session -s HOME")
+awful.spawn.with_shell("alacritty -e tmux new-session -s home")
+awful.spawn.with_shell("alacritty -e tmux new-session -s work -d")
 
 
 -- NOTE: Wallpaper is set in polybar launch--config

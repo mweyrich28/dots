@@ -30,10 +30,11 @@ require 'user.treesitter'
 require 'user.vimwiki_backlinks'
 require 'user.vimwiki_link'
 require 'user.vimwiki_better_sc'
+require 'user.vimwiki_edit_images'
 require "user.copilot"
 require 'user.harpoon'
 require "user.noice"
 require "user.notify"
 require "user.neogit"
-require "user.gruvbox"
+-- require "user.gruvbox"
 require 'user.nvim-tree'

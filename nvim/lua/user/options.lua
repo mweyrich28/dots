@@ -29,7 +29,7 @@ vim.opt.number = true                           -- set numbered lines
 vim.opt.relativenumber = true
 vim.opt.laststatus = 3
 vim.opt.showcmd = false
-vim.opt.ruler = false
+vim.opt.ruler = true
 vim.opt.numberwidth = 2                         -- set number column width to 2 {default 4}
 vim.opt.signcolumn = "yes"                      -- always show the sign column, otherwise it would shift the text each time
 -- vim.opt.colorcolumn = "81"                      -- set colorcolumn at 80 characters
@@ -49,26 +49,6 @@ vim.api.nvim_command('set encoding=utf-8')
 -- save last cursor position
 vim.cmd[[autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
 
--- disables background color
--- vim.cmd[[autocmd ColorScheme * highlight! Normal ctermbg=NONE guibg=NONE]]
--- vim.cmd[[
--- augroup transparent_signs
---   au!
---   autocmd ColorScheme * highlight SignColumn guibg=NONE
--- augroup END
--- ]]
+vim.g.loaded_netrw = 0
 
--- local o = vim.opt
--- o.spelllang = { 'en_us', 'de'}
--- o.spell = false
-
--- nord theme options
--- vim.g.nord_contrast = false
--- vim.g.nord_borders = false
--- vim.g.nord_disable_background = false
--- vim.g.nord_italic = false
--- vim.g.nord_uniform_diff_background = false
--- vim.g.nord_bold = false
-
--- vim.g.loaded_netrw = 0
-
+vim.api.nvim_command('highlight SpellBad cterm=underline gui=underline ctermfg=red guifg=red')

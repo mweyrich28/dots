@@ -42,7 +42,7 @@ local function executeJob(image_name)
     vim.api.nvim_put({ wiki_link }, "", true, true)
 end
 
-function WikiSc(arg)
+function EditImage(arg)
     -- Check if an argument is provided
     if arg == nil then
         arg = vim.fn.input('Image name: ')

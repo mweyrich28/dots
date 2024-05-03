@@ -16,3 +16,10 @@ vim.g.vimwiki_list = {
         index = 'README'
 	}
 }
+
+vim.cmd([[hi VimwikiHeader1 guifg=#E7C173]])
+vim.cmd([[hi VimwikiHeader2 guifg=#E7C173]])
+vim.cmd([[hi VimwikiHeader3 guifg=#E7C173]])
+vim.cmd([[hi VimwikiHeader4 guifg=#E7C173]])
+vim.cmd([[hi VimwikiHeader5 guifg=#E7C173]])
+vim.cmd([[hi VimwikiHeader6 guifg=#E7C173]])

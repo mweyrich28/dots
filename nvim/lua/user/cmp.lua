@@ -102,7 +102,6 @@ cmp.setup({
     window = {
         -- completion = cmp.config.window.bordered(),
         -- documentation = cmp.config.window.bordered(),
-        winhighlight = "Normal:CmpNormal",
     },
     experimental = {
         ghost_text = false,

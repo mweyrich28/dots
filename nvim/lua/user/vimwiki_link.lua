@@ -23,11 +23,11 @@ local function get_depth(path)
 end
 
 
-local function executeJob(wiki_path)
+local function executeJob(wiki_path, markdown_name)
     -- Dump header into new file 
     Job:new({
         command = "/home/malte/.config/scripts/vimwiki_link.sh",
-        args = { wiki_path },
+        args = { wiki_path, markdown_name },
     }):start()
 end
 
@@ -42,8 +42,10 @@ function LinkVaultWiki(link_to_file_rel)
     -- remove the last part of the path (the .md part)
     local link_to = link_to_file_rel.match(link_to_file_rel, "(.*/)")
     local call_from = current_file_path.match(rel_path, "(.*/)")
+    local formatted_name = string.gsub(markdown_name, ".md", "")
+    formatted_name = string.gsub(formatted_name, "_", " ")
     if link_to == call_from then
-        local wiki_link = "[" .. string.gsub(markdown_name, ".md", "") .. "]" .. "(" .. markdown_name .. ")"
+        local wiki_link = "[" .. formatted_name .. "]" .. "(" .. markdown_name .. ")"
         return wiki_link
     end
 
@@ -59,7 +61,9 @@ function LinkVaultWiki(link_to_file_rel)
 
     -- Append the path to the markdown file
     relative_path = relative_path .. link_to_file_rel
-    local wiki_link = "[" .. string.gsub(markdown_name, ".md", "") .. "]" .. "(" .. relative_path .. ")"
+    local formatted_name = string.gsub(markdown_name, "%.md$", "")
+    formatted_name = string.gsub(formatted_name, "_", " ")
+    local wiki_link = "[" .. formatted_name .. "]" .. "(" .. relative_path .. ")"
     return wiki_link
 end
 
@@ -68,9 +72,9 @@ function CreateNewWiki(curr_file)
     local markdown_name = curr_file.match(curr_file, "[^/]+$")
 
     local current_dir = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":h")
-    local wiki_link = "[" .. markdown_name .. "]" .. "(" .. curr_file .. ".md)"
+    local wiki_link = "[" .. string.gsub(markdown_name, "_", " ") .. "]" .. "(" .. curr_file .. ".md)"
     local wiki_md = current_dir .. "/" .. curr_file
-    executeJob(wiki_md)
+    executeJob(wiki_md, markdown_name)
     return wiki_link
 end
 

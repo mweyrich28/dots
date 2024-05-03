@@ -149,7 +149,7 @@ return packer.startup(function(use)
 
     -- Zen mode
     use { "folke/zen-mode.nvim" }
-    use { "folke/twilight.nvim" }
+    -- use { "folke/twilight.nvim" }
     use {
         'lewis6991/gitsigns.nvim',
     }

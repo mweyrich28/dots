@@ -10,11 +10,11 @@ require('notify').setup {
     },
     level = 2,
     minimum_width = 50,
-    render = "compact",
-    stages = "static",
+    render = "default",
+    stages = "fade",
     time_formats = {
         notification = "%T",
         notification_history = "%FT%T"
     },
-    timeout = 900,
+    timeout = 200,
 }

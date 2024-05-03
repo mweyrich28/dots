@@ -52,8 +52,8 @@ require("gruvbox").setup({
     }
 })
 
-vim.cmd.colorscheme("gruvbox")
+-- vim.cmd.colorscheme("gruvbox")
 
-vim.cmd('highlight! Pmenu guibg=#000000 guifg=#FFFFFF')
+-- vim.cmd('highlight! Pmenu guibg=#000000 guifg=#FFFFFF')
 
-vim.api.nvim_command('highlight SpellBad cterm=underline gui=underline ctermfg=red guifg=red')
+-- vim.api.nvim_command('highlight SpellBad cterm=underline gui=underline ctermfg=red guifg=red')
