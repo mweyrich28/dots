@@ -48,7 +48,7 @@ end
 dashboard.section.buttons.val = {
   -- button("b", "󱞊  > Browse", ":e . <CR>" ),
   -- button("p", "  > Find Projects", ":lua require('telescope').extensions.projects.projects()<CR>"),
-  button("m", "  > Markdown Wiki", ":e ~/documents/vimwiki_para/README.md<CR> :!~/.config/scripts/sync_goodnotes.sh & <CR>" ),
+  button("m", "  > Markdown Wiki", ":e ~/documents/vimwiki_para/README.md<CR>" ),
   button("d", "  > Open OneDrive", ":e ~/OneDriver/03_GoodNotes/<CR> :cd ~/OneDriver/03_GoodNotes/ <CR>" ),
   -- button("f", "󰱼  > Find File   ", ":Telescope find_files <CR>"),
   button("r", "󱈖  > Recent Files   ", ":Telescope oldfiles <CR>"),

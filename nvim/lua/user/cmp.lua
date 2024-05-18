@@ -69,39 +69,35 @@ cmp.setup({
         ["<C-Space>"] = cmp.mapping.complete(),
     },
 
-    formatting = {
-        fields = { "abbr", "menu" },
-        format = function(entry, vim_item)
-            vim_item.kind = kind_icons[vim_item.kind]
-            vim_item.menu = ({
-                ultisnips = "[Snip]",
-                buffer = "[Buf]",
-                nvim_lsp = "[LSP]",
-                cmdline = "[Cmd]",
-                path = "[Path]",
-                vimwiki_tags= "[Tag]"
-                -- fuzzy_buffer = "[Fuzzy]",
-            })[entry.source.name]
-            return vim_item
-        end,
-    },
+    -- formatting = {
+    --     fields = { "abbr", "menu" },
+    --     format = function(entry, vim_item)
+    --         vim_item.kind = kind_icons[vim_item.kind]
+    --         vim_item.menu = ({
+    --             ultisnips = "[Snip]",
+    --             buffer = "[Buf]",
+    --             nvim_lsp = "[LSP]",
+    --             cmdline = "[Cmd]",
+    --             path = "[Path]",
+    --             vimwiki_tags= "[Tag]"
+    --             -- fuzzy_buffer = "[Fuzzy]",
+    --         })[entry.source.name]
+    --         return vim_item
+    --     end,
+    -- },
     sources = {
         { name = "nvim_lsp" },
-        { name = "nvim_lua" },
-        { name = 'vimwiki-tags' },
         { name = "path" },
-        { name = "async_path" },
         { name = "buffer" },
         { name = "ultisnips" },
-        { name = "calc" },
     },
     confirm_opts = {
         behavior = cmp.ConfirmBehavior.Replace,
         select = false,
     },
     window = {
-        -- completion = cmp.config.window.bordered(),
-        -- documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
     },
     experimental = {
         ghost_text = false,

@@ -13,14 +13,6 @@ vim.g.maplocalleader = " "
 --Remap C-c to <esc>
 keymap("i", "<C-c>", "<Esc>", opts)
 
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
-
 -- Normal --
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -52,13 +44,6 @@ keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 -- better paste
 keymap("v", "p", '"_dP', opts)
 
--- Visual Block --
--- Move text up and down
--- keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
--- keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
--- keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
--- keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
-
 -- Terminal --
 -- Better terminal navigation
 keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
@@ -72,7 +57,6 @@ keymap("n", "<leader>pt", "<cmd>Telescope <cr>", opts)
 keymap("n", "<leader>pb", "<cmd>lua require'telescope.builtin'.buffers()<cr>", opts)
 keymap("n", "<leader>pi", "<cmd>Telescope bookmarks<cr>", opts)
 keymap("n", "<leader>ps", "<cmd>lua require'telescope.builtin'.symbols()<cr>", opts)
-keymap("n", "<leader>log", "<cmd>Telescope notify<cr>", opts)
 vim.keymap.set("n", "<leader>pr", function() require'telescope.builtin'.live_grep({ additional_args = { "--hidden", "--no-ignore" }}) end, {})
 keymap("n", "<leader>pw", "<cmd>Telescope grep_string<cr>", opts)
 keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.treesitter()<cr>", opts)
@@ -85,12 +69,12 @@ keymap("n", "<leader>sc", "<cmd>lua WikiSc()<CR>", opts)
 keymap("n", "<leader>ii", "<cmd>lua EditImage()<CR>", opts)
 
 
-
 -- Comment
 keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
 keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)
 
 vim.keymap.set("n", "<leader>pp", vim.cmd.NvimTreeToggle)
+
 -- Oil
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
@@ -121,3 +105,24 @@ keymap("n", "<leader>cp", "<cmd>Copilot enable<CR>", opts)
 vim.keymap.set("n", "<leader>o", vim.cmd.MarkdownPreview, opts)
 
 keymap("n", "<leader>lg", "<cmd>Neogit<CR>", opts)
+
+
+--- Debugging
+vim.keymap.set("n", "<leader>bb", "<cmd>lua require'dap'.toggle_breakpoint()<cr>")
+vim.keymap.set("n", "<leader>bc", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>")
+vim.keymap.set("n", "<leader>bl", "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>")
+vim.keymap.set("n", '<leader>br', "<cmd>lua require'dap'.clear_breakpoints()<cr>")
+vim.keymap.set("n", '<leader>ba', '<cmd>Telescope dap list_breakpoints<cr>')
+vim.keymap.set("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>")
+vim.keymap.set("n", "<leader>dj", "<cmd>lua require'dap'.step_over()<cr>")
+vim.keymap.set("n", "<leader>dk", "<cmd>lua require'dap'.step_into()<cr>")
+vim.keymap.set("n", "<leader>do", "<cmd>lua require'dap'.step_out()<cr>")
+vim.keymap.set("n", '<leader>dd', function() require('dap').disconnect(); require('dapui').close(); end)
+vim.keymap.set("n", '<leader>dt', function() require('dap').terminate(); require('dapui').close(); end)
+vim.keymap.set("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>")
+vim.keymap.set("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>")
+vim.keymap.set("n", '<leader>di', function() require "dap.ui.widgets".hover() end)
+vim.keymap.set("n", '<leader>d?', function() local widgets = require "dap.ui.widgets"; widgets.centered_float(widgets.scopes) end)
+vim.keymap.set("n", '<leader>df', '<cmd>Telescope dap frames<cr>')
+vim.keymap.set("n", '<leader>dh', '<cmd>Telescope dap commands<cr>')
+vim.keymap.set("n", '<leader>de', function() require('telescope.builtin').diagnostics({default_text=":E:"}) end)

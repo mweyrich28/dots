@@ -58,10 +58,32 @@ return packer.startup(function(use)
     use {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        "neovim/nvim-lspconfig",
+        'WhoIsSethDaniel/mason-tool-installer.nvim',
+        "neovim/nvim-lspconfig"
+    }
+    -- python developement
+    use { 'psf/black' }
+    use { 'fisadev/vim-isort' }
+    use { 'mfussenegger/nvim-lint' }
+    use { 'mfussenegger/nvim-dap-python',
+        requires = {
+            -- https://github.com/mfussenegger/nvim-dap
+            'mfussenegger/nvim-dap',
+        }
+    }
+    use { 'rcarriga/nvim-dap-ui',
+        requires = {
+            -- https://github.com/mfussenegger/nvim-dap
+            'mfussenegger/nvim-dap',
+            -- https://github.com/theHamsta/nvim-dap-virtual-text
+            'theHamsta/nvim-dap-virtual-text', -- inline variable text while debugging
+            -- https://github.com/nvim-telescope/telescope-dap.nvim
+            'nvim-telescope/telescope-dap.nvim', -- telescope integration with dap
+
+            'nvim-neotest/nvim-nio'
+        }
     }
     use 'folke/neodev.nvim'
-
     -- Telescope
     use "nvim-telescope/telescope.nvim"
     use "nvim-telescope/telescope-symbols.nvim"
@@ -128,7 +150,7 @@ return packer.startup(function(use)
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use({
         "nvim-treesitter/nvim-treesitter-refactor",
-        "nvim-treesitter/nvim-treesitter-textobjects",
+        -- "nvim-treesitter/nvim-treesitter-textobjects",
     })
 
 
@@ -167,12 +189,12 @@ return packer.startup(function(use)
 
     use { "christoomey/vim-tmux-navigator" }
 
-    use {
-        "folke/todo-comments.nvim",
-        requires = "nvim-lua/plenary.nvim",
-    }
+    -- use {
+    --     "folke/todo-comments.nvim",
+    --     requires = "nvim-lua/plenary.nvim",
+    -- }
     -- QhickScope
-    use 'unblevable/quick-scope'
+    -- use 'unblevable/quick-scope'
 
     -- Copilot
     use { "github/copilot.vim" }
@@ -201,14 +223,14 @@ return packer.startup(function(use)
 
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use { 'tzachar/cmp-fuzzy-buffer', requires = { 'hrsh7th/nvim-cmp', 'tzachar/fuzzy.nvim' } }
-    use {
-        'dhruvmanila/browser-bookmarks.nvim', tag = '*', }
-    use { "folke/noice.nvim", requires = {
-        "MunifTanjim/nui.nvim",
-    }
-    }
-    use 'rcarriga/nvim-notify'
-    
+    use { 'dhruvmanila/browser-bookmarks.nvim', tag = '*', }
+
+    -- use { "folke/noice.nvim", requires = {
+    --     "MunifTanjim/nui.nvim",
+    --     }
+    -- }
+    -- use 'rcarriga/nvim-notify'
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then

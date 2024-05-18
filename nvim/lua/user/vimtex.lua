@@ -19,8 +19,8 @@ vim.g.vimtex_compiler_latexmk_engines = {
 vim.g.vimtex_compiler_latexmk = {
   options = {
     '-pdf',
-    '-interaction=nonstopmode',
-    '-synctex=1'
+    -- '-interaction=nonstopmode',
+    -- '-synctex=1'
   },
   continuous = 1
 }
