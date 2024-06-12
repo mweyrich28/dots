@@ -71,3 +71,6 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
   return open_floating_preview(contents, syntax, opts, ...)
 end
 
+vim.diagnostic.config({
+  virtual_text = false,
+})

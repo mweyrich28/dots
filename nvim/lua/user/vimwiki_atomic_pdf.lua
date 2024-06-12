@@ -39,7 +39,9 @@ function CreateAtomicLink(file_name)
 
     -- Append the path to the markdown file
     relative_path = relative_path .. pdf_dir .. file_name
-    local wiki_link = "[".. string.gsub(file_name, ".pdf", "") .."]" .. "(local:" .. relative_path .. ")"
+    -- return a two links (second one for github markdown to correctly identify the pdf link)
+    local wiki_link = "[".. string.gsub(file_name, ".pdf", "") .."]" .. "(local:" .. relative_path .. "): " .. "[".. string.gsub(file_name, ".pdf", "") .."]" .. "(" .. relative_path .. ")"
+
     return wiki_link
 end
 

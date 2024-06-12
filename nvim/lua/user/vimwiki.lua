@@ -15,6 +15,12 @@ vim.g.vimwiki_list = {
 		syntax = 'markdown',
 		ext = '.md',
         index = 'README'
+	},
+	{
+		path = '~/documents/vimwiki_para/1.Projects/Sponge_Pipeline/',
+		syntax = 'markdown',
+		ext = '.md',
+        index = 'README'
 	}
 }
 

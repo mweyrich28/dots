@@ -52,7 +52,6 @@ return packer.startup(function(use)
     use "hrsh7th/cmp-cmdline" -- cmdline completions
     use { "hrsh7th/cmp-nvim-lsp" }
     use { "quangnguyen30192/cmp-nvim-ultisnips" }
-    use "hrsh7th/cmp-calc"
 
     -- Mason LSP
     use {
@@ -84,6 +83,7 @@ return packer.startup(function(use)
         }
     }
     use 'folke/neodev.nvim'
+
     -- Telescope
     use "nvim-telescope/telescope.nvim"
     use "nvim-telescope/telescope-symbols.nvim"
@@ -102,17 +102,14 @@ return packer.startup(function(use)
     }
 
     -- Indent lines
-    -- use { "lukas-reineke/indent-blankline.nvim" }
+    use { "lukas-reineke/indent-blankline.nvim" }
 
-    -- UI (Nvim-Tree, Bufferline, ToggleTerm, Lualine)
+    -- UI (Nvim-Tree, ToggleTerm, Lualine)
     use { "kyazdani42/nvim-tree.lua" }
     use { "kyazdani42/nvim-web-devicons" }
-    -- use { "akinsho/bufferline.nvim", tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
     use { "akinsho/toggleterm.nvim" }
     use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
 
-    -- TUI stuff
-    use { "ahmedkhalf/project.nvim" }
     use { "goolord/alpha-nvim" }
 
     -- Color highlighter
@@ -189,13 +186,6 @@ return packer.startup(function(use)
 
     use { "christoomey/vim-tmux-navigator" }
 
-    -- use {
-    --     "folke/todo-comments.nvim",
-    --     requires = "nvim-lua/plenary.nvim",
-    -- }
-    -- QhickScope
-    -- use 'unblevable/quick-scope'
-
     -- Copilot
     use { "github/copilot.vim" }
 
@@ -206,13 +196,6 @@ return packer.startup(function(use)
     })
 
 
-    -- use {
-    --     'rmagatti/goto-preview',
-    --     config = function()
-    --         require('goto-preview').setup {}
-    --     end
-    -- }
-
     -- oil
     use({
         "stevearc/oil.nvim",
@@ -222,14 +205,7 @@ return packer.startup(function(use)
     })
 
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-    use { 'tzachar/cmp-fuzzy-buffer', requires = { 'hrsh7th/nvim-cmp', 'tzachar/fuzzy.nvim' } }
     use { 'dhruvmanila/browser-bookmarks.nvim', tag = '*', }
-
-    -- use { "folke/noice.nvim", requires = {
-    --     "MunifTanjim/nui.nvim",
-    --     }
-    -- }
-    -- use 'rcarriga/nvim-notify'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
