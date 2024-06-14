@@ -554,7 +554,7 @@ end)
 -- end)
 
 -- Border color and width
-client.connect_signal("focus", function(c) c.border_color = "#fe8019" end)
+client.connect_signal("focus", function(c) c.border_color = "#CB775D" end)
 client.connect_signal("focus", function(c) c.border_width = 0.5 end)
 client.connect_signal("unfocus", function(c) c.border_color = '#888888' end)
 client.connect_signal("unfocus", function(c) c.border_width = 0 end)

@@ -13,10 +13,12 @@
 !picom/picom.conf
 
 
-
 !awesome/
 !scripts/
 
+!images/
+!images/notes.png
+!images/python.png
 
 
 .gsd-keyboard.settings-ported

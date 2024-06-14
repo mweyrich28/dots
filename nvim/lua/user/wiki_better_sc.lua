@@ -19,8 +19,10 @@ local function executeJob(image_name)
 
     local current_file_path = vim.fn.expand("%:p")
     local current_file_path_table = Split(current_file_path)
-
-    local root_depth = 5 -- this should be the 'depth' of your main vimwiki folder 
+    
+    
+    -- TODO replace with local vault_path = vim.g.vimwiki_list[1].path
+    local root_depth = 5
 
     local curr_depht = 0
     for i, part in ipairs(current_file_path_table) do
