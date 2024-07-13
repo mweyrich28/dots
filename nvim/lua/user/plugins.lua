@@ -118,8 +118,6 @@ return packer.startup(function(use)
     -- Startup time optimizer
     use { "lewis6991/impatient.nvim" }
 
-    -- my stuff
-    use 'lervag/vimtex'
     -- harpoon
     use {
         "ThePrimeagen/harpoon",
@@ -197,15 +195,22 @@ return packer.startup(function(use)
 
 
     -- oil
-    use({
-        "stevearc/oil.nvim",
-        config = function()
-            require("oil").setup()
-        end,
-    })
+    use { "stevearc/oil.nvim" }
 
-    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-    use { 'dhruvmanila/browser-bookmarks.nvim', tag = '*', }
+    use {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'make'
+    }
+    use {
+        'dhruvmanila/browser-bookmarks.nvim',
+        tag = '*',
+    }
+
+    -- vimtex
+    use {
+        'lervag/vimtex',
+        ft = 'tex',
+    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

@@ -54,3 +54,5 @@ vim.g.loaded_netrw = 0
 vim.api.nvim_command('highlight SpellBad cterm=underline gui=underline ctermfg=red guifg=red')
 
 vim.cmd[[syntax enable]]
+
+vim.cmd('filetype plugin indent on')

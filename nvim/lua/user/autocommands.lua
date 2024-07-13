@@ -18,3 +18,4 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     vim.cmd("Isort")
   end,
 })
+

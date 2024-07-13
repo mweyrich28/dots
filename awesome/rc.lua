@@ -259,6 +259,14 @@ globalkeys = gears.table.join(
         end,
         { description = "launch brave browser", group = "malte" }),
 
+
+
+    -- circrna session
+    awful.key({ modkey }, "c", function()
+        awful.spawn("alacritty -e ssh -i ~/.ssh/norm -t mweyrich@10.162.163.34 'tmux new-session -A -s circrna'")
+        end,
+        { description = "Connect to circrna session", group = "malte" }),
+
     -- Settings
     awful.key({ "Control", modkey }, "s", function()
             awful.util.spawn("env XDG_CURRENT_DESKTOP=GNOME gnome-control-center")

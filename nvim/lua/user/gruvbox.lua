@@ -51,7 +51,6 @@ require("gruvbox").setup({
         CocSemVariable = { fg = "", bg = "#0E1018" },
     }
 })
-
 -- vim.cmd.colorscheme("gruvbox")
 
 -- vim.cmd('highlight! Pmenu guibg=#000000 guifg=#FFFFFF')
