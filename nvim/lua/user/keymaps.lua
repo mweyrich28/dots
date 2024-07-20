@@ -61,8 +61,9 @@ vim.keymap.set("n", "<leader>pr", function() require'telescope.builtin'.live_gre
 keymap("n", "<leader>pw", "<cmd>Telescope grep_string<cr>", opts)
 keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.treesitter()<cr>", opts)
 
--- Mapping to trigger the search for backlinks
+-- Vimwiki extensions
 vim.api.nvim_set_keymap('n', '<Leader>fb', [[:lua require'user.vimwiki_backlinks'.search_backlinks()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-e>', [[<Esc>:lua require'user.vimwiki_tags'.select_tag()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<C-b>', '<Esc>:lua require"user.vimwiki_link".vimwiki_link()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>gn', '<Esc>:lua require"user.vimwiki_atomic_pdf".atomic_link()<CR>', { noremap = true, silent = true })
 keymap("n", "<leader>sc", "<cmd>lua WikiSc()<CR>", opts)
@@ -104,7 +105,7 @@ keymap("n", "<leader>cp", "<cmd>Copilot enable<CR>", opts)
 -- Markdown Preview
 vim.keymap.set("n", "<leader>o", vim.cmd.MarkdownPreview, opts)
 
-keymap("n", "<leader>lg", "<cmd>Neogit<CR>", opts)
+keymap("n", "<leader>lg", "<cmd>LazyGit<CR>", opts)
 
 
 --- Debugging

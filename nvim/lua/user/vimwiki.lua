@@ -11,13 +11,13 @@ vim.g.vimwiki_global_ext = 0
 
 vim.g.vimwiki_list = {
 	{
-		path = '~/documents/vimwiki_para/',
+		path = '~/documents/zettelkasten/',
 		syntax = 'markdown',
 		ext = '.md',
         index = 'README'
 	},
 	{
-		path = '~/documents/vimwiki_para/1.Projects/Sponge_Pipeline/',
+		path = '~/documents/backup_wiki/',
 		syntax = 'markdown',
 		ext = '.md',
         index = 'README'

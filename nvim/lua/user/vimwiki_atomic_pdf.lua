@@ -47,6 +47,8 @@ end
 
 local function atomic_link()
     local opts = require("telescope.themes").get_dropdown { prompt_title = "AtomicNote Link" }
+    -- include pdfs in results
+    opts.file_ignore_patterns = {}
     local results = vim.fn.systemlist("ls /home/malte/documents/vimwiki_para/assets/AtomicNotes/")
 
     pickers.new(opts, {

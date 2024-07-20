@@ -7,7 +7,7 @@ function EditImage()
     local line_content = vim.api.nvim_buf_get_lines(buf, line_number - 1, line_number, false)[1]
     local link_content = line_content:match("%((.-)%)")
     link_content = link_content:gsub("%.%.%/.-%/", "")
-    link_content = vim.g.vimwiki_list[1].path .. link_content
+    link_content = vim.g.vimwiki_list[1].path .. "assets/" .. link_content
     link_content = link_content:gsub("~", "/home/malte")
     vim.fn.system("/snap/bin/kolourpaint " .. link_content)
 end

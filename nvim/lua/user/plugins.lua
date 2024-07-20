@@ -171,16 +171,12 @@ return packer.startup(function(use)
         'lewis6991/gitsigns.nvim',
     }
 
-    -- use({
-    --     "kdheepak/lazygit.nvim",
-    --     requires = {
-    --         "nvim-lua/plenary.nvim",
-    --     },
-    -- })
-
-    use { "NeogitOrg/neogit",
-        requires = "nvim-lua/plenary.nvim", -- required
-        "sindrets/diffview.nvim", }
+    use({
+        "kdheepak/lazygit.nvim",
+        requires = {
+            "nvim-lua/plenary.nvim",
+        },
+    })
 
     use { "christoomey/vim-tmux-navigator" }
 

@@ -36,7 +36,7 @@ function LinkVaultWiki(link_to_file_rel)
 
     local vault_path = vim.g.vimwiki_list[1].path
     local current_file_path = vim.fn.expand("%:p")
-    local rel_path = string.match(current_file_path, ".*/vimwiki_para/(.*)")
+    local rel_path = string.match(current_file_path, ".*/zettelkasten/(.*)")
 
     -- check if curr_file has the same path as the current_file_path, return simple link
     -- remove the last part of the path (the .md part)
@@ -81,14 +81,17 @@ end
 local vimwiki_link = function()
     local opts = require("telescope.themes").get_dropdown { prompt_title = "Vimwiki Link" }
 
-    local results = vim.fn.systemlist("find /home/malte/documents/vimwiki_para -type f -name '*.md'")
+    local results = vim.fn.systemlist("find /home/malte/documents/zettelkasten/ -type f -name '*.md'")
     local processed_results = {}
     for _, path in ipairs(results) do
-        local markdown_file = string.match(path, ".*/vimwiki_para/(.*)")
+        local markdown_file = string.match(path, ".*/zettelkasten/(.*)")
         if markdown_file then
             table.insert(processed_results, markdown_file)
         end
     end
+
+    local rel_wiki_path = ""
+    local wiki_link = ""
 
     pickers.new(opts, {
         finder = finders.new_table({
@@ -99,19 +102,17 @@ local vimwiki_link = function()
             actions.select_default:replace(function()
                 local selection = action_state.get_selected_entry()
                 actions.close(prompt_bufnr)
+                rel_wiki_path = selection.value
+                wiki_link = LinkVaultWiki(rel_wiki_path)
 
-                -- if there is no selection, just take the string which is entered in the prompt
-                local rel_wiki_path = ""
-                local wiki_link = ""
-                if not selection then
-                    rel_wiki_path = action_state.get_current_line()
-                    wiki_link = CreateNewWiki(rel_wiki_path)
-                else
-                    rel_wiki_path = selection.value
-                    wiki_link = LinkVaultWiki(rel_wiki_path)
-                end
+                vim.api.nvim_put({ wiki_link }, "", true, true)
+            end)
 
-
+            map('i', '<A-CR>', function()
+                actions.close(prompt_bufnr)
+                rel_wiki_path = action_state.get_current_line()
+                wiki_link = CreateNewWiki(rel_wiki_path)
+                
                 vim.api.nvim_put({ wiki_link }, "", true, true)
             end)
 
