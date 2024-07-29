@@ -9,8 +9,8 @@ require('mason-lspconfig').setup({
 })
 
 vim.keymap.set('n', 'gl', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+-- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+-- vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
 local lspconfig = require('lspconfig')
@@ -49,6 +49,8 @@ require('mason-lspconfig').setup_handlers({
 
 -- Lua LSP settings
 lspconfig.lua_ls.setup {
+  on_attach = lsp_attach,
+  capabilities = lsp_capabilities,
   settings = {
     Lua = {
       diagnostics = {
@@ -59,6 +61,8 @@ lspconfig.lua_ls.setup {
   },
 }
 lspconfig.pyright.setup{
+  on_attach = lsp_attach,
+  capabilities = lsp_capabilities,
    python = {
         pythonPath = "/usr/bin/python3"
     }

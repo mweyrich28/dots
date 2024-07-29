@@ -61,7 +61,7 @@ function LinkVaultWiki(link_to_file_rel)
 
     -- Append the path to the markdown file
     relative_path = relative_path .. link_to_file_rel
-    local formatted_name = string.gsub(markdown_name, "%.md$", "")
+    formatted_name = string.gsub(markdown_name, "%.md$", "")
     formatted_name = string.gsub(formatted_name, "_", " ")
     local wiki_link = "[" .. formatted_name .. "]" .. "(" .. relative_path .. ")"
     return wiki_link
@@ -79,7 +79,8 @@ function CreateNewWiki(curr_file)
 end
 
 local vimwiki_link = function()
-    local opts = require("telescope.themes").get_dropdown { prompt_title = "Vimwiki Link" }
+    local opts = require("telescope.themes").get_dropdown { prompt_title = "VimwikiLink" }
+    opts.file_ignore_patterns = { "3_tags" }
 
     local results = vim.fn.systemlist("find /home/malte/documents/zettelkasten/ -type f -name '*.md'")
     local processed_results = {}

@@ -49,7 +49,7 @@ local function search_backlinks()
 
     -- Use Telescope's live_grep to search for backlinks
     pickers.new({}, {
-        prompt_title = "Wiki Backlinks",
+        prompt_title = "VimwikiBacklinks",
         finder = finders.new_oneshot_job({"rg", "--vimgrep", search_pattern}, {}),
         sorter = conf.generic_sorter({}),
         attach_mappings = function(prompt_bufnr, map)
