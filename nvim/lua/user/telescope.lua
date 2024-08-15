@@ -9,7 +9,7 @@ require('telescope').load_extension('bookmarks')
 
 telescope.setup {
     defaults = {
-        file_ignore_patterns = { "%.png", "%.jpg", "%.jpeg", "%.JPG", "%.sample", "%.git", "%[^.]+$", "%.pdf" },
+        file_ignore_patterns = { "%.png", "%.jpg", "%.jpeg", "%.JPG", "%.sample", "%.git", "%[^.]+$", "%.pdf", "%.gif" },
         prompt_prefix = "> ",
         selection_caret = "> ",
         path_display = { "short" },

@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-    -- color = color or "catppuccin"
+    -- color = color or "catppuccin-mocha"
     -- color = color or "gruvbox"
     -- color = color or "melange"
     color = color or "nordic"

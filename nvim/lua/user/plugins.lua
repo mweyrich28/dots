@@ -126,7 +126,7 @@ return packer.startup(function(use)
     }
 
 
-    use('mbbill/undotree')
+    use { 'mbbill/undotree' }
 
     -- Vimwiki
     use {
@@ -155,7 +155,7 @@ return packer.startup(function(use)
 
     -- Colorschemes
     -- use "savq/melange-nvim"
-    -- use { "catppuccin/nvim", as = "catppuccin" }
+    use { "catppuccin/nvim", as = "catppuccin" }
     -- use 'shaunsingh/nord.nvim'
     use 'AlexvZyl/nordic.nvim'
     use { "ellisonleao/gruvbox.nvim" }
@@ -206,6 +206,19 @@ return packer.startup(function(use)
     use {
         'lervag/vimtex',
         ft = 'tex',
+    }
+
+    use {
+        'mweyrich28/vimwiki_utils',
+        requires = {
+            'nvim-telescope/telescope.nvim',
+            'vimwiki/vimwiki'
+        }
+    }
+
+    -- use { 'junegunn/fzf.vim' }
+    use { "ibhagwan/fzf-lua",
+      requires = { "nvim-tree/nvim-web-devicons" }
     }
 
     -- Automatically set up your configuration after cloning packer.nvim

@@ -54,18 +54,18 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 -- Telescope
 keymap("n", "<leader>pf", "<cmd>lua require'telescope.builtin'.find_files {hidden = true, no_ignore = true}<cr>", opts)
 keymap("n", "<leader>pt", "<cmd>Telescope <cr>", opts)
-keymap("n", "<leader>pb", "<cmd>lua require'telescope.builtin'.buffers()<cr>", opts)
 keymap("n", "<leader>pi", "<cmd>Telescope bookmarks<cr>", opts)
 keymap("n", "<leader>ps", "<cmd>lua require'telescope.builtin'.symbols()<cr>", opts)
 vim.keymap.set("n", "<leader>pr", function() require'telescope.builtin'.live_grep({ additional_args = { "--hidden", "--no-ignore" }}) end, {})
 keymap("n", "<leader>pw", "<cmd>Telescope grep_string<cr>", opts)
 keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.treesitter()<cr>", opts)
 
+keymap("n", "<leader>pb", "<cmd>FzfLua buffers<cr>", opts)
+
 -- Vimwiki extensions
-vim.api.nvim_set_keymap('n', '<Leader>fb', [[:lua require'user.vimwiki_backlinks'.search_backlinks()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<C-e>', [[<Esc>:lua require'user.vimwiki_tags'.select_tag()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<C-b>', '<Esc>:lua require"user.vimwiki_link".vimwiki_link()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>gn', '<Esc>:lua require"user.vimwiki_atomic_pdf".atomic_link()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-e>', "<cmd>:lua require'user.vimwiki_tags'.select_tag()<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<Leader>fb', [[:lua require'user.vimwiki_backlinks'.search_backlinks()<CR>]], { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('i', '<C-b>', "<cmd>:lua require'vimwikiUtils'.vimwikiUtils_link()<CR>", { noremap = true, silent = true })
 keymap("n", "<leader>sc", "<cmd>lua WikiSc()<CR>", opts)
 keymap("n", "<leader>ii", "<cmd>lua EditImage()<CR>", opts)
 

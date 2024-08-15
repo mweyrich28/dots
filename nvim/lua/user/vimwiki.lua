@@ -27,18 +27,25 @@ vim.g.vimwiki_list = {
 		syntax = 'markdown',
 		ext = '.md',
         index = 'README'
+	},
+	{
+		path = '/home/malte/.local/share/nvim/site/pack/packer/start/vimwiki_utils/',
+		syntax = 'markdown',
+		ext = '.md',
+        index = 'README'
 	}
 }
 
+-- highlight links
 vim.cmd([[highlight Underlined gui=underline guifg=#8FBCBB]])
 
 -- nordic
--- vim.cmd([[hi VimwikiHeader1 guifg=#E7C173]])
--- vim.cmd([[hi VimwikiHeader2 guifg=#E7C173]])
--- vim.cmd([[hi VimwikiHeader3 guifg=#E7C173]])
--- vim.cmd([[hi VimwikiHeader4 guifg=#E7C173]])
--- vim.cmd([[hi VimwikiHeader5 guifg=#E7C173]])
--- vim.cmd([[hi VimwikiHeader6 guifg=#E7C173]])
+vim.cmd([[hi VimwikiHeader1 guifg=#E7C173]])
+vim.cmd([[hi VimwikiHeader2 guifg=#E7C173]])
+vim.cmd([[hi VimwikiHeader3 guifg=#E7C173]])
+vim.cmd([[hi VimwikiHeader4 guifg=#E7C173]])
+vim.cmd([[hi VimwikiHeader5 guifg=#E7C173]])
+vim.cmd([[hi VimwikiHeader6 guifg=#E7C173]])
 -- vim.cmd([[highlight Underlined gui=underline guifg=#8FBCBB]])
 
 -- gruvbox #fb4934
@@ -56,12 +63,12 @@ vim.cmd([[highlight Underlined gui=underline guifg=#8FBCBB]])
 -- vim.cmd([[hi VimwikiHeader5 guifg=#5E81AC]])
 -- vim.cmd([[hi VimwikiHeader6 guifg=#5E81AC]])
 
-vim.cmd([[hi VimwikiHeader1 guifg=#CB775D]])
-vim.cmd([[hi VimwikiHeader2 guifg=#CB775D]])
-vim.cmd([[hi VimwikiHeader3 guifg=#CB775D]])
-vim.cmd([[hi VimwikiHeader4 guifg=#CB775D]])
-vim.cmd([[hi VimwikiHeader5 guifg=#CB775D]])
-vim.cmd([[hi VimwikiHeader6 guifg=#CB775D]])
+-- vim.cmd([[hi VimwikiHeader1 guifg=#CB775D]])
+-- vim.cmd([[hi VimwikiHeader2 guifg=#CB775D]])
+-- vim.cmd([[hi VimwikiHeader3 guifg=#CB775D]])
+-- vim.cmd([[hi VimwikiHeader4 guifg=#CB775D]])
+-- vim.cmd([[hi VimwikiHeader5 guifg=#CB775D]])
+-- vim.cmd([[hi VimwikiHeader6 guifg=#CB775D]])
 
 -- #fe8019
 -- vim.cmd([[hi VimwikiHeader1 guifg=#fe8019]])
