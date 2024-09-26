@@ -17,13 +17,7 @@ vim.g.vimwiki_list = {
         index = 'README'
 	},
 	{
-		path = '~/documents/project_wiki/sponge/',
-		syntax = 'markdown',
-		ext = '.md',
-        index = 'README'
-	},
-	{
-		path = '~/documents/project_wiki/schwabinger_sterne/',
+		path = '~/documents/project_wiki/',
 		syntax = 'markdown',
 		ext = '.md',
         index = 'README'

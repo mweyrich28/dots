@@ -62,14 +62,6 @@ keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.treesitter()<cr>"
 
 keymap("n", "<leader>pb", "<cmd>FzfLua buffers<cr>", opts)
 
--- Vimwiki extensions
-vim.api.nvim_set_keymap('i', '<C-e>', "<cmd>:lua require'user.vimwiki_tags'.select_tag()<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<Leader>fb', [[:lua require'user.vimwiki_backlinks'.search_backlinks()<CR>]], { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('i', '<C-b>', "<cmd>:lua require'vimwikiUtils'.vimwikiUtils_link()<CR>", { noremap = true, silent = true })
-keymap("n", "<leader>sc", "<cmd>lua WikiSc()<CR>", opts)
-keymap("n", "<leader>ii", "<cmd>lua EditImage()<CR>", opts)
-
-
 -- Comment
 keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
 keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)
