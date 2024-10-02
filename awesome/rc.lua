@@ -1,31 +1,29 @@
--- If LuaRocks is installed, make sure that packages installed through it are
--- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
--- keyboard layout
-local keyboard_layout = require("keyboard_layout")
-
--- Standard awesome library
-local gears = require("gears")
-local awful = require("awful")
 require("awful.autofocus")
 require("collision")()
--- Widget and layout library
+
+local keyboard_layout = require("keyboard_layout")
+local gears = require("gears")
+local awful = require("awful")
+package.loaded["naughty.dbus"] = {}
+
+-- AUTOSTART
+awful.util.spawn_with_shell("pgrep -u $USER -x nm-applet > /dev/null || (nm-applet &)") -- Network Manager
+awful.spawn.with_shell("brave-browser")
+awful.spawn.with_shell("alacritty -e tmux new-session -s home")
+awful.spawn.with_shell("alacritty -e tmux new-session -s work -d")
+awful.spawn.with_shell("killall polybar; polybar top &")
+awful.spawn.with_shell("sleep 1 && nitrogen --restore")
+awful.spawn.with_shell("picom -b")
+awful.spawn.with_shell("/home/malte/.config/polybar/launch.sh")
+
 local wibox = require("wibox")
--- Theme handling library
 local beautiful = require("beautiful")
--- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
--- Enable hotkeys help widget for VIM and other apps
--- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
-
--- Autostart
--- NOTE: Wallpaper is set in polybar launch--config .sh
-awful.spawn.with_shell("picom -b")                                       -- Compositor
-awful.spawn.with_shell("/home/malte/.config/polybar/launch.sh --blocks") -- Polybar
 
 -- Load Debian menu entries
 local debian = require("debian.menu")
@@ -64,19 +62,19 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- Gaps
-beautiful.useless_gap = 8
+beautiful.useless_gap = 5
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
-editor = "nvim"
-editor_cmd = terminal .. " -e " .. editor
+local terminal = "alacritty"
+local editor = "nvim"
+local editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
 -- If you do not like this or do not have such a key,
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
-modkey = "Mod4"
+local modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -245,7 +243,7 @@ globalkeys = gears.table.join(
         { description = "Spawn Tmux", group = "malte" }),
 
     -- POWER MENU
-    awful.key({ modkey }, "0", function() awful.spawn("/home/malte/.config/polybar/blocks/scripts/powermenu.sh") end,
+    awful.key({ modkey }, "0", function() awful.spawn("/home/malte/.config/polybar/scripts/powermenu.sh") end,
         { description = "Open Powermenu", group = "malte" }),
 
     -- Brave
@@ -280,8 +278,8 @@ globalkeys = gears.table.join(
         { description = "show all windows", group = "malte" }),
 
     awful.key({ modkey }, "p", function()
-        -- awful.util.spawn(" rofi -show drun -disable-history -sort -show-icons")
-        awful.util.spawn("/home/malte/.config/polybar/blocks/scripts/launcher.sh")
+        awful.util.spawn(" rofi -show drun -disable-history -sort -show-icons")
+        -- awful.util.spawn("/home/malte/.config/_polybar/blocks/scripts/launcher.sh")
     end),
 
     awful.key({ modkey }, "v", function()
@@ -568,12 +566,3 @@ client.connect_signal("unfocus", function(c) c.border_color = '#888888' end)
 client.connect_signal("unfocus", function(c) c.border_width = 0 end)
 -- }}}
 
-awful.util.spawn_with_shell("pgrep -u $USER -x nm-applet > /dev/null || (nm-applet &)") -- Network Manager
-awful.spawn.with_shell("brave-browser")                                                 -- Brave
-
--- tmux
-awful.spawn.with_shell("alacritty -e tmux new-session -s home")
-awful.spawn.with_shell("alacritty -e tmux new-session -s work -d")
-
-
--- NOTE: Wallpaper is set in polybar launch--config
