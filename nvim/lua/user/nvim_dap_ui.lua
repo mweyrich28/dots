@@ -1,17 +1,17 @@
 local opts = {
-controls = {
-    element = "repl",
-    enabled = false,
-    icons = {
-        disconnect = "",
-        pause = "",
-        play = "",
-        run_last = "",
-        step_back = "",
-        step_into = "",
-        step_out = "",
-        step_over = "",
-        terminate = ""
+    controls = {
+        element = "repl",
+        enabled = false,
+        icons = {
+            disconnect = "",
+            pause = "",
+            play = "",
+            run_last = "",
+            step_back = "",
+            step_into = "",
+            step_out = "",
+            step_over = "",
+            terminate = ""
         }
     },
     element_mappings = {},
@@ -30,28 +30,28 @@ controls = {
     },
     layouts = {
         {
-        elements = {
-            {
-                id = "scopes",
-                size = 0.50
+            elements = {
+                {
+                    id = "scopes",
+                    size = 0.50
+                },
+                {
+                    id = "stacks",
+                    size = 0.30
+                },
+                {
+                    id = "watches",
+                    size = 0.10
+                },
+                {
+                    id = "breakpoints",
+                    size = 0.10
+                }
             },
-            {
-                id = "stacks",
-                size = 0.30
-            },
-            {
-                id = "watches",
-                size = 0.10
-            },
-            {
-                id = "breakpoints",
-                size = 0.10
-            }
-            },
-                size = 40,
-                position = "left", -- Can be "left" or "right"
-            },
-            {
+            size = 40,
+            position = "left",     -- Can be "left" or "right"
+        },
+        {
             elements = {
                 "repl",
                 "console",
@@ -67,7 +67,7 @@ controls = {
         remove = "d",
         repl = "r",
         toggle = "t"
-        },
+    },
     render = {
         indent = 1,
         max_value_lines = 100
@@ -79,19 +79,19 @@ local dap = require('dap')
 require('dapui').setup(opts)
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
-  require('dapui').open()
+    require('dapui').open()
 end
 
 dap.listeners.before.event_terminated["dapui_config"] = function()
-  -- Commented to prevent DAP UI from closing when unit tests finish
-  -- require('dapui').close()
+    -- Commented to prevent DAP UI from closing when unit tests finish
+    -- require('dapui').close()
 end
 
 dap.listeners.before.event_exited["dapui_config"] = function()
-  -- Commented to prevent DAP UI from closing when unit tests finish
-  -- require('dapui').close()
+    -- Commented to prevent DAP UI from closing when unit tests finish
+    -- require('dapui').close()
 end
 
 require("neodev").setup({
-  library = { plugins = { "nvim-dap-ui" }, types = true },
+    library = { plugins = { "nvim-dap-ui" }, types = true },
 })

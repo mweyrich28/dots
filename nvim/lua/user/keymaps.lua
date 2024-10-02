@@ -60,7 +60,8 @@ vim.keymap.set("n", "<leader>pr", function() require'telescope.builtin'.live_gre
 keymap("n", "<leader>pw", "<cmd>Telescope grep_string<cr>", opts)
 keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.treesitter()<cr>", opts)
 
-keymap("n", "<leader>pb", "<cmd>FzfLua buffers<cr>", opts)
+-- keymap("n", "<leader>pb", "<cmd>FzfLua buffers<cr>", opts)
+keymap("n", "<leader>pb", "<cmd>Telescope buffers<cr>", opts)
 
 -- Comment
 keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
@@ -119,3 +120,7 @@ vim.keymap.set("n", '<leader>d?', function() local widgets = require "dap.ui.wid
 vim.keymap.set("n", '<leader>df', '<cmd>Telescope dap frames<cr>')
 vim.keymap.set("n", '<leader>dh', '<cmd>Telescope dap commands<cr>')
 vim.keymap.set("n", '<leader>de', function() require('telescope.builtin').diagnostics({default_text=":E:"}) end)
+
+
+-- NeoRunner cpp tmp
+keymap("n", "<leader>cc", "<cmd>NeoRunner<CR>", opts)

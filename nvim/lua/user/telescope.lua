@@ -65,4 +65,11 @@ telescope.setup {
             },
         },
     },
+    pickers = {
+        buffers = {
+            sort_lastused = true,   -- This enables the stack-like sorting for buffers
+            ignore_current_buffer = true, -- Optional, don't show the current buffer in the list
+            sort_mru = true,        -- Most Recently Used first (stack-like behavior)
+        }
+    }
 }
