@@ -8,17 +8,23 @@ require('lualine').setup {
     options = { theme = 'nordic' },
 }
 
-require 'nordic' .setup {
-    on_palette = function(palette) return palette end,
+require('nordic').setup({
+    on_palette = function(palette) end,
+    after_palette = function(palette) end,
+    on_highlight = function(highlights, palette) end,
     bold_keywords = false,
     italic_comments = true,
-    transparent = false,
-    bright_border = false,
+    transparent = {
+        bg = false,
+        float = false,
+    },
+    -- Enable brighter float border.
+    bright_border = true,
     reduced_blue = true,
+    -- Swap the dark background with the normal one.
     swap_backgrounds = false,
-    on_highlight = {},
     cursorline = {
-        bold = true,
+        bold = false,
         bold_number = true,
         theme = 'dark',
         blend = 0.85,
@@ -27,12 +33,14 @@ require 'nordic' .setup {
         style = 'classic',
     },
     telescope = {
-        style = 'classic',
+        style = 'flat',
     },
     leap = {
+        -- Dims the backdrop when using leap.
         dim_backdrop = false,
     },
     ts_context = {
+        -- Enables dark background for treesitter-context window
         dark_background = true,
     }
-}
+})

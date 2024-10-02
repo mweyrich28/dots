@@ -156,7 +156,7 @@ return packer.startup(function(use)
     -- use { "ellisonleao/gruvbox.nvim" }
     -- use 'gilgigilgil/anderson.vim'
     -- use "VDuchauffour/neodark.nvim"
-    -- use { "rose-pine/neovim", as = "rose-pine" }
+    use { "rose-pine/neovim", as = "rose-pine" }
 
 
     -- Zen mode
@@ -219,6 +219,7 @@ return packer.startup(function(use)
 
     use { "LukeGoodsell/nextflow-vim" }
 
+    use { "BenGH28/neo-runner.nvim" }
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then

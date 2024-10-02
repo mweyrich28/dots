@@ -1,5 +1,5 @@
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "lua", "vim", "vimdoc", "query", "python" },
+  ensure_installed = { "lua", "vim", "vimdoc", "query", "python", "cpp" },
 
   sync_install = false,
 
@@ -9,7 +9,7 @@ require'nvim-treesitter.configs'.setup {
 
   highlight = {
     enable = true,
-    disable = { "c", "rust", "latex" },
+    disable = { "rust", "latex" },
     additional_vim_regex_highlighting = false,
   },
 }

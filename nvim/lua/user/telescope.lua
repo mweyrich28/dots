@@ -3,6 +3,7 @@ if not status_ok then
     return
 end
 
+
 local actions = require "telescope.actions"
 require('telescope').load_extension('bookmarks')
 

@@ -34,8 +34,7 @@ local kind_icons = {
     Event = "",
     Operator = "󰆕",
     TypeParameter = " ",
-    Misc = " "
-    ,
+    Misc = " ",
 }
 
 
@@ -69,22 +68,6 @@ cmp.setup({
         ["<C-Space>"] = cmp.mapping.complete(),
     },
 
-    -- formatting = {
-    --     fields = { "abbr", "menu" },
-    --     format = function(entry, vim_item)
-    --         vim_item.kind = kind_icons[vim_item.kind]
-    --         vim_item.menu = ({
-    --             ultisnips = "[Snip]",
-    --             buffer = "[Buf]",
-    --             nvim_lsp = "[LSP]",
-    --             cmdline = "[Cmd]",
-    --             path = "[Path]",
-    --             vimwiki_tags= "[Tag]"
-    --             -- fuzzy_buffer = "[Fuzzy]",
-    --         })[entry.source.name]
-    --         return vim_item
-    --     end,
-    -- },
     sources = {
         { name = "nvim_lsp" },
         { name = "path" },
@@ -101,6 +84,23 @@ cmp.setup({
     },
     experimental = {
         ghost_text = false,
+    },
+    formatting = {
+        fields = { "abbr", "kind", "menu" },
+        format = function(entry, vim_item)
+            -- Customize the way it is displayed
+            vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
+            vim_item.menu = ({
+                buffer = "[Buffer]",
+                nvim_lsp = "[LSP]",
+                path = "[Path]",
+                nvim_lua = "[Lua]",
+                ultisnips = "[Snipet]",
+            })[entry.source.name]
+            return vim_item
+        end,
+
+        expandable_indicator = false,
     },
 })
 
