@@ -5,5 +5,3 @@ I am a big fan of [vimwiki](https://github.com/vimwiki/vimwiki) and use it for a
 
 ## Images
 ![Notes](./images/notes.png)
-
-![Python Dev](./images/python.png)
