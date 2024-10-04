@@ -573,7 +573,7 @@ local function update_tags()
 
     for _, t in ipairs(screen.tags) do
         if t.selected then
-            taglist = taglist .. "%{F##CB775D}" .. t.name .. "%{F-} " -- Highlight active tag
+            taglist = taglist .. "%{F#CB775D}" .. t.name .. "%{F-} " -- Highlight active tag
         elseif #t:clients() > 0 then
             taglist = taglist .. "%{F#FFFFFF}" .. t.name .. "%{F-} " -- Highlight tags with windows
         else
