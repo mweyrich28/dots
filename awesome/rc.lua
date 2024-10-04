@@ -565,4 +565,30 @@ client.connect_signal("focus", function(c) c.border_width = 0.5 end)
 client.connect_signal("unfocus", function(c) c.border_color = '#888888' end)
 client.connect_signal("unfocus", function(c) c.border_width = 0 end)
 -- }}}
+--
 
+local function update_tags()
+    local taglist = ""
+    local screen = awful.screen.focused()
+
+    for _, t in ipairs(screen.tags) do
+        if t.selected then
+            taglist = taglist .. "%{F##CB775D}" .. t.name .. "%{F-} " -- Highlight active tag
+        elseif #t:clients() > 0 then
+            taglist = taglist .. "%{F#FFFFFF}" .. t.name .. "%{F-} " -- Highlight tags with windows
+        else
+            taglist = taglist .. "%{F#666666}" .. t.name .. "%{F-} " -- Inactive tags
+        end
+    end
+
+    -- Send the taglist string to Polybar via a pipe
+    awful.spawn.easy_async_with_shell("echo '" .. taglist .. "' > /tmp/polybar-tags", function() end)
+end
+
+-- Connect the update function to the tag signals
+awful.tag.attached_connect_signal(nil, "property::selected", update_tags)
+awful.tag.attached_connect_signal(nil, "property::layout", update_tags)
+awful.tag.attached_connect_signal(nil, "property::urgent", update_tags)
+
+-- Initial update when Awesome starts
+gears.timer.delayed_call(update_tags)
