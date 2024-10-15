@@ -125,6 +125,7 @@ return packer.startup(function(use)
         requires = { { "nvim-lua/plenary.nvim" } }
     }
 
+    use { "folke/todo-comments.nvim" }
 
     use { 'mbbill/undotree' }
 
