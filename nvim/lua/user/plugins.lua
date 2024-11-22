@@ -75,7 +75,7 @@ return packer.startup(function(use)
             -- https://github.com/mfussenegger/nvim-dap
             'mfussenegger/nvim-dap',
             -- https://github.com/theHamsta/nvim-dap-virtual-text
-            'theHamsta/nvim-dap-virtual-text', -- inline variable text while debugging
+            'theHamsta/nvim-dap-virtual-text',   -- inline variable text while debugging
             -- https://github.com/nvim-telescope/telescope-dap.nvim
             'nvim-telescope/telescope-dap.nvim', -- telescope integration with dap
 
@@ -141,13 +141,13 @@ return packer.startup(function(use)
         end
     }
 
-    use ( 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' } )
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use { "nvim-treesitter/nvim-treesitter-refactor" }
 
 
     -- Snippets
     use { "SirVer/ultisnips" }
-    use {"honza/vim-snippets" }
+    use { "honza/vim-snippets" }
 
     -- Colorschemes
     -- use "savq/melange-nvim"
@@ -165,7 +165,7 @@ return packer.startup(function(use)
     -- use { "folke/twilight.nvim" }
     use { "lewis6991/gitsigns.nvim" }
 
-    use ({
+    use({
         "kdheepak/lazygit.nvim",
         requires = {
             "nvim-lua/plenary.nvim",
@@ -178,7 +178,7 @@ return packer.startup(function(use)
     use { "github/copilot.vim" }
 
     -- md
-    use ({
+    use({
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end
     })
@@ -221,6 +221,12 @@ return packer.startup(function(use)
     use { "LukeGoodsell/nextflow-vim" }
 
     use { "BenGH28/neo-runner.nvim" }
+
+    use { "jalvesaq/Nvim-R" }
+    use { 'andersevenrud/cmp-tmux' }
+    use { "kdheepak/cmp-latex-symbols" }
+
+    -- use { 'XiaofangJ/vim-bio' }
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then

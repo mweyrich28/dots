@@ -258,12 +258,18 @@ globalkeys = gears.table.join(
         { description = "launch brave browser", group = "malte" }),
 
 
-
-    -- circrna session
+    -- cost session
     awful.key({ modkey }, "c", function()
-        awful.spawn("alacritty -e ssh -i ~/.ssh/norm -t mweyrich@10.162.163.34 'tmux new-session -A -s circrna'")
+        awful.spawn("alacritty -e ssh -i ~/.ssh/norm -t mweyrich@10.162.163.34 'tmux new-session -A -s cost'")
         end,
         { description = "Connect to circrna session", group = "malte" }),
+    
+    -- cip session
+    awful.key({ modkey }, "x", function()
+        awful.spawn("alacritty -e ssh -i ~/.ssh/cip -t weyrichm@remote.cip.ifi.lmu.de 'tmux new-session -A -s cip'")
+
+        end,
+        { description = "Connect to cip session", group = "malte" }),
 
     -- Settings
     awful.key({ "Control", modkey }, "s", function()
@@ -278,7 +284,7 @@ globalkeys = gears.table.join(
         { description = "show all windows", group = "malte" }),
 
     awful.key({ modkey }, "p", function()
-        awful.util.spawn(" rofi -show drun -disable-history -sort -show-icons")
+        awful.util.spawn("rofi -show drun -disable-history -sort -show-icons")
         -- awful.util.spawn("/home/malte/.config/_polybar/blocks/scripts/launcher.sh")
     end),
 
@@ -555,13 +561,13 @@ end)
 -- end)
 
 -- Enable sloppy focus, so that focus follows mouse.
--- client.connect_signal("mouse::enter", function(c)
---     c:emit_signal("request::activate", "mouse_enter", {raise = false})
--- end)
+client.connect_signal("mouse::enter", function(c)
+    c:emit_signal("request::activate", "mouse_enter", {raise = false})
+end)
 
 -- Border color and width
 client.connect_signal("focus", function(c) c.border_color = "#CB775D" end)
-client.connect_signal("focus", function(c) c.border_width = 0.5 end)
+client.connect_signal("focus", function(c) c.border_width = 0.0 end)
 client.connect_signal("unfocus", function(c) c.border_color = '#888888' end)
 client.connect_signal("unfocus", function(c) c.border_width = 0 end)
 -- }}}

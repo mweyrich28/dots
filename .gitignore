@@ -20,6 +20,8 @@
 !images/notes.png
 !images/python.png
 
+!tmux/
+!tmux/tmux/
 
 .gsd-keyboard.settings-ported
 QtProject.conf
