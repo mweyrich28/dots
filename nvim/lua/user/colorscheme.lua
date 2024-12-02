@@ -2,7 +2,8 @@ function ColorMyPencils(color)
     -- color = color or "catppuccin-mocha"
     -- color = color or "gruvbox"
     -- color = color or "melange"
-    color = color or "nordic"
+    color = color or "kanagawa"
+    -- color = color or "nordic"
     -- color = color or "tokyonight"
     -- color = color or "rose-pine"
     -- vim.cmd.colorscheme(color)

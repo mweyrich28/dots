@@ -123,4 +123,4 @@ vim.keymap.set("n", '<leader>de', function() require('telescope.builtin').diagno
 
 
 -- NeoRunner cpp tmp
-keymap("n", "<leader>cc", "<cmd>NeoRunner<CR>", opts)
+keymap("n", "<leader>rr", "<cmd>NeoRunner<CR>", opts)

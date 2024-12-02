@@ -52,6 +52,8 @@ return packer.startup(function(use)
     use { "hrsh7th/cmp-cmdline" } -- cmdline completions
     use { "hrsh7th/cmp-nvim-lsp" }
     use { "quangnguyen30192/cmp-nvim-ultisnips" }
+    use { 'andersevenrud/cmp-tmux' }
+    use { "kdheepak/cmp-latex-symbols" }
 
     -- Mason LSP
     use {
@@ -61,8 +63,8 @@ return packer.startup(function(use)
         "neovim/nvim-lspconfig"
     }
     -- python developement
-    use { 'psf/black' }
-    use { 'fisadev/vim-isort' }
+    -- use { 'psf/black' }
+    -- use { 'fisadev/vim-isort' }
     use { 'mfussenegger/nvim-lint' }
     use { 'mfussenegger/nvim-dap-python',
         requires = {
@@ -100,6 +102,8 @@ return packer.startup(function(use)
             require("nvim-autopairs").setup {}
         end
     }
+
+    use "rebelot/kanagawa.nvim"
 
     -- Indent lines
     use { "lukas-reineke/indent-blankline.nvim" }
@@ -150,13 +154,7 @@ return packer.startup(function(use)
     use { "honza/vim-snippets" }
 
     -- Colorschemes
-    -- use "savq/melange-nvim"
-    -- use { "catppuccin/nvim", as = "catppuccin" }
-    -- use 'shaunsingh/nord.nvim'
     use { "AlexvZyl/nordic.nvim" }
-    -- use { "ellisonleao/gruvbox.nvim" }
-    -- use 'gilgigilgil/anderson.vim'
-    -- use "VDuchauffour/neodark.nvim"
     use { "rose-pine/neovim", as = "rose-pine" }
 
 
@@ -210,7 +208,6 @@ return packer.startup(function(use)
         }
     }
 
-    -- use { 'junegunn/fzf.vim' }
     use {
         "ibhagwan/fzf-lua",
         requires = {
@@ -223,10 +220,27 @@ return packer.startup(function(use)
     use { "BenGH28/neo-runner.nvim" }
 
     use { "jalvesaq/Nvim-R" }
-    use { 'andersevenrud/cmp-tmux' }
-    use { "kdheepak/cmp-latex-symbols" }
 
-    -- use { 'XiaofangJ/vim-bio' }
+    use {
+        "lukas-reineke/headlines.nvim",
+        after = "nvim-treesitter",
+        config = function()
+            require("headlines").setup()
+        end,
+    }
+
+    -- checkout
+    -- use({
+    --     'MeanderingProgrammer/render-markdown.nvim',
+    --     after = { 'nvim-treesitter' },
+    --     requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
+    --     -- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
+    --     -- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+    --     config = function()
+    --         require('render-markdown').setup({})
+    --     end,
+    -- })
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then

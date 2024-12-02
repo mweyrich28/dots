@@ -77,26 +77,12 @@ lspconfig.clangd.setup {
 }
 
 -- R
-lspconfig.r_language_server.setup {
-    on_attach = function(client, buffer)
-        client.server_capabilities.signatureHelpProvider = false
-        lsp_attach(client, buffer)
-    end,
-    capabilities = lsp_capabilities,
-    settings = {
-        r = {
-            lsp = {
-                lintr = {
-                    linters = {
-                        commas_linter = NULL,               -- Disable space before commas warning
-                        spaces_inside_linter = NULL,        -- Disable spaces inside brackets warning
-                        line_length_linter = NULL,          -- Disable line length warning
-                    }
-                }
-            }
-        }
-    }
-}
+lspconfig.r_language_server.setup({
+  cmd = { "R", "--slave", "-e", "languageserver::run()" },
+  filetypes = { "r", "rmd" },
+  root_dir = require('lspconfig.util').root_pattern(".git", ".Rproj", "."),
+})
+
 -- Globally configure all LSP floating preview popups (like hover, signature help, etc)
 local open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
