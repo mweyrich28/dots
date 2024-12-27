@@ -44,7 +44,7 @@ vim.opt.fillchars.eob=" "
 vim.opt.shortmess:append "c"
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
-vim.g.python3_host_prog = '/bin/python3'
+-- vim.g.python3_host_prog = '/bin/python3'
 
 -- save last cursor position
 vim.cmd[[autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]

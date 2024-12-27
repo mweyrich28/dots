@@ -114,11 +114,11 @@ cmp.setup({
             -- Customize the way it is displayed
             vim_item.kind = string.format("%s", vim_item.kind)
             vim_item.menu = ({
+                ultisnips = "[SNIP]",
                 buffer    = "[BUF]",
                 nvim_lsp  = "[LSP]",
                 tmux      = "[TMUX]",
                 path      = "[PATH]",
-                ultisnips = "[SNIP]",
             })[entry.source.name]
             return vim_item
         end,

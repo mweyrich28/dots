@@ -17,10 +17,10 @@ end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd [[
-augroup packer_user_config
-autocmd!
-autocmd BufWritePost plugins.lua source <afile> | PackerSync
-augroup end
+    augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    augroup end
 ]]
 
 -- Use a protected call so we don't error out on first use
@@ -51,9 +51,8 @@ return packer.startup(function(use)
     use { "hrsh7th/cmp-path" }    -- path completions
     use { "hrsh7th/cmp-cmdline" } -- cmdline completions
     use { "hrsh7th/cmp-nvim-lsp" }
-    use { "quangnguyen30192/cmp-nvim-ultisnips" }
     use { 'andersevenrud/cmp-tmux' }
-    use { "kdheepak/cmp-latex-symbols" }
+    -- use { "kdheepak/cmp-latex-symbols" }
 
     -- Mason LSP
     use {
@@ -63,7 +62,7 @@ return packer.startup(function(use)
         "neovim/nvim-lspconfig"
     }
     -- python developement
-    -- use { 'psf/black' }
+    use { 'psf/black' }
     -- use { 'fisadev/vim-isort' }
     use { 'mfussenegger/nvim-lint' }
     use { 'mfussenegger/nvim-dap-python',
@@ -152,9 +151,11 @@ return packer.startup(function(use)
     -- Snippets
     use { "SirVer/ultisnips" }
     use { "honza/vim-snippets" }
+    use { "quangnguyen30192/cmp-nvim-ultisnips" }
 
     -- Colorschemes
     use { "AlexvZyl/nordic.nvim" }
+    use { "catppuccin/nvim", as = "catppuccin" }
     use { "rose-pine/neovim", as = "rose-pine" }
 
 
@@ -221,25 +222,12 @@ return packer.startup(function(use)
 
     use { "jalvesaq/Nvim-R" }
 
-    use {
-        "lukas-reineke/headlines.nvim",
-        after = "nvim-treesitter",
-        config = function()
-            require("headlines").setup()
-        end,
-    }
-
-    -- checkout
-    -- use({
-    --     'MeanderingProgrammer/render-markdown.nvim',
-    --     after = { 'nvim-treesitter' },
-    --     requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
-    --     -- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
-    --     -- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
-    --     config = function()
-    --         require('render-markdown').setup({})
-    --     end,
-    -- })
+    use({
+        'MeanderingProgrammer/render-markdown.nvim',
+        after = { 'nvim-treesitter' },
+        requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
+        -- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+    })
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

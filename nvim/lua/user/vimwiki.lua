@@ -30,7 +30,7 @@ vim.g.vimwiki_list = {
 }
 
 -- highlight links
-vim.cmd([[highlight Underlined gui=underline guifg=#8FBCBB]])
+-- vim.cmd([[highlight Underlined gui=underline guifg=#8FBCBB]])
 
 -- nordic
 -- vim.cmd([[hi VimwikiHeader1 guifg=#E7C173]])
