@@ -110,9 +110,18 @@ require('render-markdown').setup({
 vim.treesitter.language.register('markdown', 'vimwiki')
 
 vim.cmd([[
-    highlight RenderMarkdownCodeInline guibg=#222630 guifg=#BF616A
-    highlight RenderMarkdownH3Bg guibg=#2E3440
-    highlight RenderMarkdownH4Bg guibg=#2E3440
-    highlight RenderMarkdownH5Bg guibg=#2E3440
-    highlight RenderMarkdownH6Bg guibg=#2E3440
+    highlight RenderMarkdownCodeInline guifg=#f4a685 guibg=#191724
+    highlight RenderMarkdownChecked guifg=#d7827e
+    highlight RenderMarkdownH1Bg guibg=#26233a guifg=#d7827e
+    highlight RenderMarkdownH2Bg guibg=#26233a guifg=#d7827e
+    highlight RenderMarkdownH3Bg guibg=#26233a guifg=#d7827e
+    highlight RenderMarkdownH4Bg guibg=#26233a guifg=#d7827e
+    highlight RenderMarkdownH5Bg guibg=#26233a guifg=#d7827e
+    highlight RenderMarkdownH6Bg guibg=#26233a guifg=#d7827e
+    " highlight RenderMarkdownH1 guifg=#d7827e
+    " highlight RenderMarkdownH2 guifg=#d7827e
+    " highlight RenderMarkdownH3 guifg=#d7827e
+    " highlight RenderMarkdownH4 guifg=#d7827e
+    " highlight RenderMarkdownH5 guifg=#d7827e
+    " highlight RenderMarkdownH6 guifg=#d7827e
 ]])

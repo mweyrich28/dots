@@ -81,6 +81,10 @@ lspconfig.r_language_server.setup({
   cmd = { "R", "--slave", "-e", "languageserver::run()" },
   filetypes = { "r", "rmd" },
   root_dir = require('lspconfig.util').root_pattern(".git", ".Rproj", "."),
+  on_attach = function(client, bufnr)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+  end,
 })
 
 -- Globally configure all LSP floating preview popups (like hover, signature help, etc)

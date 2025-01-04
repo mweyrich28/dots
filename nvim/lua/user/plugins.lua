@@ -52,7 +52,7 @@ return packer.startup(function(use)
     use { "hrsh7th/cmp-cmdline" } -- cmdline completions
     use { "hrsh7th/cmp-nvim-lsp" }
     use { 'andersevenrud/cmp-tmux' }
-    -- use { "kdheepak/cmp-latex-symbols" }
+    use { "kdheepak/cmp-latex-symbols" }
 
     -- Mason LSP
     use {
@@ -128,7 +128,7 @@ return packer.startup(function(use)
         requires = { { "nvim-lua/plenary.nvim" } }
     }
 
-    use { "folke/todo-comments.nvim" }
+    -- use { "folke/todo-comments.nvim" }
 
     use { 'mbbill/undotree' }
 
@@ -157,8 +157,6 @@ return packer.startup(function(use)
     use { "AlexvZyl/nordic.nvim" }
     use { "catppuccin/nvim", as = "catppuccin" }
     use { "rose-pine/neovim", as = "rose-pine" }
-
-
     -- Zen mode
     use { "folke/zen-mode.nvim" }
     -- use { "folke/twilight.nvim" }
@@ -228,6 +226,10 @@ return packer.startup(function(use)
         requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
         -- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
     })
+
+
+    use { 'xiyaowong/transparent.nvim' }
+
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
