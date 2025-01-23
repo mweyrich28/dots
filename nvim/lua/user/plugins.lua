@@ -230,7 +230,7 @@ return packer.startup(function(use)
 
     use { 'xiyaowong/transparent.nvim' }
 
-
+    use { 'Vigemus/iron.nvim' }
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then

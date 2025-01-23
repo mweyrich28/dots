@@ -1,4 +1,4 @@
-require('dap-python').setup('/usr/bin/python3')
+require('dap-python').setup('/home/malte/miniconda3/envs/uni/bin/python')
 
 local dap = require('dap')
 

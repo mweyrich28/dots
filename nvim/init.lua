@@ -1,6 +1,7 @@
 require 'user.vimtex'
 -- require 'user.nordic'
 require 'user.telescope'
+require 'user.iron'
 require 'user.impatient'
 require 'user.options'
 require 'user.plugins'

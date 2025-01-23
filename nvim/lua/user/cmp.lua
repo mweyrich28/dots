@@ -119,6 +119,7 @@ cmp.setup({
                 nvim_lsp  = "[LSP]",
                 tmux      = "[TMUX]",
                 path      = "[PATH]",
+                latex_symbols = "[LTEX]",
             })[entry.source.name]
             return vim_item
         end,
