@@ -4,7 +4,7 @@ require('render-markdown').setup({
         -- Turn on / off heading icon & background rendering
         enabled = true,
         -- Turn on / off any sign column related rendering
-        sign = false,
+        sign = true,
         -- Determines how icons fill the available space:
         --  right:   '#'s are concealed and icon is appended to right side
         --  inline:  '#'s are concealed and icon is inlined on left side

@@ -62,7 +62,7 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- Gaps
-beautiful.useless_gap = 5
+beautiful.useless_gap = 7
 
 -- This is used later as the default terminal and editor to run.
 local terminal = "alacritty"
