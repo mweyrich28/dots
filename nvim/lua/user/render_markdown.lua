@@ -4,7 +4,7 @@ require('render-markdown').setup({
         -- Turn on / off heading icon & background rendering
         enabled = true,
         -- Turn on / off any sign column related rendering
-        sign = true,
+        sign = false,
         -- Determines how icons fill the available space:
         --  right:   '#'s are concealed and icon is appended to right side
         --  inline:  '#'s are concealed and icon is inlined on left side
@@ -13,7 +13,8 @@ require('render-markdown').setup({
         -- Replaces '#+' of 'atx_h._marker'
         -- The number of '#' in the heading determines the 'level'
         -- The 'level' is used to index into the list using a cycle
-        icons = { '󰲡 ', '󰲣 ', '󰲥 ', '󰲧 ', '󰲩 ', '󰲫 ' },
+        -- icons = { '󰲡 ', '󰲣 ', '󰲥 ', '󰲧 ', '󰲩 ', '󰲫 ' },
+        icons = { '󰫎 ','󰫎 ','󰫎 ','󰫎 ','󰫎 ','󰫎 ' },
         -- Added to the sign column if enabled
         -- The 'level' is used to index into the list using a cycle
         signs = { '󰫎 ' },
@@ -22,7 +23,7 @@ require('render-markdown').setup({
         --  full:  full width of the window
         -- Can also be a list of the above values in which case the 'level' is used
         -- to index into the list using a clamp
-        width = 'full',
+        width = 'block',
         -- Amount of margin to add to the left of headings
         -- If a floating point value < 1 is provided it is treated as a percentage of the available window space
         -- Margin available space is computed after accounting for padding
@@ -35,7 +36,7 @@ require('render-markdown').setup({
         -- Amount of padding to add to the right of headings when width is 'block'
         -- If a floating point value < 1 is provided it is treated as a percentage of the available window space
         -- Can also be a list of numbers in which case the 'level' is used to index into the list using a clamp
-        right_pad = 0,
+        right_pad = 2,
         -- Minimum width to use for headings when width is 'block'
         -- Can also be a list of integers in which case the 'level' is used to index into the list using a clamp
         min_width = 0,
@@ -110,18 +111,13 @@ require('render-markdown').setup({
 vim.treesitter.language.register('markdown', 'vimwiki')
 
 vim.cmd([[
-    highlight RenderMarkdownCodeInline guifg=#f4a685 guibg=#191724
+    " highlight RenderMarkdownCodeInline guifg=#f4a685 guibg=#191724
+    highlight RenderMarkdownCodeInline guifg=#d7827e guibg=#191724
     highlight RenderMarkdownChecked guifg=#d7827e
-    highlight RenderMarkdownH1Bg guibg=#26233a guifg=#d7827e
-    highlight RenderMarkdownH2Bg guibg=#26233a guifg=#d7827e
-    highlight RenderMarkdownH3Bg guibg=#26233a guifg=#d7827e
-    highlight RenderMarkdownH4Bg guibg=#26233a guifg=#d7827e
-    highlight RenderMarkdownH5Bg guibg=#26233a guifg=#d7827e
-    highlight RenderMarkdownH6Bg guibg=#26233a guifg=#d7827e
-    " highlight RenderMarkdownH1 guifg=#d7827e
-    " highlight RenderMarkdownH2 guifg=#d7827e
-    " highlight RenderMarkdownH3 guifg=#d7827e
-    " highlight RenderMarkdownH4 guifg=#d7827e
-    " highlight RenderMarkdownH5 guifg=#d7827e
-    " highlight RenderMarkdownH6 guifg=#d7827e
+    highlight RenderMarkdownH1Bg guibg=#26233a guifg=#f4a685
+    highlight RenderMarkdownH2Bg guibg=#26233a guifg=#f4a685
+    highlight RenderMarkdownH3Bg guibg=#26233a guifg=#f4a685
+    highlight RenderMarkdownH4Bg guibg=#26233a guifg=#f4a685
+    highlight RenderMarkdownH5Bg guibg=#26233a guifg=#f4a685
+    highlight RenderMarkdownH6Bg guibg=#26233a guifg=#f4a685
 ]])

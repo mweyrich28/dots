@@ -67,6 +67,11 @@ lspconfig.pyright.setup {
     }
 }
 
+-- go
+lspconfig.gopls.setup {
+    on_attach = lsp_attach,
+    capabilities = lsp_capabilities,
+}
 -- c++
 lspconfig.clangd.setup {
     on_attach = function(client, buffer)
