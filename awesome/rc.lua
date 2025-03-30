@@ -53,7 +53,7 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- Gaps
-beautiful.useless_gap = 8
+beautiful.useless_gap = 10
 
 -- This is used later as the default terminal and editor to run.
 local terminal = "alacritty"
@@ -251,14 +251,13 @@ globalkeys = gears.table.join(
 
     -- cost session
     awful.key({ modkey }, "c", function()
-        awful.spawn("alacritty -e ssh -i ~/.ssh/norm -t mweyrich@10.162.163.34 'tmux new-session -A -s cost'")
+            awful.spawn("alacritty -e ssh -i ~/.ssh/norm -t mweyrich@10.162.163.34 'tmux new-session -A -s cost'")
         end,
         { description = "Connect to circrna session", group = "malte" }),
-    
+
     -- cip session
     awful.key({ modkey }, "x", function()
-        awful.spawn("alacritty -e ssh -i ~/.ssh/cip -t weyrichm@remote.cip.ifi.lmu.de 'tmux new-session -A -s cip'")
-
+            awful.spawn("alacritty -e ssh -i ~/.ssh/cip -t weyrichm@remote.cip.ifi.lmu.de 'tmux new-session -A -s cip'")
         end,
         { description = "Connect to cip session", group = "malte" }),
 
@@ -474,9 +473,9 @@ awful.rules.rules = {
     },
 
     -- Rule for Polybar
-    {
-        rule = { class = "Polybar" },                     -- You can use class, name, or any other property to match Polybar
-        properties = { focusable = false, raise = false } -- This rule sets focus to false for Polybar
+    { 
+      rule = { class = "Polybar" },
+      properties = { below = true, floating = true, focusable = false } 
     },
 
     -- Brave Browser
@@ -484,15 +483,6 @@ awful.rules.rules = {
         rule = { class = "Brave-browser" },
         properties = { screen = function() return awful.screen.focused() end, tag = "2" }
     },
-
-    -- Add tetlebars to normal clients and dialogs
-    -- { rule_any = {type = { "normal", "dialog" }
-    --   }, properties = { titlebars_enabled = true }
-    -- },
-
-    -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "google-chrome" },
-    --   properties = { tag = screen[1].tags[3] } },
 }
 -- }}}
 
@@ -511,56 +501,16 @@ client.connect_signal("manage", function(c)
     end
 end)
 
--- Add a titlebar if titlebars_enabled is set to true in the rules.
--- client.connect_signal("request::titlebars", function(c)
---     -- buttons for the titlebar
---     local buttons = gears.table.join(
---         awful.button({ }, 1, function()
---             c:emit_signal("request::activate", "titlebar", {raise = true})
---             awful.mouse.client.move(c)
---         end),
---         awful.button({ }, 3, function()
---             c:emit_signal("request::activate", "titlebar", {raise = true})
---             awful.mouse.client.resize(c)
---         end)
---     )
---
---     awful.titlebar(c) : setup {
---         { -- Left
---             awful.titlebar.widget.iconwidget(c),
---             buttons = buttons,
---             layout  = wibox.layout.fixed.horizontal
---         },
---         { -- Middle
---             { -- Title
---                 align  = "center",
---                 widget = awful.titlebar.widget.titlewidget(c)
---             },
---             buttons = buttons,
---             layout  = wibox.layout.flex.horizontal
---         },
---         { -- Right
---             awful.titlebar.widget.floatingbutton (c),
---             awful.titlebar.widget.maximizedbutton(c),
---             awful.titlebar.widget.stickybutton   (c),
---             awful.titlebar.widget.ontopbutton    (c),
---             awful.titlebar.widget.closebutton    (c),
---             layout = wibox.layout.fixed.horizontal()
---         },
---         layout = wibox.layout.align.horizontal
---     }
--- end)
-
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)
-    c:emit_signal("request::activate", "mouse_enter", {raise = false})
+    c:emit_signal("request::activate", "mouse_enter", { raise = false })
 end)
 
 -- Border color and width
 client.connect_signal("focus", function(c) c.border_color = "#CB775D" end)
-client.connect_signal("focus", function(c) c.border_width = 0.0 end)
+client.connect_signal("focus", function(c) c.border_width = 2 end)
 client.connect_signal("unfocus", function(c) c.border_color = '#888888' end)
-client.connect_signal("unfocus", function(c) c.border_width = 0 end)
+client.connect_signal("unfocus", function(c) c.border_width = 2 end)
 -- }}}
 --
 
@@ -589,7 +539,6 @@ awful.tag.attached_connect_signal(nil, "property::urgent", update_tags)
 
 -- Initial update when Awesome starts
 gears.timer.delayed_call(update_tags)
-
 
 -- AUTOSTART
 awful.util.spawn_with_shell("pgrep -u $USER -x nm-applet > /dev/null || (nm-applet &)") -- Network Manager
