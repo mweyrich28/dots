@@ -69,6 +69,20 @@ lspconfig.pyright.setup {
 
 -- go
 lspconfig.gopls.setup {
+    settings = {
+        gopls = {
+            gofumpt = true, -- Use gofumpt instead of gofmt
+            staticcheck = true, -- Enable static analysis checks
+            semanticTokens = true,
+            completeUnimported = true,
+            usePlaceholders = true,
+            analyses = {
+                unusedparams = true, -- Detect unused parameters
+                shadow = true, -- Detect variable shadowing
+            },
+            ["local"] = "",  -- Auto-group imports
+        },
+    },
     on_attach = lsp_attach,
     capabilities = lsp_capabilities,
 }
@@ -83,13 +97,13 @@ lspconfig.clangd.setup {
 
 -- R
 lspconfig.r_language_server.setup({
-  cmd = { "R", "--slave", "-e", "languageserver::run()" },
-  filetypes = { "r", "rmd" },
-  root_dir = require('lspconfig.util').root_pattern(".git", ".Rproj", "."),
-  on_attach = function(client, bufnr)
-    client.server_capabilities.documentFormattingProvider = false
-    client.server_capabilities.documentRangeFormattingProvider = false
-  end,
+    cmd = { "R", "--slave", "-e", "languageserver::run()" },
+    filetypes = { "r", "rmd" },
+    root_dir = require('lspconfig.util').root_pattern(".git", ".Rproj", "."),
+    on_attach = function(client, bufnr)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+    end,
 })
 
 -- Globally configure all LSP floating preview popups (like hover, signature help, etc)

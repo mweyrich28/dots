@@ -2,6 +2,9 @@ local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
 
 dashboard.section.header.val = {
+
+    "neovim"
+
 		-- [[                               __                ]],
 		-- [[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
 		-- [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
@@ -57,7 +60,7 @@ dashboard.section.buttons.val = {
   button("q", "  > Quit", ":qa<CR>"),
 }
 dashboard.section.buttons.opts = {
-  spacing = 2,
+  spacing = 1,
   position = "center"
 }
 
@@ -65,12 +68,10 @@ local function footer()
 	local date = os.date("%d.%m.%Y")
 	-- local time = os.date("%H:%M")
     -- show ram usage witout newline
-    local ram = vim.fn.system("free -h | awk 'NR==2{print $3}'")
-    ram = ram:gsub("\n", "")
     -- plugins loaded
     local plugins = vim.fn.len(vim.fn.globpath("~/.local/share/nvim/site/pack/packer/start", "*", 0, 1))
 
-return ram .. " | " .. date .. " | " .. plugins .. " plugins"
+return  date .. " | loaded " .. plugins .. " plugins"
 end
 dashboard.section.footer.val = footer()
 
