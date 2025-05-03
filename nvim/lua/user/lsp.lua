@@ -43,6 +43,17 @@ require('mason-lspconfig').setup_handlers({
             on_attach = lsp_attach,
             capabilities = lsp_capabilities,
         })
+    end,
+    ["pyright"] = function()
+        lspconfig.pyright.setup({
+            on_attach = lsp_attach,
+            capabilities = lsp_capabilities,
+            settings = {
+                python = {
+                    pythonPath = "/usr/bin/python3"
+                }
+            }
+        })
     end
 })
 
@@ -58,13 +69,6 @@ lspconfig.lua_ls.setup {
             },
         },
     },
-}
-lspconfig.pyright.setup {
-    on_attach = lsp_attach,
-    capabilities = lsp_capabilities,
-    python = {
-        pythonPath = "/usr/bin/python3"
-    }
 }
 
 -- go
@@ -114,6 +118,12 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     return open_floating_preview(contents, syntax, opts, ...)
 end
 
+
 vim.diagnostic.config({
-    virtual_text = false,
+    virtual_text = {
+        severity = {
+            min = vim.diagnostic.severity.WARN,
+        },
+        spacing = 2,
+    },
 })

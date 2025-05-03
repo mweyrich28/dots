@@ -117,9 +117,9 @@ cmp.setup({
                 ultisnips = "[SNIP]",
                 buffer    = "[BUF]",
                 nvim_lsp  = "[LSP]",
-                tmux      = "[TMUX]",
                 path      = "[PATH]",
                 latex_symbols = "[LTEX]",
+                tmux      = "[TMUX]",
             })[entry.source.name]
             return vim_item
         end,

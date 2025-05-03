@@ -2,7 +2,7 @@
 vim.g.vimwiki_conceallevel = 2
 vim.g.vimwiki_conceal_pre = 1
 -- vim.g.vimwiki_listing_hl = 0
--- vim.g.vimwiki_hl_cb_checked = 2
+vim.g.vimwiki_hl_cb_checked = 2
 
 vim.g.vimwiki_auto_chdir = 1
 vim.g.vimwiki_key_mappings = { headers=0 }
@@ -29,8 +29,6 @@ vim.g.vimwiki_list = {
 	}
 }
 
--- highlight links
-vim.cmd([[highlight Underlined gui=underline guifg=#8FBCBB]])
 
 -- nordic
 -- vim.cmd([[hi VimwikiHeader1 guifg=#E7C173]])
@@ -70,5 +68,17 @@ vim.cmd([[highlight Underlined gui=underline guifg=#8FBCBB]])
 -- vim.cmd([[hi VimwikiHeader4 guifg=#fe8019]])
 -- vim.cmd([[hi VimwikiHeader5 guifg=#fe8019]])
 -- vim.cmd([[hi VimwikiHeader6 guifg=#fe8019]])
---
---
+
+vim.cmd([[
+    " highlight RenderMarkdownCodeInline guifg=#f4a685 guibg=#191724
+    " highlight RenderMarkdownCodeInline guifg=#d7827e guibg=#191724
+    " highlight RenderMarkdownChecked guifg=#d7827e
+    highlight VimwikiHeader1 guifg=#f4a685
+    highlight VimwikiHeader2 guifg=#f4a685
+    highlight VimwikiHeader3 guifg=#f4a685
+    highlight VimwikiHeader4 guifg=#f4a685
+    highlight VimwikiHeader5 guifg=#f4a685
+    highlight VimwikiHeader6 guifg=#f4a685
+    highlight VimwikiCode guifg=#d7827e guibg=#191724
+    highlight VimwikiLink gui=underline guifg=#8FBCBB
+]])

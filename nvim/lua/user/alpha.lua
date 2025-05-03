@@ -49,15 +49,13 @@ local function button(sc, txt, keybind, keybind_opts)
 end
 
 dashboard.section.buttons.val = {
-  button("b", "󱞊  > Browse", ":e . <CR>" ),
-  -- button("m", "  > Markdown Wiki", ":e ~/documents/vimwiki_para/README.md<CR>" ),
-  -- button("d", "  > Open OneDrive", ":e ~/OneDriver/03_GoodNotes/<CR> :cd ~/OneDriver/03_GoodNotes/<CR>" ),
-  button("f", "󰱼  > Find File   ", ":Telescope find_files <CR>"),
-  button("r", "󱈖  > Recent Files   ", ":Telescope oldfiles <CR>"),
-  button("g", "󱎸  > Live Grep ", ":Telescope live_grep <CR>"),
-  button("s", "  > Edit Snippets", ":e ~/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/tex.snippets <CR> :cd ~/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/ <CR>" ),
-  button("c", "  > Edit Config", ":e ~/.config/nvim/init.lua<CR> :cd ~/.config/nvim/ <CR>"),
-  button("q", "  > Quit", ":qa<CR>"),
+
+  button("b", "  > BA", ":e ~/documents/zettelkasten/4_atomic_notes/bachelorarbeit_Timeline.md<CR>" ),
+  button("d", "  > DaiSyBio", ":e ~/documents/zettelkasten/4_atomic_notes/DaiSyBio_WorkDoc.md<CR>" ),
+  button("c", "  > Config", ":e ~/.config/nvim/init.lua<CR> :cd ~/.config/nvim/ <CR>"),
+  button("r", "󱈖  > Recent ", ":Telescope oldfiles <CR>"),
+  button("s", "  > Snippets", ":e ~/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/tex.snippets <CR> :cd ~/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/ <CR>" ),
+  button("q", "  > Quit ", ":qa<CR>"),
 }
 dashboard.section.buttons.opts = {
   spacing = 1,
@@ -65,13 +63,14 @@ dashboard.section.buttons.opts = {
 }
 
 local function footer()
-	local date = os.date("%d.%m.%Y")
-	-- local time = os.date("%H:%M")
+	local time = os.date("%H:%M")
     -- show ram usage witout newline
     -- plugins loaded
     local plugins = vim.fn.len(vim.fn.globpath("~/.local/share/nvim/site/pack/packer/start", "*", 0, 1))
+    local worktime = vim.fn.system("/home/malte/.local/bin/scripts/worktime.sh")
 
-return  date .. " | loaded " .. plugins .. " plugins"
+    -- return plugins .. " plugins | ".. time .. "\n" .. worktime
+    return worktime
 end
 dashboard.section.footer.val = footer()
 

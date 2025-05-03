@@ -251,9 +251,9 @@ globalkeys = gears.table.join(
 
     -- cost session
     awful.key({ modkey }, "c", function()
-            awful.spawn("alacritty -e ssh -i ~/.ssh/norm -t mweyrich@10.162.163.34 'tmux new-session -A -s cost'")
+            awful.spawn("alacritty -e ssh -i ~/.ssh/norm -t mweyrich@10.162.163.34 'tmux new-session -A -s CIRCEST'")
         end,
-        { description = "Connect to circrna session", group = "malte" }),
+        { description = "Connect to CIRCEST session", group = "malte" }),
 
     -- cip session
     awful.key({ modkey }, "x", function()

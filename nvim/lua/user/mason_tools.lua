@@ -7,7 +7,6 @@ require('mason-tool-installer').setup {
         'debugpy',
         'flake8',
         'isort',
-        'mypy',
         'pylint'
     },
 
