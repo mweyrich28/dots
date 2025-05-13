@@ -37,7 +37,7 @@ local lsp_attach = function(client, bufnr)
 end
 
 -- Call setup on each LSP server
-require('mason-lspconfig').setup_handlers({
+require('mason-lspconfig').setup({
     function(server_name)
         lspconfig[server_name].setup({
             on_attach = lsp_attach,
@@ -75,16 +75,16 @@ lspconfig.lua_ls.setup {
 lspconfig.gopls.setup {
     settings = {
         gopls = {
-            gofumpt = true, -- Use gofumpt instead of gofmt
+            gofumpt = true,     -- Use gofumpt instead of gofmt
             staticcheck = true, -- Enable static analysis checks
             semanticTokens = true,
             completeUnimported = true,
             usePlaceholders = true,
             analyses = {
                 unusedparams = true, -- Detect unused parameters
-                shadow = true, -- Detect variable shadowing
+                shadow = true,       -- Detect variable shadowing
             },
-            ["local"] = "",  -- Auto-group imports
+            ["local"] = "",          -- Auto-group imports
         },
     },
     on_attach = lsp_attach,
@@ -117,7 +117,6 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     opts.border = opts.border or "rounded" -- Set border to rounded
     return open_floating_preview(contents, syntax, opts, ...)
 end
-
 
 vim.diagnostic.config({
     virtual_text = {

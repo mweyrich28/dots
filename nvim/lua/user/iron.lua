@@ -12,14 +12,15 @@ iron.setup {
         command = {"zsh"}
       },
       python = {
-        command = { "/home/malte/miniconda3/envs/uni/bin/python" },  -- or { "ipython", "--no-autoindent" }
+        command = { "/home/malte/miniconda3/envs/uni/bin/ipython" },  -- or { "ipython", "--no-autoindent" }
         format = require("iron.fts.common").bracketed_paste_python,
+        block_delimiters = { "# %%", "#%%" },
         block_deviders = { "# %%", "#%%" },
       }
     },
     -- How the repl window will be displayed
     -- See below for more information
-    repl_open_cmd = require('iron.view').split.horizontal.botright(10),
+    repl_open_cmd = require('iron.view').split.vertical.botright(40),
   },
   -- Iron doesn't set keymaps by default anymore.
   -- You can set them here or manually add keymaps to the functions in iron.core
@@ -37,7 +38,7 @@ iron.setup {
     mark_visual = "<space>mc",
     remove_mark = "<space>md",
     cr = "<space>s<cr>",
-    interrupt = "<space>s<space>",
+    interrupt = "<space>sis",
     exit = "<space>sq",
     clear = "<space>cl",
   },

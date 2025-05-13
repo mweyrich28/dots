@@ -116,7 +116,7 @@ return packer.startup(function(use)
     use { "goolord/alpha-nvim" }
 
     -- Color highlighter
-    use { "norcalli/nvim-colorizer.lua" }
+    -- use { "norcalli/nvim-colorizer.lua" }
 
     -- Startup time optimizer
     use { "lewis6991/impatient.nvim" }
@@ -172,7 +172,7 @@ return packer.startup(function(use)
     use { "christoomey/vim-tmux-navigator" }
 
     -- Copilot
-    use { "github/copilot.vim" }
+    -- use { "github/copilot.vim" }
 
     -- md
     use({
@@ -216,7 +216,7 @@ return packer.startup(function(use)
 
     use { "LukeGoodsell/nextflow-vim" }
 
-    use { "BenGH28/neo-runner.nvim" }
+    -- use { "BenGH28/neo-runner.nvim" }
 
     use { "jalvesaq/Nvim-R" }
 
@@ -232,6 +232,8 @@ return packer.startup(function(use)
     use { 'xiyaowong/transparent.nvim' }
 
     use { 'Vigemus/iron.nvim' }
+
+    use { 'folke/flash.nvim' }
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
