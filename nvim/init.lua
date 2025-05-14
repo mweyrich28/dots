@@ -33,8 +33,9 @@ require 'user.vimwiki_utils'
 require 'user.ultisnips'
 require "user.lint"
 require 'user.colorscheme'
+require 'user.smear'
 -- require 'user.transparent'
 require 'user.vimwiki'
 -- require 'user.render_markdown'
-require 'user.lualine'
+-- require 'user.lualine'
 require('user.flash')

@@ -46,6 +46,7 @@ vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
 -- vim.g.python3_host_prog = '/bin/python3'
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.laststatus = 0 -- disable statusline
 
 -- save last cursor position
 vim.cmd[[autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]

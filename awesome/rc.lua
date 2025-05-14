@@ -56,7 +56,7 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 beautiful.useless_gap = 10
 
 -- This is used later as the default terminal and editor to run.
-local terminal = "alacritty"
+local terminal = "ghostty"
 local editor = "nvim"
 local editor_cmd = terminal .. " -e " .. editor
 
@@ -194,7 +194,7 @@ globalkeys = gears.table.join(
         { description = "go back", group = "client" }),
 
     -- Standard program
-    awful.key({ modkey, }, "Return", function() awful.spawn(terminal) end,
+    awful.key({ modkey, }, "Return", function() awful.spawn("ghostty") end,
         { description = "open a terminal", group = "launcher" }),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
         { description = "reload awesome", group = "awesome" }),
@@ -230,7 +230,7 @@ globalkeys = gears.table.join(
         { description = "restore minimized", group = "client" }),
 
     -- TMUX
-    awful.key({ modkey }, "t", function() awful.spawn("alacritty -e tmux attach #a") end,
+    awful.key({ modkey }, "t", function() awful.spawn("ghostty -e tmux attach #a") end,
         { description = "Spawn Tmux", group = "malte" }),
 
     -- POWER MENU
@@ -251,13 +251,13 @@ globalkeys = gears.table.join(
 
     -- cost session
     awful.key({ modkey }, "c", function()
-            awful.spawn("alacritty -e ssh -i ~/.ssh/norm -t mweyrich@10.162.163.34 'tmux new-session -A -s CIRCEST'")
+            awful.spawn("ghostty -e ssh -i ~/.ssh/norm -t mweyrich@10.162.163.34 'tmux new-session -A -s CIRCEST'")
         end,
         { description = "Connect to CIRCEST session", group = "malte" }),
 
     -- cip session
     awful.key({ modkey }, "x", function()
-            awful.spawn("alacritty -e ssh -i ~/.ssh/cip -t weyrichm@remote.cip.ifi.lmu.de 'tmux new-session -A -s cip'")
+            awful.spawn("ghostty -e ssh -i ~/.ssh/cip -t weyrichm@remote.cip.ifi.lmu.de 'tmux new-session -A -s cip'")
         end,
         { description = "Connect to cip session", group = "malte" }),
 
@@ -543,8 +543,7 @@ gears.timer.delayed_call(update_tags)
 -- AUTOSTART
 awful.util.spawn_with_shell("pgrep -u $USER -x nm-applet > /dev/null || (nm-applet &)") -- Network Manager
 awful.spawn.with_shell("brave-browser")
--- awful.spawn.with_shell("alacritty -e tmux new-session -s work -d")
-awful.spawn.with_shell("alacritty -e tmux new-session -s home")
+awful.spawn.with_shell("ghostty -e tmux new-session -s home")
 awful.spawn.with_shell("killall polybar; polybar top &")
 awful.spawn.with_shell("sleep 1 && nitrogen --restore")
 awful.spawn.with_shell("picom -b")

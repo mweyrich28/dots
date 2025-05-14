@@ -234,6 +234,8 @@ return packer.startup(function(use)
     use { 'Vigemus/iron.nvim' }
 
     use { 'folke/flash.nvim' }
+
+    use { 'sphamba/smear-cursor.nvim' }
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
