@@ -22,7 +22,7 @@ echo "$HEADER" > $TMPFILE
 # go to tmp dir
 cd "$TMPDIR" || exit
 
-alacritty -e nvim $TMPFILE
+ghostty -e nvim $TMPFILE
 
 until [ -f $TMPFILE ]
 do
