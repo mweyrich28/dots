@@ -250,14 +250,21 @@ globalkeys = gears.table.join(
 
 
     -- cost session
-    awful.key({ modkey }, "c", function()
-            awful.spawn("ghostty -e ssh -i ~/.ssh/norm -t mweyrich@10.162.163.34 'tmux new-session -A -s CIRCEST'")
+    -- awful.key({ modkey }, "c", function()
+    --         awful.spawn("ssh -i ~/.ssh/norm -t mweyrich@10.162.163.34 'tmux new-session -A -s CIRCEST'")
+    --     end,
+    --     { description = "Connect to CIRCEST session", group = "malte" }),
+    awful.key(
+        { modkey }, "c",
+        function()
+            awful.spawn.with_shell("ghostty -e env TERM=xterm-256color ssh -i ~/.ssh/norm -t mweyrich@10.162.163.34 tmux new-session -A -s CIRCEST")
         end,
-        { description = "Connect to CIRCEST session", group = "malte" }),
+        { description = "Connect to CIRCEST session", group = "malte" }
+    ),
 
     -- cip session
     awful.key({ modkey }, "x", function()
-            awful.spawn("ghostty -e ssh -i ~/.ssh/cip -t weyrichm@remote.cip.ifi.lmu.de 'tmux new-session -A -s cip'")
+            awful.spawn.with_shell("ghostty -e env TERM=xterm-256color ssh -i ~/.ssh/cip -t weyrichm@remote.cip.ifi.lmu.de tmux new-session -A -s cip")
         end,
         { description = "Connect to cip session", group = "malte" }),
 
@@ -473,9 +480,9 @@ awful.rules.rules = {
     },
 
     -- Rule for Polybar
-    { 
-      rule = { class = "Polybar" },
-      properties = { below = true, floating = true, focusable = false } 
+    {
+        rule = { class = "Polybar" },
+        properties = { below = true, floating = true, focusable = false }
     },
 
     -- Brave Browser
