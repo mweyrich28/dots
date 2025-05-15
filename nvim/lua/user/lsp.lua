@@ -3,11 +3,6 @@ require("neodev").setup({
 })
 
 
-require('mason').setup()
-require('mason-lspconfig').setup({
-    ensure_installed = { "lua_ls", "pyright", "texlab", "clangd" },
-})
-
 vim.keymap.set('n', 'gl', vim.diagnostic.open_float)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
@@ -36,26 +31,13 @@ local lsp_attach = function(client, bufnr)
     end, opts)
 end
 
--- Call setup on each LSP server
-require('mason-lspconfig').setup({
-    function(server_name)
-        lspconfig[server_name].setup({
-            on_attach = lsp_attach,
-            capabilities = lsp_capabilities,
-        })
-    end,
-    ["pyright"] = function()
-        lspconfig.pyright.setup({
-            on_attach = lsp_attach,
-            capabilities = lsp_capabilities,
-            settings = {
-                python = {
-                    pythonPath = "/usr/bin/python3"
-                }
-            }
-        })
-    end
+require("mason").setup()
+
+require("mason-lspconfig").setup({
+    ensure_installed = { "lua_ls", "pyright", "gopls", "clangd", "r_language_server" },
+    automatic_enable = false, -- default, optional
 })
+
 
 -- Lua LSP settings
 lspconfig.lua_ls.setup {

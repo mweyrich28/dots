@@ -15,6 +15,7 @@ require('smear_cursor').setup({
 
     -- Smear cursor in insert mode.
     -- See also `vertical_bar_cursor_insert_mode` and `distance_stop_animating_vertical_bar`.
-    smear_insert_mode = true,
+    smear_insert_mode = false,
     cursor_color = "#ffffff",
+    time_interval = 7, -- milliseconds
 })
