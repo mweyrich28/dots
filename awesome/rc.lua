@@ -53,7 +53,8 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- Gaps
-beautiful.useless_gap = 10
+-- beautiful.useless_gap = 10
+beautiful.useless_gap = 0
 
 -- This is used later as the default terminal and editor to run.
 local terminal = "ghostty"
@@ -550,8 +551,9 @@ gears.timer.delayed_call(update_tags)
 -- AUTOSTART
 awful.util.spawn_with_shell("pgrep -u $USER -x nm-applet > /dev/null || (nm-applet &)") -- Network Manager
 awful.spawn.with_shell("brave-browser")
-awful.spawn.with_shell("ghostty -e tmux new-session -s home")
 awful.spawn.with_shell("killall polybar; polybar top &")
+-- awful.spawn.with_shell("ghostty -e tmux new-session -s home 'zsh -c \"nvim; exec zsh\"'")
+awful.spawn.with_shell("ghostty -e tmux new-session -s home")
 awful.spawn.with_shell("sleep 1 && nitrogen --restore")
 awful.spawn.with_shell("picom -b")
 awful.spawn.with_shell("/home/malte/.config/polybar/launch.sh")
