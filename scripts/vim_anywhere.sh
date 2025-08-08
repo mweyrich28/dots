@@ -1,40 +1,46 @@
 #!/bin/bash
+set -euo pipefail
 
-# header for latex doc
-HEADER="
-\documentclass[border=20pt,preview]{standalone}  
-\usepackage{amsmath}  
-\begin{document}  
+TMPDIR="$HOME/.config/scripts/vim/tmp"
+mkdir -p "$TMPDIR"
+TMPFILE="$TMPDIR/latex.tex" PDF="$TMPDIR/latex.pdf"
 
+# LaTeX header template
+HEADER="\\documentclass[border=20pt,preview]{standalone}  
+\\usepackage{amsmath}  
+\\begin{document}  
+\\end{document}"
 
+if [[ ! -f "$TMPFILE" ]]; then
+    echo "$HEADER" > "$TMPFILE"
+fi
 
-\end{document}"
+gnome-terminal -- nvim "$TMPFILE"
 
-# path to tmp dir where all files are created (and deleted)
-TMPDIR=/home/malte/.config/scripts/vim/tmp
-TMPFILE=$TMPDIR/latex.tex
-PDF="$TMPDIR/latex.pdf"
-PNG="$TMPDIR/image-1.png"
-
-# create initial tex doc
-echo "$HEADER" > $TMPFILE
-
-# go to tmp dir
+# Continue with LaTeX processing
 cd "$TMPDIR" || exit
+echo "[INFO] Compiling LaTeX..."
+xelatex -interaction=nonstopmode "$TMPFILE"
 
-ghostty -e nvim $TMPFILE
+if [[ ! -f "$PDF" ]]; then
+    echo "[ERROR] PDF not found: $PDF"
+    exit 1
+fi
 
-until [ -f $TMPFILE ]
-do
-    sleep 1
-done
+# Convert PDF to PNG
+BASENAME="image"
+echo "[INFO] Converting to PNG..."
+pdftoppm -png -r 350 "$PDF" "$BASENAME"
 
-xelatex -interaction=nonstopmode "$TMPFILE" # compile
-pdftoppm -png -r 350 "$PDF" "$TMPDIR/image" # to png
+PNG="$TMPDIR/${BASENAME}-1.png"
+if [[ ! -f "$PNG" ]]; then
+    echo "[ERROR] PNG not created: $PNG"
+    exit 1
+fi
+
+# Trim and copy to clipboard
+echo "[INFO] Processing image and copying to clipboard..."
 convert "$PNG" -trim -bordercolor White -border 10x10 +repage "$PNG"
-xclip -selection clipboard -t image/png -i "$PNG" # save to clipboard
+xclip -selection clipboard -t image/png -i "$PNG"
+echo "[INFO] All done!"
 
-# Cleanup
-rm "$TMPDIR/image-1.png"
-rm "$TMPFILE"
-rm "$PDF"

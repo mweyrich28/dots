@@ -8,8 +8,8 @@ require'nvim-treesitter.configs'.setup {
   ignore_install = { "javascript" },
 
   highlight = {
-    enable = true,
     disable = { "rust", "latex" },
     additional_vim_regex_highlighting = false,
+    enable = true,
   },
 }

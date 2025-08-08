@@ -1,12 +1,12 @@
 require("zen-mode").setup({
   window = {
-    backdrop = 0.95, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+    backdrop = 1, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
     -- height and width can be:
     -- * an absolute number of cells when > 1
     -- * a percentage of the width / height of the editor when <= 1
     -- * a function that returns the width or the height
-    width = 90, -- width of the Zen window
-    height = 1, -- height of the Zen window
+    width = 80, -- width of the Zen window
+    height = 0.8, -- height of the Zen window
     -- by default, no options are changed for the Zen window
     -- uncomment any of the options below, or add other vim.wo options you want to apply
     options = {
@@ -36,10 +36,6 @@ require("zen-mode").setup({
     -- this will change the font size on alacritty when in zen mode
     -- requires  Alacritty Version 0.10.0 or higher
     -- uses `alacritty msg` subcommand to change font size
-    alacritty = {
-      enabled = true,
-      font = "14", -- font size
-    },
   },
   -- callback where you can add custom code when the Zen window opens
   -- on_open = function(win)
@@ -50,3 +46,7 @@ require("zen-mode").setup({
 	 --  require("lualine").hide({unhide = true})
   -- end,
 })
+
+local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg or "NONE"
+vim.api.nvim_set_hl(0, "ZenBg", { bg = normal_bg })
+vim.api.nvim_set_hl(0, "ZenBorder", { bg = normal_bg })

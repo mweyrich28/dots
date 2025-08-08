@@ -7,7 +7,7 @@ require("transparent").setup({
     'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
     'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
     'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
-    'EndOfBuffer',
+    'EndOfBuffer', 'ZenBorder',
   },
   -- table: additional groups that should be cleared
   extra_groups = {},

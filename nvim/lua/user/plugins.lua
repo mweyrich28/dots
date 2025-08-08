@@ -53,6 +53,8 @@ return packer.startup(function(use)
     use { "hrsh7th/cmp-nvim-lsp" }
     use { 'andersevenrud/cmp-tmux' }
     use { "kdheepak/cmp-latex-symbols" }
+    use { 'micangl/cmp-vimtex' }
+  
 
     -- Mason LSP
     use {
@@ -66,11 +68,13 @@ return packer.startup(function(use)
     -- use { 'fisadev/vim-isort' }
     use { 'mfussenegger/nvim-lint' }
     use { 'mfussenegger/nvim-dap-python',
+
         requires = {
             -- https://github.com/mfussenegger/nvim-dap
             'mfussenegger/nvim-dap',
         }
     }
+    use { 'leoluz/nvim-dap-go' }
     use { 'rcarriga/nvim-dap-ui',
         requires = {
             -- https://github.com/mfussenegger/nvim-dap
@@ -83,7 +87,6 @@ return packer.startup(function(use)
             'nvim-neotest/nvim-nio'
         }
     }
-    use { "folke/neodev.nvim" }
 
     -- Telescope
     use { "nvim-telescope/telescope.nvim" }
@@ -115,9 +118,6 @@ return packer.startup(function(use)
 
     use { "goolord/alpha-nvim" }
 
-    -- Color highlighter
-    -- use { "norcalli/nvim-colorizer.lua" }
-
     -- Startup time optimizer
     use { "lewis6991/impatient.nvim" }
 
@@ -128,7 +128,7 @@ return packer.startup(function(use)
         requires = { { "nvim-lua/plenary.nvim" } }
     }
 
-    -- use { "folke/todo-comments.nvim" }
+    use { "folke/todo-comments.nvim" }
 
     use { 'mbbill/undotree' }
 
@@ -220,12 +220,12 @@ return packer.startup(function(use)
 
     use { "jalvesaq/Nvim-R" }
 
-    use({
-        'MeanderingProgrammer/render-markdown.nvim',
-        after = { 'nvim-treesitter' },
-        requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
-        -- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
-    })
+    -- use({
+    --     'MeanderingProgrammer/render-markdown.nvim',
+    --     after = { 'nvim-treesitter' },
+    --     requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
+    --     -- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+    -- })
 
 
 
@@ -235,7 +235,11 @@ return packer.startup(function(use)
 
     use { 'folke/flash.nvim' }
 
-    use { 'sphamba/smear-cursor.nvim' }
+    -- use { 'sphamba/smear-cursor.nvim' }
+    use { "NStefan002/speedtyper.nvim", }
+    
+    use {"mweyrich28/taskwarrior.nvim", }
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then

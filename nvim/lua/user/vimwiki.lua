@@ -82,3 +82,4 @@ vim.cmd([[
     highlight VimwikiCode guifg=#d7827e guibg=#191724
     highlight VimwikiLink gui=underline guifg=#8FBCBB
 ]])
+

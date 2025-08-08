@@ -1,5 +1,5 @@
 require('smear_cursor').setup({
-  -- Smear cursor when switching buffers or windows.
+    -- Smear cursor when switching buffers or windows.
     smear_between_buffers = true,
 
     -- Smear cursor when moving within line or to neighbor lines.
@@ -7,7 +7,7 @@ require('smear_cursor').setup({
     smear_between_neighbor_lines = true,
 
     -- Draw the smear in buffer space instead of screen space when scrolling
-    scroll_buffer_space = true,
+    scroll_buffer_space = false,
 
     -- Set to `true` if your font supports legacy computing symbols (block unicode symbols).
     -- Smears will blend better on all backgrounds.
@@ -17,5 +17,6 @@ require('smear_cursor').setup({
     -- See also `vertical_bar_cursor_insert_mode` and `distance_stop_animating_vertical_bar`.
     smear_insert_mode = false,
     cursor_color = "#ffffff",
-    time_interval = 7, -- milliseconds
+    time_interval = 20, -- milliseconds
+    smear_to_cmd = false,
 })

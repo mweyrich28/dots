@@ -91,7 +91,3 @@ dap.listeners.before.event_exited["dapui_config"] = function()
     -- Commented to prevent DAP UI from closing when unit tests finish
     -- require('dapui').close()
 end
-
-require("neodev").setup({
-    library = { plugins = { "nvim-dap-ui" }, types = true },
-})

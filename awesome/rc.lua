@@ -53,8 +53,8 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- Gaps
--- beautiful.useless_gap = 10
-beautiful.useless_gap = 0
+beautiful.useless_gap = 10
+-- beautiful.useless_gap = 2
 
 -- This is used later as the default terminal and editor to run.
 local terminal = "ghostty"
@@ -515,10 +515,10 @@ client.connect_signal("mouse::enter", function(c)
 end)
 
 -- Border color and width
-client.connect_signal("focus", function(c) c.border_color = "#CB775D" end)
-client.connect_signal("focus", function(c) c.border_width = 2 end)
+client.connect_signal("focus", function(c) c.border_color = "#d7827e" end)
+client.connect_signal("focus", function(c) c.border_width = 1 end)
 client.connect_signal("unfocus", function(c) c.border_color = '#888888' end)
-client.connect_signal("unfocus", function(c) c.border_width = 2 end)
+client.connect_signal("unfocus", function(c) c.border_width = 1 end)
 -- }}}
 --
 
@@ -550,7 +550,9 @@ gears.timer.delayed_call(update_tags)
 
 -- AUTOSTART
 awful.util.spawn_with_shell("pgrep -u $USER -x nm-applet > /dev/null || (nm-applet &)") -- Network Manager
-awful.spawn.with_shell("brave-browser")
+-- rc.lua
+awful.spawn.with_shell("brave-browser --profile-directory='Default'")
+awful.spawn.with_shell("brave-browser --profile-directory='Profile 1'")
 awful.spawn.with_shell("killall polybar; polybar top &")
 -- awful.spawn.with_shell("ghostty -e tmux new-session -s home 'zsh -c \"nvim; exec zsh\"'")
 awful.spawn.with_shell("ghostty -e tmux new-session -s home")

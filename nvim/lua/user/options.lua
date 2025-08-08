@@ -44,7 +44,7 @@ vim.opt.fillchars.eob=" "
 vim.opt.shortmess:append "c"
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
--- vim.g.python3_host_prog = '/bin/python3'
+vim.g.python3_host_prog = '/home/malte/miniconda3/envs/uni/bin/python'
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.laststatus = 0 -- disable statusline
 

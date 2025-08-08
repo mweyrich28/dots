@@ -87,7 +87,7 @@ keymap("n", "<leader>A", "<cmd> Alpha <CR>", opts)
 keymap("n", "<leader>to", "<cmd>TodoTelescope<CR>", opts)
 
 -- Toggle ZenMode
-keymap("n", "<leader>zm", "<cmd>ZenMode<CR>", opts)
+keymap("n", "<leader>z", "<cmd>ZenMode<CR>", opts)
 
 -- Trouble
 keymap("n", "<leader>tt", "<cmd>Trouble<CR>", opts)
@@ -122,5 +122,3 @@ vim.keymap.set("n", '<leader>dh', '<cmd>Telescope dap commands<cr>')
 vim.keymap.set("n", '<leader>de', function() require('telescope.builtin').diagnostics({default_text=":E:"}) end)
 
 
--- NeoRunner cpp tmp
-keymap("n", "<leader>rr", "<cmd>NeoRunner<CR>", opts)

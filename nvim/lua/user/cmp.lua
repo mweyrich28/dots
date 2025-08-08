@@ -69,6 +69,7 @@ cmp.setup({
         { name = 'ultisnips' }, -- For ultisnips users.
         { name = "nvim_lsp" },
         { name = "path" },
+    { name = 'vimtex', },
         {
             name = 'buffer',
             option = {
@@ -115,10 +116,11 @@ cmp.setup({
             vim_item.kind = string.format("%s", vim_item.kind)
             vim_item.menu = ({
                 ultisnips = "[SNIP]",
-                buffer    = "[BUF]",
                 nvim_lsp  = "[LSP]",
+                buffer    = "[BUF]",
+                vimtex= "[TEX]",
                 path      = "[PATH]",
-                latex_symbols = "[LTEX]",
+                -- latex_symbols = "[LTEX]",
                 tmux      = "[TMUX]",
             })[entry.source.name]
             return vim_item

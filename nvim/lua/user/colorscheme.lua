@@ -13,3 +13,13 @@ function ColorMyPencils(color)
 end
 
 ColorMyPencils()
+
+
+-- dynamically matching bg of virtual_text to current theme bg
+local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg or "NONE"
+for _, group in ipairs({ "Error", "Warn", "Info", "Hint" }) do
+  vim.api.nvim_set_hl(0, "DiagnosticVirtualText" .. group, {
+    bg = normal_bg,
+    fg = vim.api.nvim_get_hl(0, { name = "Diagnostic" .. group }).fg or "NONE"
+  })
+end

@@ -1,8 +1,3 @@
-require("neodev").setup({
-    -- add any options here, or leave empty to use the default settings
-})
-
-
 vim.keymap.set('n', 'gl', vim.diagnostic.open_float)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
@@ -90,6 +85,20 @@ lspconfig.r_language_server.setup({
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
     end,
+})
+
+
+lspconfig.pyright.setup({
+    on_attach = lsp_attach,
+    capabilities = lsp_capabilities,
+    root_dir = function()
+        return vim.fn.getcwd()
+    end,
+    settings = {
+        python = {
+            pythonPath = "/home/malte/miniconda3/envs/uni/bin/python"
+        }
+    }
 })
 
 -- Globally configure all LSP floating preview popups (like hover, signature help, etc)
