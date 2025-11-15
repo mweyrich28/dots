@@ -516,9 +516,9 @@ end)
 
 -- Border color and width
 client.connect_signal("focus", function(c) c.border_color = "#d7827e" end)
-client.connect_signal("focus", function(c) c.border_width = 1 end)
+client.connect_signal("focus", function(c) c.border_width = 0 end)
 client.connect_signal("unfocus", function(c) c.border_color = '#888888' end)
-client.connect_signal("unfocus", function(c) c.border_width = 1 end)
+client.connect_signal("unfocus", function(c) c.border_width = 0 end)
 -- }}}
 --
 
