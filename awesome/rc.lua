@@ -519,8 +519,43 @@ client.connect_signal("focus", function(c) c.border_color = "#d7827e" end)
 client.connect_signal("focus", function(c) c.border_width = 0 end)
 client.connect_signal("unfocus", function(c) c.border_color = '#888888' end)
 client.connect_signal("unfocus", function(c) c.border_width = 0 end)
--- }}}
---
+
+
+client.connect_signal("manage", function(c)
+    local indicator = wibox({
+        width = 10,
+        height = 10,
+        ontop = true,
+        visible = false,
+        bg = "#d7827e",
+        type = "utility",
+    })
+    c.focus_indicator = indicator
+    
+    local function update_position()
+        if not indicator.visible or not c.valid then return end
+        local g = c:geometry()
+        indicator.x = g.x
+        indicator.y = g.y
+    end
+    
+    c:connect_signal("property::geometry", update_position)
+    c:connect_signal("request::geometry", update_position)
+    
+    c:connect_signal("focus", function()
+        indicator.visible = true
+        update_position()
+    end)
+    
+    c:connect_signal("unfocus", function()
+        indicator.visible = false
+    end)
+    
+    if client.focus == c then
+        indicator.visible = true
+        update_position()
+    end
+end)
 
 local function update_tags()
     local taglist = ""
