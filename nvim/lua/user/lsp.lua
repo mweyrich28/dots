@@ -1,11 +1,9 @@
 vim.keymap.set('n', 'gl', vim.diagnostic.open_float)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
-local lspconfig = require('lspconfig')
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local lsp_attach = function(client, bufnr)
-    -- Create your keybindings here...
     local opts = { buffer = bufnr }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
@@ -27,88 +25,112 @@ local lsp_attach = function(client, bufnr)
 end
 
 require("mason").setup()
-
 require("mason-lspconfig").setup({
     ensure_installed = { "lua_ls", "pyright", "gopls", "clangd", "r_language_server" },
-    automatic_enable = false, -- default, optional
 })
 
-
--- Lua LSP settings
-lspconfig.lua_ls.setup {
-    on_attach = lsp_attach,
+-- Lua LSP
+vim.lsp.config.lua_ls = {
+    cmd = { 'lua-language-server' },
+    filetypes = { 'lua' },
+    root_markers = { '.luarc.json', '.luarc.jsonc', '.luacheckrc', '.stylua.toml', 'stylua.toml', 'selene.toml', 'selene.yml', '.git' },
     capabilities = lsp_capabilities,
+    on_attach = lsp_attach,
     settings = {
         Lua = {
             diagnostics = {
-                -- Get the language server to recognize the `vim` global
                 globals = { 'vim' },
             },
         },
     },
 }
 
--- go
-lspconfig.gopls.setup {
+-- Go LSP
+vim.lsp.config.gopls = {
+    cmd = { 'gopls' },
+    filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+    root_markers = { 'go.work', 'go.mod', '.git' },
+    capabilities = lsp_capabilities,
+    on_attach = lsp_attach,
     settings = {
         gopls = {
-            gofumpt = true,     -- Use gofumpt instead of gofmt
-            staticcheck = true, -- Enable static analysis checks
+            gofumpt = true,
+            staticcheck = true,
             semanticTokens = true,
             completeUnimported = true,
             usePlaceholders = true,
             analyses = {
-                unusedparams = true, -- Detect unused parameters
-                shadow = true,       -- Detect variable shadowing
+                unusedparams = true,
+                shadow = true,
             },
-            ["local"] = "",          -- Auto-group imports
+            ["local"] = "",
         },
     },
-    on_attach = lsp_attach,
-    capabilities = lsp_capabilities,
 }
--- c++
-lspconfig.clangd.setup {
+
+-- C++ LSP
+vim.lsp.config.clangd = {
+    cmd = { 'clangd' },
+    filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
+    root_markers = { '.clangd', '.clang-tidy', '.clang-format', 'compile_commands.json', 'compile_flags.txt', 'configure.ac', '.git' },
+    capabilities = lsp_capabilities,
     on_attach = function(client, buffer)
         client.server_capabilities.signatureHelpProvider = false
         lsp_attach(client, buffer)
     end,
-    capabilities = lsp_capabilities,
 }
 
--- R
-lspconfig.r_language_server.setup({
-    cmd = { "R", "--slave", "-e", "languageserver::run()" },
-    filetypes = { "r", "rmd" },
-    root_dir = require('lspconfig.util').root_pattern(".git", ".Rproj", "."),
-    on_attach = function(client, bufnr)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-    end,
-})
-
-
-lspconfig.pyright.setup({
-    on_attach = lsp_attach,
+-- Python LSP
+vim.lsp.config.pyright = {
+    cmd = { 'pyright-langserver', '--stdio' },
+    filetypes = { 'python' },
+    root_markers = { 'pyrightconfig.json', 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', '.git' },
     capabilities = lsp_capabilities,
-    root_dir = function()
-        return vim.fn.getcwd()
-    end,
+    on_attach = lsp_attach,
     settings = {
         python = {
             pythonPath = "/home/malte/miniconda3/envs/uni/bin/python"
         }
     }
-})
+}
 
--- Globally configure all LSP floating preview popups (like hover, signature help, etc)
+
+vim.lsp.config.r_language_server = {
+    cmd = {
+        "R",
+        "--quiet",
+        "--no-save",
+        "--no-restore",
+        "--slave",
+        "-e",
+        "languageserver::run()"
+    },
+    filetypes = { "r", "rmd", "quarto" },
+    root_markers = { ".Rproj", ".git" },
+    capabilities = lsp_capabilities,
+    on_attach = function(client, bufnr)
+        client.server_capabilities.documentFormattingProvider = true
+        client.server_capabilities.documentRangeFormattingProvider = true
+        lsp_attach(client, bufnr)
+    end,
+}
+
+-- Enable the LSP servers
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('gopls')
+vim.lsp.enable('clangd')
+vim.lsp.enable('r_language_server')
+vim.lsp.enable('pyright')
+
+-- Globally configure all LSP floating preview popups
 local open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     opts = opts or {}
-    opts.border = opts.border or "rounded" -- Set border to rounded
+    opts.border = opts.border or "rounded"
     return open_floating_preview(contents, syntax, opts, ...)
 end
 
+-- Diagnostic configuration
 vim.diagnostic.config({
     virtual_text = {
         severity = {
@@ -117,3 +139,5 @@ vim.diagnostic.config({
         spacing = 2,
     },
 })
+
+

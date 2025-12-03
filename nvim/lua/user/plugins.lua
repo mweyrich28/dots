@@ -218,7 +218,7 @@ return packer.startup(function(use)
 
     -- use { "BenGH28/neo-runner.nvim" }
 
-    use { "jalvesaq/Nvim-R" }
+    use { "R-nvim/R.nvim" }
 
     -- use({
     --     'MeanderingProgrammer/render-markdown.nvim',
