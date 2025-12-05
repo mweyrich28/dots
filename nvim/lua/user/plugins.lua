@@ -108,7 +108,7 @@ return packer.startup(function(use)
     use "rebelot/kanagawa.nvim"
 
     -- Indent lines
-    use { "lukas-reineke/indent-blankline.nvim" }
+    -- use { "lukas-reineke/indent-blankline.nvim" }
 
     -- UI (Nvim-Tree, ToggleTerm, Lualine)
     use { "kyazdani42/nvim-tree.lua" }
@@ -181,6 +181,15 @@ return packer.startup(function(use)
     })
 
 
+    use({
+      "rmagatti/goto-preview",
+      requires = { "rmagatti/logger.nvim" },
+      event = "BufEnter",
+      config = function()
+        require("goto-preview").setup()
+      end,
+    })
+
     -- oil
     use { "stevearc/oil.nvim" }
 
@@ -235,7 +244,7 @@ return packer.startup(function(use)
 
     use { 'folke/flash.nvim' }
 
-    -- use { 'sphamba/smear-cursor.nvim' }
+    use { 'sphamba/smear-cursor.nvim' }
     use { "NStefan002/speedtyper.nvim", }
     
     use {"mweyrich28/taskwarrior.nvim", }

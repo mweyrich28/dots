@@ -50,7 +50,7 @@ end
 
 dashboard.section.buttons.val = {
 
-  button("b", "  > BA", ":e ~/documents/zettelkasten/4_atomic_notes/bachelorarbeit_Timeline.md<CR>" ),
+  -- button("b", "  > BA", ":e ~/documents/zettelkasten/4_atomic_notes/bachelorarbeit_Timeline.md<CR>" ),
   button("d", "  > DaiSyBio", ":e ~/documents/zettelkasten/4_atomic_notes/DaiSyBio_WorkDoc.md<CR>" ),
   button("c", "  > Config", ":e ~/.config/nvim/init.lua<CR> :cd ~/.config/nvim/ <CR>"),
   button("r", "󱈖  > Recent ", ":Telescope oldfiles <CR>"),

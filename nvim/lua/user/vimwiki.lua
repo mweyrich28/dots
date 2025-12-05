@@ -70,16 +70,14 @@ vim.g.vimwiki_list = {
 -- vim.cmd([[hi VimwikiHeader6 guifg=#fe8019]])
 
 vim.cmd([[
-    " highlight RenderMarkdownCodeInline guifg=#f4a685 guibg=#191724
-    " highlight RenderMarkdownCodeInline guifg=#d7827e guibg=#191724
-    " highlight RenderMarkdownChecked guifg=#d7827e
     highlight VimwikiHeader1 guifg=#f4a685
     highlight VimwikiHeader2 guifg=#f4a685
     highlight VimwikiHeader3 guifg=#f4a685
     highlight VimwikiHeader4 guifg=#f4a685
     highlight VimwikiHeader5 guifg=#f4a685
     highlight VimwikiHeader6 guifg=#f4a685
-    highlight VimwikiCode guifg=#d7827e guibg=#191724
+    " highlight VimwikiCode guifg=#d7827e guibg=#191724
+    highlight VimwikiCode guifg=#d7827e
     highlight VimwikiLink gui=underline guifg=#8FBCBB
 ]])
 
