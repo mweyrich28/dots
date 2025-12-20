@@ -38,9 +38,22 @@ vim.lsp.config.lua_ls = {
     on_attach = lsp_attach,
     settings = {
         Lua = {
-            diagnostics = {
-                globals = { 'vim' },
+            runtime = {
+                version = 'LuaJIT',
             },
+            completion = {
+                callSnippet = 'Replace',
+            },
+            diagnostics = {
+                enable = true,
+                globals = { 'vim', 'use' },
+            },
+            workspace = {
+                library = vim.api.nvim_get_runtime_file('', true),
+                maxPreload = 10000,
+                preloadFileSize = 10000,
+            },
+            telemetry = { enable = false },
         },
     },
 }
@@ -139,5 +152,3 @@ vim.diagnostic.config({
         spacing = 2,
     },
 })
-
-

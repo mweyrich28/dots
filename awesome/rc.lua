@@ -587,7 +587,7 @@ gears.timer.delayed_call(update_tags)
 awful.util.spawn_with_shell("pgrep -u $USER -x nm-applet > /dev/null || (nm-applet &)") -- Network Manager
 -- rc.lua
 awful.spawn.with_shell("brave-browser --profile-directory='Default'")
-awful.spawn.with_shell("brave-browser --profile-directory='Profile 1'")
+-- awful.spawn.with_shell("brave-browser --profile-directory='Profile 1'")
 awful.spawn.with_shell("killall polybar; polybar top &")
 -- awful.spawn.with_shell("ghostty -e tmux new-session -s home 'zsh -c \"nvim; exec zsh\"'")
 awful.spawn.with_shell("ghostty -e tmux new-session -s home")

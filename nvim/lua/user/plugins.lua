@@ -54,7 +54,7 @@ return packer.startup(function(use)
     use { 'andersevenrud/cmp-tmux' }
     use { "kdheepak/cmp-latex-symbols" }
     use { 'micangl/cmp-vimtex' }
-  
+
 
     -- Mason LSP
     use {
@@ -105,7 +105,7 @@ return packer.startup(function(use)
         end
     }
 
-    use "rebelot/kanagawa.nvim"
+    -- use "rebelot/kanagawa.nvim"
 
     -- Indent lines
     -- use { "lukas-reineke/indent-blankline.nvim" }
@@ -182,12 +182,12 @@ return packer.startup(function(use)
 
 
     use({
-      "rmagatti/goto-preview",
-      requires = { "rmagatti/logger.nvim" },
-      event = "BufEnter",
-      config = function()
-        require("goto-preview").setup()
-      end,
+        "rmagatti/goto-preview",
+        requires = { "rmagatti/logger.nvim" },
+        event = "BufEnter",
+        config = function()
+            require("goto-preview").setup()
+        end,
     })
 
     -- oil
@@ -227,7 +227,29 @@ return packer.startup(function(use)
 
     -- use { "BenGH28/neo-runner.nvim" }
 
-    use { "R-nvim/R.nvim" }
+    use { "R-nvim/R.nvim", ft = "r" }
+    use({
+        'rpapallas/illustrate.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim',
+        },
+        config = function()
+            require('illustrate').setup({
+                illustration_dir = 'assets/svg',
+            })
+
+            local illustrate = require('illustrate')
+            local illustrate_finder = require('illustrate.finder')
+
+            vim.keymap.set('n', '<leader>is', illustrate.create_and_open_svg)
+            vim.keymap.set('n', '<leader>io', illustrate.open_under_cursor)
+            vim.keymap.set('n', '<leader>if', illustrate_finder.search_and_open)
+            vim.keymap.set('n', '<leader>ic', illustrate_finder.search_create_copy_and_open)
+        end,
+    })
+
+
 
     -- use({
     --     'MeanderingProgrammer/render-markdown.nvim',
@@ -240,14 +262,14 @@ return packer.startup(function(use)
 
     use { 'xiyaowong/transparent.nvim' }
 
-    use { 'Vigemus/iron.nvim' }
+    -- use { 'Vigemus/iron.nvim' }
 
     use { 'folke/flash.nvim' }
 
-    use { 'sphamba/smear-cursor.nvim' }
+    -- use { 'sphamba/smear-cursor.nvim' }
     use { "NStefan002/speedtyper.nvim", }
-    
-    use {"mweyrich28/taskwarrior.nvim", }
+
+    use { "mweyrich28/taskwarrior.nvim", }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

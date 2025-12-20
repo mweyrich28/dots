@@ -51,10 +51,18 @@ end
 dashboard.section.buttons.val = {
 
   -- button("b", "  > BA", ":e ~/documents/zettelkasten/4_atomic_notes/bachelorarbeit_Timeline.md<CR>" ),
-  button("d", "  > DaiSyBio", ":e ~/documents/zettelkasten/4_atomic_notes/DaiSyBio_WorkDoc.md<CR>" ),
   button("c", "  > Config", ":e ~/.config/nvim/init.lua<CR> :cd ~/.config/nvim/ <CR>"),
+  button("d", "  > DaiSyBio", ":e ~/documents/zettelkasten/4_atomic_notes/DaiSyBio_WorkDoc.md<CR>" ),
+  button("f", "󰱼  > Find", ":Telescope find_files<CR>"),
   button("r", "󱈖  > Recent ", ":Telescope oldfiles <CR>"),
   button("s", "  > Snippets", ":e ~/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/tex.snippets <CR> :cd ~/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/ <CR>" ),
+  -- button("t", "  > Tmux", ":terminal ~/.local/bin/scripts/tmux-sessionizer.sh<CR>"),
+  button("t", "  > Tmux", "" ,{
+    callback = function()
+        vim.cmd('terminal ~/.local/bin/scripts/tmux-sessionizer.sh')
+        vim.cmd('startinsert')
+    end
+  }),
   button("q", "  > Quit ", ":qa<CR>"),
 }
 dashboard.section.buttons.opts = {
