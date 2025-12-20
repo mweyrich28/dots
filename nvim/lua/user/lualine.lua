@@ -14,8 +14,8 @@ local colors = {
 require('lualine').setup {
     options = {
         icons_enabled = true,
-        -- theme = 'auto',
-        theme = 'rose-pine',
+        theme = 'auto',
+        -- theme = 'rose-pine',
         -- theme = 'nord',
         -- theme = 'kanagawa',
         -- theme = 'nordic',

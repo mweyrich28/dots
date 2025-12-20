@@ -55,8 +55,8 @@ dashboard.section.buttons.val = {
   button("d", "  > DaiSyBio", ":e ~/documents/zettelkasten/4_atomic_notes/DaiSyBio_WorkDoc.md<CR>" ),
   button("f", "󰱼  > Find", ":Telescope find_files<CR>"),
   button("r", "󱈖  > Recent ", ":Telescope oldfiles <CR>"),
-  button("s", "  > Snippets", ":e ~/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/tex.snippets <CR> :cd ~/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/ <CR>" ),
-  -- button("t", "  > Tmux", ":terminal ~/.local/bin/scripts/tmux-sessionizer.sh<CR>"),
+  -- button("s", "  > Snippets", ":e ~/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/tex.snippets <CR> :cd ~/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/ <CR>" ),
+  button("s", "  > Snippets", ":e ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/tex.snippets <CR> :cd ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/ <CR>" ),
   button("t", "  > Tmux", "" ,{
     callback = function()
         vim.cmd('terminal ~/.local/bin/scripts/tmux-sessionizer.sh')

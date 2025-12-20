@@ -1,46 +1,30 @@
-require 'user.telescope'
--- require 'user.iron'
-require 'user.todo'
-require 'user.impatient'
-require 'user.options'
-require 'user.plugins'
-require 'user.cmp'
-require 'user.autopairs'
-require 'user.comment'
-require 'user.alpha'
-require 'user.autocommands'
-require 'user.gitsigns'
-require 'user.nvim_dap'
-require 'user.nvim_dap_ui'
-require 'user.mason_tools'
-require 'user.lsp'
-require 'user.lint'
-require 'user.devcons'
-require 'user.markdownprev'
-require 'user.toggleterm'
-require 'user.harpoon'
-require 'user.nvim-tree'
-require 'user.treesitter'
-require 'user.oil'
-require 'user.keymaps'
-require 'user.undotree'
-require 'user.vimwiki_utils'
-require 'user.ultisnips'
-require "user.lint"
-require 'user.colorscheme'
--- require 'user.smear'
-require 'user.transparent'
-require 'user.lualine'
-require 'user.flash'
-require 'user.zen'
-require 'user.firenvim'
-require 'user.vimtex'
-require 'user.vimwiki'
-require 'user.taskwarrior'
-require('user.goto_preview')
+vim.g.vimwiki_conceallevel = 2
+vim.g.vimwiki_conceal_pre = 1
+vim.g.vimwiki_hl_cb_checked = 2
 
--- require 'user.render_markdown'
--- require 'user.colorizer'
--- require 'user.nordic'
--- require 'user.copilot'
--- require 'user.indentline'
+vim.g.vimwiki_auto_chdir = 1
+vim.g.vimwiki_key_mappings = { headers=0 }
+
+vim.g.vimwiki_list = {
+    {
+        path = '~/documents/zettelkasten/',
+        syntax = 'markdown',
+        ext = '.md',
+        index = 'README'
+    },
+    {
+        path = '~/documents/project_wiki/',
+        syntax = 'markdown',
+        ext = '.md',
+        index = 'README'
+    },
+    {
+        path = '/home/malte/.local/share/nvim/site/pack/packer/start/vimwiki_utils/',
+        syntax = 'markdown',
+        ext = '.md',
+        index = 'README'
+    }
+}
+
+require 'user.config.lazy'
+require 'user.colorscheme'
