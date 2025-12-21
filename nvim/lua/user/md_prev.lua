@@ -1,1 +1,0 @@
-require('livepreview.config').set()

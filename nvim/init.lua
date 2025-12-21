@@ -18,13 +18,7 @@ vim.g.vimwiki_list = {
         ext = '.md',
         index = 'README'
     },
-    {
-        path = '/home/malte/.local/share/nvim/site/pack/packer/start/vimwiki_utils/',
-        syntax = 'markdown',
-        ext = '.md',
-        index = 'README'
-    }
 }
 
-require 'user.config.lazy'
-require 'user.colorscheme'
+require 'malte.core.lazy'
+require 'malte.editor.colorscheme'
