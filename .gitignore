@@ -6,7 +6,10 @@
 
 !nvim/
 !nvim/lua
-!nvim/lua/user
+!nvim/lua/malte
+!nvim/lua/malte/core
+!nvim/lua/malte/editor
+!nvim/lua/malte/plugins
 
 
 !picom/
