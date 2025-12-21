@@ -26,14 +26,27 @@
 !tmux/
 !tmux/tmux/
 
+
+
 .gsd-keyboard.settings-ported
+GNOME-xdg-terminals.list
 QtProject.conf
 gnome-initial-setup-done
+kactivitymanagerdrc
+kdeglobals
+kdenlive-layoutsrc
+kdenliverc
 kglobalshortcutsrc
 mimeapps.list
 monitors.xml
 monitors.xml~
+okularpartrc
+okularrc
+test_nvim.lua
+ubuntu-xdg-terminals.list
 user-dirs.dirs
 user-dirs.locale
+xdg-terminals.list
 zoom.conf
 zoomus.conf
+
