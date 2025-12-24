@@ -1,4 +1,5 @@
 return {
+    priority = 7,
     "stevearc/oil.nvim",
     config = function()
         require("oil").setup({

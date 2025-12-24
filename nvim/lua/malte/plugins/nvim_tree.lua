@@ -1,4 +1,5 @@
 return {
+    priority = 8,
     "kyazdani42/nvim-tree.lua",
     config = function()
         -- disable netrw at the very start of your init.lua (strongly advised)

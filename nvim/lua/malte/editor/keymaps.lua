@@ -64,8 +64,8 @@ keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.treesitter()<cr>"
 keymap("n", "<leader>pb", "<cmd>Telescope buffers<cr>", opts)
 
 -- Comment
-keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
-keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)
+-- keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
+-- keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)
 
 vim.keymap.set("n", "<leader>pp", vim.cmd.NvimTreeToggle)
 

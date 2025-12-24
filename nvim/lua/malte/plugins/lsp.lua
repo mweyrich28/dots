@@ -1,4 +1,5 @@
 return {
+    priority = 12,
     "neovim/nvim-lspconfig",
     dependencies = {
 

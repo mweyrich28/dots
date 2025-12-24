@@ -1,5 +1,6 @@
 return {
     'xiyaowong/transparent.nvim',
+    priority = 2,
 
     config = function()
         -- Optional, you don't have to run setup.

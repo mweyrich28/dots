@@ -1,4 +1,5 @@
 return {
+    lazy = false,
     "nvim-telescope/telescope.nvim",
     dependencies = {
         'dhruvmanila/browser-bookmarks.nvim',
