@@ -14,7 +14,6 @@ return {
     "ibhagwan/fzf-lua",
     "NStefan002/speedtyper.nvim",
     "christoomey/vim-tmux-navigator",
-    "honza/vim-snippets",
     "quangnguyen30192/cmp-nvim-ultisnips",
     "AlexvZyl/nordic.nvim",
     "catppuccin/nvim",
