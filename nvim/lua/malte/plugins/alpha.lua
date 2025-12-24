@@ -1,5 +1,4 @@
 return {
-    priority = 900,
     "goolord/alpha-nvim",
 
     config = function()

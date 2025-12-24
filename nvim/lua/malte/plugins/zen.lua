@@ -1,5 +1,4 @@
 return {
-    priority = 10,
     "folke/zen-mode.nvim",
     config = function()
         require("zen-mode").setup({

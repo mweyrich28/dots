@@ -1,6 +1,5 @@
 return {
     "SirVer/ultisnips",
-    priority = 4,
     init = function()
         vim.g.UltiSnipsJumpForwardTrigger = '<tab>'
         vim.g.UltiSnipsJumpBackwardTrigger = '<s-tab>'

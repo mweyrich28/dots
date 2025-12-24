@@ -1,5 +1,4 @@
 return {
-    priority = 11,
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown", "vimwiki" },

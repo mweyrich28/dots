@@ -1,5 +1,4 @@
 return {
-    priority = 8,
     'nvim-treesitter/nvim-treesitter',
     lazy = false,
     build = ":TSUpdate",

@@ -1,5 +1,4 @@
 return {
-    priority = 9,
     "akinsho/toggleterm.nvim",
 
     init = function()

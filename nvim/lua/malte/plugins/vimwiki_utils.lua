@@ -1,5 +1,4 @@
 return {
-    priority = 5,
     'mweyrich28/vimwiki_utils',
     dependencies = {
         'nvim-telescope/telescope.nvim',
