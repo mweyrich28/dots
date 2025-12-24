@@ -50,3 +50,5 @@ xdg-terminals.list
 zoom.conf
 zoomus.conf
 
+!ghostty/ 
+!ghostty/*

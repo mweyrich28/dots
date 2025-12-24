@@ -1,0 +1,32 @@
+# font and theme
+# font-family=JetBrainsMono Nerd Font Mono
+# font-family=Iosevka Nerd Font Mono
+font-size=15
+theme=rose-pine
+# font-feature=-calt
+# theme=catppuccin-macchiato
+background-opacity=0.7
+
+# config 
+confirm-close-surface=false
+shell-integration-features=no-cursor
+window-decoration=none
+
+# keymaps
+keybind=clear
+keybind=ctrl+shift+c=copy_to_clipboard
+keybind=ctrl+shift+v=paste_from_clipboard
+keybind=ctrl+plus=increase_font_size:1
+keybind=ctrl+minus=decrease_font_size:1
+
+# cursor
+cursor-style=block
+cursor-style-blink=false
+
+# tmux copy 
+copy-on-select = false
+# doesn't currently work as of ghostty v1.0.1:
+#keybind = unconsumed:ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+c=unbind
+selection-invert-fg-bg = true
+shell-integration-features = no-cursor
