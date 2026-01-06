@@ -5,7 +5,7 @@ font-size=15
 theme=rose-pine
 # font-feature=-calt
 # theme=catppuccin-macchiato
-background-opacity=0.7
+# background-opacity=0.7
 
 # config 
 confirm-close-surface=false

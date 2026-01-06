@@ -21,11 +21,11 @@ return {
         require('lualine').setup {
             options = {
                 icons_enabled = true,
-                theme = 'auto',
+                -- theme = 'auto',
                 -- theme = 'rose-pine',
                 -- theme = 'nord',
                 -- theme = 'kanagawa',
-                -- theme = 'nordic',
+                theme = 'nordic',
                 -- theme = 'catppuccin',
                 component_separators = { left = '', right = '' },
                 section_separators = { left = '', right = '' },

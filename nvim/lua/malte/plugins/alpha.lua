@@ -61,7 +61,7 @@ return {
             button("r", "󱈖  > Recent ", ":Telescope oldfiles <CR>"),
             -- button("s", "  > Snippets", ":e ~/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/tex.snippets <CR> :cd ~/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/ <CR>" ),
             button("s", "  > Snippets",
-                ":e ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/tex.snippets <CR> :cd ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/ <CR>"),
+                ":e ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/vimwiki.snippets<CR> :cd ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/ <CR>"),
             button("t", "  > Tmux", "", {
                 callback = function()
                     vim.cmd('terminal ~/.local/bin/scripts/tmux-sessionizer.sh')
