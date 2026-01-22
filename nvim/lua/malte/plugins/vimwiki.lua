@@ -11,7 +11,7 @@ return {
                 ext = '.md',
             },
             {
-                path = '~/documents/project_wiki/',
+                path = '~/documents/personal_wiki/',
                 syntax = 'markdown',
                 ext = '.md',
                 index = 'README'

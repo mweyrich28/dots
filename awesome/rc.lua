@@ -277,12 +277,12 @@ globalkeys = gears.table.join(
 
     -- Rofi
     awful.key({ modkey }, "w", function()
-            awful.util.spawn("rofi -show window -show-icons")
+            awful.util.spawn("rofi -show window -show-icons -matching fuzzy")
         end,
         { description = "show all windows", group = "malte" }),
 
     awful.key({ modkey }, "p", function()
-        awful.util.spawn("rofi -show drun -disable-history -sort -show-icons")
+        awful.util.spawn("rofi -show drun -disable-history -sort -show-icons -matching fuzzy")
         -- awful.util.spawn("/home/malte/.config/_polybar/blocks/scripts/launcher.sh")
     end),
 

@@ -26,6 +26,7 @@ end
 
 
 -- vimwiki colors
+-- #d78787
 vim.cmd([[
     highlight VimwikiHeader1 guifg=#f4a685
     highlight VimwikiHeader2 guifg=#f4a685

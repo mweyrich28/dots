@@ -28,7 +28,7 @@ if echo "$monitors" | grep -qw "eDP"; then
 fi
 
 if echo "$monitors" | grep -qw "DisplayPort-1"; then
-    MONITOR="DisplayPort-1" polybar --reload --quiet top -c ~/.config/polybar/config_external.ini &
+    MONITOR="DisplayPort-1" polybar --reload --quiet top -c ~/.config/polybar/config_external_dp.ini &
     sleep 0.5
 fi
 

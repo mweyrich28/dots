@@ -68,6 +68,24 @@ return {
                     vim.cmd('startinsert')
                 end
             }),
+            button("b", "󱘿  > Backup", "",  {
+                callback = function()
+                        local buf = vim.api.nvim_create_buf(false, true)
+                        local win = vim.api.nvim_open_win(buf, true, {
+                            relative = 'editor',
+                            width = math.floor(vim.o.columns * 0.8),
+                            height = math.floor(vim.o.lines * 0.8),
+                            row = math.floor(vim.o.lines * 0.1),
+                            col = math.floor(vim.o.columns * 0.1),
+                            border = 'rounded',
+                            title = ' Backup Progress ',
+                            title_pos = 'center'
+                        })
+                    vim.cmd('terminal ~/.local/bin/scripts/atomic_backup.sh')
+                    vim.cmd('startinsert')
+                end
+                 }
+             ),
             button("q", "  > Quit ", ":qa<CR>"),
         }
         dashboard.section.buttons.opts = {
