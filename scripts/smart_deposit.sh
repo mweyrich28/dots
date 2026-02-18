@@ -1,29 +1,11 @@
 #!/usr/bin/sh
 
-# parse service and prefix
-while [ $# -gt 0 ]; do
-  case "$1" in
-    --service)
-      SERVICE="$2"
-      shift 2
-      ;;
-    --prefix)
-      PREFIX="$2"
-      shift 2
-      ;;
-    --)
-      shift
-      break
-      ;;
-    -*)
-      echo "Unknown option: $1"
-      exit 1
-      ;;
-    *)
-      break
-      ;;
-  esac
-done
+# select files
+mapfile -t FILESTOUPLOAD < <(fzf -m --bind 'tab:toggle+down,shift-tab:toggle+up' --preview 'echo "Files to upload:"; echo; nl -w2 -s". " {+f}')
+
+
+SERVICE=$1
+PREFIX=$2
 
 if [ -z "$SERVICE" ]; then
   echo "--service is required"
@@ -47,7 +29,9 @@ while :; do
 
   REMOTE_DEST="$SERVICE:${PREFIX%/}/${DEST#/}"
   echo "Uploading files:"
-  echo "$@" | sed "s/ /\n- /g" | sed "s/^\S/- /"
+  for file in "${FILESTOUPLOAD[@]}"; do
+     echo "- $file"
+  done
   echo
   echo "To destination:"
   echo "$REMOTE_DEST"
@@ -67,9 +51,6 @@ while :; do
   esac
 done
 
-
-
-for file in "$@"; do
+for file in "${FILESTOUPLOAD[@]}"; do
     rclone copy "$file" "$REMOTE_DEST" --checksum --update --progress
 done
-
