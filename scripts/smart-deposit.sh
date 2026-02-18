@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/bin/bash
 
 # select files
 mapfile -t FILESTOUPLOAD < <(fzf -m --bind 'tab:toggle+down,shift-tab:toggle+up' --preview 'echo "Files to upload:"; echo; nl -w2 -s". " {+f}')
