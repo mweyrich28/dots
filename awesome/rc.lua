@@ -15,7 +15,6 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
-
 -- Load Debian menu entries
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
@@ -285,6 +284,9 @@ globalkeys = gears.table.join(
         awful.util.spawn("rofi -show drun -disable-history -sort -show-icons -matching fuzzy")
         -- awful.util.spawn("/home/malte/.config/_polybar/blocks/scripts/launcher.sh")
     end),
+    awful.key({ modkey }, "r", function()
+        awful.spawn("/home/malte/.config/scripts/rofi_recent_files.sh")
+    end, {description = "open recent files", group = "launcher"}),
 
     awful.key({ modkey }, "v", function()
             awful.spawn("/home/malte/.config/scripts/vim_anywhere.sh")
@@ -293,7 +295,7 @@ globalkeys = gears.table.join(
 
     -- screenshot
     awful.key({ modkey }, "i", function()
-            awful.spawn("/home/malte/.config/scripts/screenshot.sh")
+        awful.spawn("flameshot gui -p /home/malte/pictures/Screenshots/ -c")
         end,
         { description = "Simple screenshot script", group = "malte" })
 
@@ -514,11 +516,12 @@ client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", { raise = false })
 end)
 
--- Border color and width
+-- Border color and width 
 client.connect_signal("focus", function(c) c.border_color = "#d78787" end)
+-- client.connect_signal("focus", function(c) c.border_color = "#eb6f92" end)
 client.connect_signal("focus", function(c) c.border_width = 1 end)
-client.connect_signal("unfocus", function(c) c.border_color = '#888888' end)
-client.connect_signal("unfocus", function(c) c.border_width = 0 end)
+client.connect_signal("unfocus", function(c) c.border_color = "#1f1d2e" end)
+client.connect_signal("unfocus", function(c) c.border_width = 1 end)
 
 
 -- box indicator

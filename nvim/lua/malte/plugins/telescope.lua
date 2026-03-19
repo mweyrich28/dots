@@ -14,10 +14,9 @@ return {
         local actions = require "telescope.actions"
         require('telescope').load_extension('bookmarks')
 
-
         telescope.setup {
             defaults = {
-                file_ignore_patterns = { "%.png", "%.jpg", "%.jpeg", "%.JPG", "%.sample", "%.git", "%[^.]+$", "%.pdf", "%.gif" },
+                file_ignore_patterns = { "%.png", "%.jpg", "%.jpeg", "%.JPG", "%.pdf", "%.git",'target/', 'Cargo.lock', '%.d', '%.rlib', "%.gif", "%.mp4" },
                 prompt_prefix = "> ",
                 selection_caret = "> ",
                 path_display = { "short" },
@@ -74,9 +73,9 @@ return {
             },
             pickers = {
                 buffers = {
-                    sort_lastused = true, -- This enables the stack-like sorting for buffers
+                    sort_lastused = true,         -- This enables the stack-like sorting for buffers
                     ignore_current_buffer = true, -- Optional, don't show the current buffer in the list
-                    sort_mru = true,      -- Most Recently Used first (stack-like behavior)
+                    sort_mru = true,              -- Most Recently Used first (stack-like behavior)
                 }
             }
         }

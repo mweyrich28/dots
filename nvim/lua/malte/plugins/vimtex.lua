@@ -15,9 +15,11 @@ return {
         vim.g.vimtex_compiler_latexmk_engines = { _ = '-pdf' }
         vim.g.vimtex_compiler_latexmk = {
             options = {
-                '-pdf',
-                '-interaction=nonstopmode',
-                '-synctex=1'
+                "-pdf",
+                "-verbose",
+                "-file-line-error",
+                "-synctex=1",
+                "-interaction=nonstopmode",
             },
             continuous = 1
         }
