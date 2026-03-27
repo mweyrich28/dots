@@ -1,24 +1,27 @@
-#!/usr/bin/sh
+#!/usr/bin/bash
 TMP_DEPOSIT="/tmp/tmp_downloads/"
 PREF="onedrive:"
 if [[ ! -d "$TMP_DEPOSIT" ]]; then
     mkdir "$TMP_DEPOSIT"
 fi
 
-mapfile -t FILESTODOWNLOAD < <(rclone lsf -R $PREF --files-only \
---exclude "01_Dokumente/02_Notes/**" \
---exclude "01_Dokumente/04_Passwords/**" \
---exclude "01_Dokumente/03_Bildung/02_Schule/**" \
---exclude "03_GoodNotes/**" \
---exclude "02_QuickAccess/**" \
---exclude "04_Bilder/**" \
---exclude "Persönlicher Tresor/**" \
---exclude ".xdg-volume-info" \
---exclude ".Trash**" \
+# mapfile -t FILESTODOWNLOAD < <(rclone lsf -R $PREF --files-only \
+# --exclude "01_Dokumente/02_Notes/**" \
+# --exclude "01_Dokumente/04_Passwords/**" \
+# --exclude "01_Dokumente/03_Bildung/02_Schule/**" \
+# --exclude "03_GoodNotes/**" \
+# --exclude "02_QuickAccess/**" \
+# --exclude "04_Bilder/**" \
+# --exclude "Persönlicher Tresor/**" \
+# --exclude ".xdg-volume-info" \
+# --exclude ".Trash**" \
+# | fzf -m --bind 'tab:toggle+down,shift-tab:toggle+up' --preview 'echo "Files to download:"; echo; nl -w2 -s". " {+f}')
+
+mapfile -t FILESTODOWNLOAD < <(cat ~/.custom_cache/onedrive_cache.txt \
 | fzf -m --bind 'tab:toggle+down,shift-tab:toggle+up' --preview 'echo "Files to download:"; echo; nl -w2 -s". " {+f}')
 
 for file in "${FILESTODOWNLOAD[@]}"; do
-    rclone copy "$PREF$file" "$TMP_DEPOSIT"
+    rclone copy "$PREF$file" "$TMP_DEPOSIT" --progress
 done
 
 if [[ ${FILESTODOWNLOAD[@]} ]]; then

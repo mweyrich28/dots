@@ -2,17 +2,19 @@ pcall(require, "luarocks.loader")
 require("awful.autofocus")
 require("collision")()
 
-local keyboard_layout = require("keyboard_layout")
-local gears = require("gears")
 local awful = require("awful")
-package.loaded["naughty.dbus"] = {}
-
-
+local gears = require("gears")
+local keyboard_layout = require("keyboard_layout")
+local naughty = require("naughty")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+
+
+package.loaded["naughty.dbus"] = {}
+
 require("awful.hotkeys_popup.keys")
 
 -- Load Debian menu entries
@@ -496,7 +498,6 @@ awful.rules.rules = {
 }
 -- }}}
 
--- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function(c)
     -- Set the windows at the slave,
@@ -523,70 +524,6 @@ client.connect_signal("focus", function(c) c.border_width = 1 end)
 client.connect_signal("unfocus", function(c) c.border_color = "#1f1d2e" end)
 client.connect_signal("unfocus", function(c) c.border_width = 1 end)
 
-
--- box indicator
--- client.connect_signal("manage", function(c)
---     local indicator = wibox({
---         width = 10,
---         height = 10,
---         ontop = true,
---         visible = false,
---         bg = "#d7827e",
---         type = "utility",
---     })
---     c.focus_indicator = indicator
---     
---     local function update_position()
---         if not indicator.visible or not c.valid then return end
---         local g = c:geometry()
---         indicator.x = g.x
---         indicator.y = g.y
---     end
---     
---     c:connect_signal("property::geometry", update_position)
---     c:connect_signal("request::geometry", update_position)
---     
---     c:connect_signal("focus", function()
---         indicator.visible = true
---         update_position()
---     end)
---     
---     c:connect_signal("unfocus", function()
---         indicator.visible = false
---     end)
---     
---     if client.focus == c then
---         indicator.visible = true
---         update_position()
---     end
--- end)
---
-local function update_tags()
-    local taglist = ""
-    local screen = awful.screen.focused()
-
-    for _, t in ipairs(screen.tags) do
-        if t.selected then
-            taglist = taglist .. "%{F#CB775D}" .. t.name .. "%{F-} " -- Highlight active tag
-        elseif #t:clients() > 0 then
-            taglist = taglist .. "%{F#FFFFFF}" .. t.name .. "%{F-} " -- Highlight tags with windows
-        else
-            taglist = taglist .. "%{F#666666}" .. t.name .. "%{F-} " -- Inactive tags
-        end
-    end
-
-    -- Send the taglist string to Polybar via a pipe
-    awful.spawn.easy_async_with_shell("echo '" .. taglist .. "' > /tmp/polybar-tags", function() end)
-end
-
--- Connect the update function to the tag signals
-awful.tag.attached_connect_signal(nil, "property::selected", update_tags)
-awful.tag.attached_connect_signal(nil, "property::layout", update_tags)
-awful.tag.attached_connect_signal(nil, "property::urgent", update_tags)
-
--- Initial update when Awesome starts
-gears.timer.delayed_call(update_tags)
-
 -- AUTOSTART
 awful.util.spawn_with_shell("pgrep -u $USER -x nm-applet > /dev/null || (nm-applet &)") -- Network Manager
 -- rc.lua
@@ -598,3 +535,50 @@ awful.spawn.with_shell("ghostty -e tmux new-session -s home")
 awful.spawn.with_shell("picom -b")
 awful.spawn.with_shell("/home/malte/.config/polybar/launch.sh")
 awful.spawn.with_shell("sleep 1 && ~/.config/awesome/scripts/random_wall.sh")
+awful.spawn.with_shell("/home/malte/.config/scripts/sync_onedrive_cache.sh") -- call script to update onedrive cache txt file containing paths
+
+
+
+-- Battery low notification
+local battery_warned = false
+
+gears.timer {
+    timeout   = 60, -- check every 60 seconds
+    call_now  = true,
+    autostart = true,
+    callback  = function()
+        local f = io.open("/sys/class/power_supply/BAT0/capacity", "r")
+        if not f then return end
+        local capacity = tonumber(f:read("*l"))
+        f:close()
+
+        local f2 = io.open("/sys/class/power_supply/BAT0/status", "r")
+        if not f2 then return end
+        local status = f2:read("*l")
+        f2:close()
+
+        if capacity <= 10  and not battery_warned then
+            battery_warned = true
+            naughty.notify({
+                -- title   = " Battery Low",
+                -- text    = "Battery at " .. capacity .. "%!",
+                urgency = "critical",
+                timeout = 0,
+                position = "top_middle",
+                width    = 400,
+                height   = 400,
+                margin   = 20,
+                icon = "/home/malte/pictures/Gru-Pointing-Gun-meme-6.jpg",
+                icon_size = 400,
+                border_width = 3,
+                border_color = "#ff5555",
+                bg       = "#1e1e2e",
+                fg       = "#ffffff",
+            })
+        end
+
+        if status == "Charging" and battery_warned == true then
+            battery_warned = false
+        end
+    end,
+}
