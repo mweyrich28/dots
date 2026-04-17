@@ -51,6 +51,7 @@ while :; do
   esac
 done
 
+rclone mkdir "$REMOTE_DEST"
 for file in "${FILESTOUPLOAD[@]}"; do
-    rclone copy "$file" "$REMOTE_DEST" --checksum --update --progress
+    rclone copy "$file" "$REMOTE_DEST" --checksum --update &
 done
