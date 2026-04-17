@@ -9,8 +9,8 @@ function ColorMyPencils(color)
     color = color or "rose-pine"
     vim.cmd.colorscheme(color)
 
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
 ColorMyPencils()
@@ -27,15 +27,34 @@ end
 
 
 -- vimwiki colors
+-- header
 -- #d78787
+-- #f4a685
+-- #FFAF87
+--
+--link
+--#8FBCBB
+--
+--code
+--#DE9979
+--#FFAFAF
+--#d7827e
 vim.cmd([[
-    highlight VimwikiHeader1 guifg=#f4a685
-    highlight VimwikiHeader2 guifg=#f4a685
-    highlight VimwikiHeader3 guifg=#f4a685
-    highlight VimwikiHeader4 guifg=#f4a685
-    highlight VimwikiHeader5 guifg=#f4a685
-    highlight VimwikiHeader6 guifg=#f4a685
-    " highlight VimwikiCode guifg=#d7827e guibg=#191724
-    highlight VimwikiCode guifg=#d7827e
-    highlight VimwikiLink gui=underline guifg=#8FBCBB
+    highlight VimwikiHeader1 guifg=#FFAF87
+    highlight VimwikiHeader2 guifg=#FFAF87
+    highlight VimwikiHeader3 guifg=#FFAF87
+    highlight VimwikiHeader4 guifg=#FFAF87
+    highlight VimwikiHeader5 guifg=#FFAF87
+    highlight VimwikiHeader6 guifg=#FFAF87
+    highlight VimwikiCode guifg=#FFAFAF
+    highlight VimwikiLink gui=underline guifg=#5C8283
 ]])
+
+
+-- Make Telescope match your theme
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+
+-- Telescope-specific (stronger override)
+vim.api.nvim_set_hl(0, "TelescopeNormal", { link = "NormalFloat" })
+vim.api.nvim_set_hl(0, "TelescopeBorder", { link = "FloatBorder" })

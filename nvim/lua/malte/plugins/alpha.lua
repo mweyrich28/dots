@@ -64,7 +64,7 @@ return {
                 ":e ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/vimwiki.snippets<CR> :cd ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/ <CR>"),
             button("t", "  > Tmux", "", {
                 callback = function()
-                    vim.cmd('terminal ~/.local/bin/scripts/tmux-sessionizer.sh')
+                    vim.cmd('terminal ~/.config/scripts/tmux-sessionizer.sh')
                     vim.cmd('startinsert')
                 end
             }),
@@ -81,7 +81,7 @@ return {
                             title = ' Backup Progress ',
                             title_pos = 'center'
                         })
-                    vim.cmd('terminal ~/.local/bin/scripts/atomic_backup.sh')
+                    vim.cmd('terminal ~/.config/scripts/atomic_backup.sh')
                     vim.cmd('startinsert')
                 end
                  }
@@ -96,7 +96,8 @@ return {
         local function footer()
             -- local time = os.date("%H:%M")
             -- local plugins = vim.fn.len(vim.fn.globpath("~/.local/share/nvim/site/pack/packer/start", "*", 0, 1))
-            local worktime = vim.fn.system("/home/malte/.local/bin/scripts/worktime.sh")
+            local currdate = os.date("%Y-%m")
+            local worktime = vim.fn.system("/home/malte/.config/scripts/worktime.sh " .. currdate)
 
             -- return plugins .. " plugins | ".. time .. "\n" .. worktime
             return worktime
