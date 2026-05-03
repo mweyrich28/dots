@@ -184,8 +184,6 @@ globalkeys = gears.table.join(
         { description = "focus the next screen", group = "screen" }),
     awful.key({ modkey, "Control" }, "k", function() awful.screen.focus_relative(-1) end,
         { description = "focus the previous screen", group = "screen" }),
-    awful.key({ modkey, }, "u", awful.client.urgent.jumpto,
-        { description = "jump to urgent client", group = "client" }),
     awful.key({ modkey, }, "Tab",
         function()
             awful.client.focus.history.previous()
@@ -352,12 +350,14 @@ clientkeys = gears.table.join(
             c:raise()
         end,
         { description = "(un)maximize vertically", group = "client" }),
+
     awful.key({ modkey, "Shift" }, "m",
         function(c)
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end,
         { description = "(un)maximize horizontally", group = "client" })
+
 )
 
 -- Bind all key numbers to tags.

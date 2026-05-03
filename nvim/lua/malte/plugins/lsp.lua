@@ -87,50 +87,33 @@ return {
             },
         }
 
-        -- C++ LSP
-        -- vim.lsp.config.clangd = {
-        --     cmd = { 'clangd' },
-        --     filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
-        --     root_markers = { '.clangd', '.clang-tidy', '.clang-format', 'compile_commands.json', 'compile_flags.txt', 'configure.ac', '.git' },
-        --     capabilities = lsp_capabilities,
-        --     on_attach = function(client, buffer)
-        --         client.server_capabilities.signatureHelpProvider = false
-        --         lsp_attach(client, buffer)
-        --     end,
-        -- }
-
         -- Python LSP
-        -- vim.lsp.config.pyright = {
-        --     cmd = { 'pyright-langserver', '--stdio' },
+        vim.lsp.config.pyright = {
+            cmd = { 'pyright-langserver', '--stdio' },
+            filetypes = { 'python' },
+            root_markers = { 'pyrightconfig.json', 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', '.git' },
+            capabilities = lsp_capabilities,
+            on_attach = lsp_attach,
+        }
+        -- vim.lsp.config.pylsp = {
+        --     cmd = { 'pylsp' },
         --     filetypes = { 'python' },
-        --     root_markers = { 'pyrightconfig.json', 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', '.git' },
+        --     root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', '.git' },
         --     capabilities = lsp_capabilities,
         --     on_attach = lsp_attach,
         --     settings = {
-        --         python = {
-        --             pythonPath = "/home/malte/miniconda3/envs/uni/bin/python"
+        --         pylsp = {
+        --             plugins = {
+        --                 pycodestyle = { enabled = false },
+        --                 mccabe = { enabled = false },
+        --                 pyflakes = { enabled = false },
+        --                 -- Enable better plugins:
+        --                 pylsp_mypy = { enabled = true },
+        --                 ruff = { enabled = true }, -- if installed
+        --             }
         --         }
         --     }
         -- }
-        vim.lsp.config.pylsp = {
-            cmd = { 'pylsp' },
-            filetypes = { 'python' },
-            root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', '.git' },
-            capabilities = lsp_capabilities,
-            on_attach = lsp_attach,
-            settings = {
-                pylsp = {
-                    plugins = {
-                        pycodestyle = { enabled = false },
-                        mccabe = { enabled = false },
-                        pyflakes = { enabled = false },
-                        -- Enable better plugins:
-                        pylsp_mypy = { enabled = true },
-                        ruff = { enabled = true }, -- if installed
-                    }
-                }
-            }
-        }
 
 
         vim.lsp.config.r_language_server = {
@@ -174,10 +157,8 @@ return {
         -- Enable the LSP servers
         vim.lsp.enable('lua_ls')
         vim.lsp.enable('gopls')
-        -- vim.lsp.enable('clangd')
         vim.lsp.enable('r_language_server')
-        -- vim.lsp.enable('pyright')
-        vim.lsp.enable('pylsp')
+        vim.lsp.enable('pyright')
         vim.lsp.enable('rust_analyzer')
 
         -- Globally configure all LSP floating preview popups

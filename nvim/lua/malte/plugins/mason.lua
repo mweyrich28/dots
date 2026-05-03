@@ -18,7 +18,6 @@ return {
                 'debugpy',
                 'flake8',
                 'isort',
-                'pylint'
             },
             auto_update = false,
             run_on_start = true,

@@ -7,15 +7,15 @@ return {
 
         dashboard.section.header.val = {
 
-            "neovim"
+            -- "neovim"
 
-            -- [[                               __                ]],
-            -- [[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
-            -- [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
-            -- [[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
-            -- [[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
-            -- [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
-            -- [[                                                 ]],
+            [[                               __                ]],
+            [[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
+            [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
+            [[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
+            [[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
+            [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
+            [[                                                 ]],
             -- [[                                                                       ]],
             -- [[  ██████   █████                   █████   █████  ███                  ]],
             -- [[ ░░██████ ░░███                   ░░███   ░░███  ░░░                   ]],
@@ -55,19 +55,6 @@ return {
         dashboard.section.buttons.val = {
 
             -- button("b", "  > BA", ":e ~/documents/zettelkasten/4_atomic_notes/bachelorarbeit_Timeline.md<CR>" ),
-            button("c", "  > Config", ":e ~/.config/nvim/init.lua<CR> :cd ~/.config/nvim/ <CR>"),
-            button("d", "  > DaiSyBio", ":e ~/documents/zettelkasten/4_atomic_notes/DaiSyBio_WorkDoc.md<CR>"),
-            button("f", "󰱼  > Find", ":Telescope find_files<CR>"),
-            button("r", "󱈖  > Recent ", ":Telescope oldfiles <CR>"),
-            -- button("s", "  > Snippets", ":e ~/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/tex.snippets <CR> :cd ~/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/ <CR>" ),
-            button("s", "  > Snippets",
-                ":e ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/vimwiki.snippets<CR> :cd ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/ <CR>"),
-            button("t", "  > Tmux", "", {
-                callback = function()
-                    vim.cmd('terminal ~/.config/scripts/tmux-sessionizer.sh')
-                    vim.cmd('startinsert')
-                end
-            }),
             button("b", "󱘿  > Backup", "",  {
                 callback = function()
                         local buf = vim.api.nvim_create_buf(false, true)
@@ -86,6 +73,18 @@ return {
                 end
                  }
              ),
+            button("c", "  > Config", ":e ~/.config/nvim/init.lua<CR> :cd ~/.config/nvim/ <CR>"),
+            button("d", "  > DaiSyBio", ":e ~/documents/zettelkasten/4_atomic_notes/DaiSyBio_WorkDoc.md<CR>"),
+            button("f", "󱁉 > FoPra", ":e ~/documents/personal_wiki/4_atomic_notes/FoPra_Timeline.md<CR>"),
+            button("r", "󱈖  > Recent ", ":Telescope oldfiles <CR>"),
+            button("s", "  > Snippets",
+                ":e ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/vimwiki.snippets<CR> :cd ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/ <CR>"),
+            button("t", "  > Tmux", "", {
+                callback = function()
+                    vim.cmd('terminal ~/.config/scripts/tmux-sessionizer.sh')
+                    vim.cmd('startinsert')
+                end
+            }),
             button("q", "  > Quit ", ":qa<CR>"),
         }
         dashboard.section.buttons.opts = {
