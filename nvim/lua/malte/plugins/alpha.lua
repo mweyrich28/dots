@@ -95,8 +95,7 @@ return {
         local function footer()
             -- local time = os.date("%H:%M")
             -- local plugins = vim.fn.len(vim.fn.globpath("~/.local/share/nvim/site/pack/packer/start", "*", 0, 1))
-            local currdate = os.date("%Y-%m")
-            local worktime = vim.fn.system("/home/malte/.config/scripts/worktime.sh " .. currdate)
+            local worktime = vim.fn.system("/home/malte/.config/scripts/worktime.sh")
 
             -- return plugins .. " plugins | ".. time .. "\n" .. worktime
             return worktime

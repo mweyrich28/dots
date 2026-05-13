@@ -1,8 +1,7 @@
 return {
     'nvim-treesitter/nvim-treesitter',
-    lazy = false,
-    build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
+    build = ":TSUpdate",
     config = function()
         require 'nvim-treesitter'.setup {
             ensure_installed = { "lua", "vim", "vimdoc", "query", "python", "cpp" },
@@ -21,3 +20,4 @@ return {
         }
     end,
 }
+

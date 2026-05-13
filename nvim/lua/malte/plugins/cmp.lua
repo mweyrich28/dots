@@ -23,8 +23,8 @@ return {
             if not cmp_status_ok then
                 return
             end
-            local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
-            require("cmp_nvim_ultisnips").setup {}
+            -- local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
+            -- require("cmp_nvim_ultisnips").setup {}
 
             cmp.setup({
                 snippet = {
@@ -37,21 +37,44 @@ return {
                     -- documentation = cmp.config.window.bordered(),
                 },
                 mapping = cmp.mapping.preset.insert({
-                    ["<Tab>"] = cmp.mapping(
-                        function(fallback)
-                            cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-                        end,
-                        { "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
-                    ),
-                    ["<S-Tab>"] = cmp.mapping(
-                        function(fallback)
-                            cmp_ultisnips_mappings.jump_backwards(fallback)
-                        end,
-                        { "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
-                    ),
+                    -- ["<Tab>"] = cmp.mapping(
+                    --     function(fallback)
+                    --         cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+                    --     end,
+                    --     { "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
+                    -- ),
+                    -- ["<S-Tab>"] = cmp.mapping(
+                    --     function(fallback)
+                    --         cmp_ultisnips_mappings.jump_backwards(fallback)
+                    --     end,
+                    --     { "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
+                    -- ),
+                    --
+                    -- ["<Tab>"] = cmp.mapping(function(fallback)
+                    --     if cmp.visible() then
+                    --         cmp.select_next_item()
+                    --     elseif vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
+                    --         vim.fn["UltiSnips#ExpandSnippet"]()
+                    --     elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+                    --         vim.fn["UltiSnips#JumpForwards"]()
+                    --     else
+                    --         fallback()
+                    --     end
+                    -- end, { "i", "s" }),
+
+                    ["<S-Tab>"] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_prev_item()
+                        elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+                            vim.fn["UltiSnips#JumpBackwards"]()
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
+
                     -- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                     -- ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+                    ['<Tab>'] = cmp.mapping.confirm({ select = true }),
                     ["<C-Space>"] = cmp.mapping.complete(),
                 }),
                 sources = cmp.config.sources({
