@@ -36,6 +36,6 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
 
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'python', 'lua', 'r', 'markdown', 'query', 'go' },
+  pattern = { 'python', 'lua', 'r', 'query', 'go' },
   callback = function() vim.treesitter.start() end,
 })
