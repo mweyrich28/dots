@@ -5,7 +5,7 @@ rclone lsf -R onedrive: --files-only \
 --exclude "03_GoodNotes/**" \
 --exclude "04_Bilder/**" \
 --exclude "05_Freigaben/**" \
---exclude "06_Archiev/**" \
+--exclude "06_Archiv/**" \
 --exclude "Persönlicher Tresor/**" | sort > ~/.custom_cache/buff.txt
 
 # update cache only if sucess

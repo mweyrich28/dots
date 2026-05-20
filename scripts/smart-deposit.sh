@@ -3,7 +3,7 @@
 # select files
 # mapfile -t FILESTOUPLOAD < <(fzf -m --bind 'tab:toggle+down,shift-tab:toggle+up' --preview 'echo "Files to upload:"; echo; nl -w2 -s". " {+f}')
 mapfile -t FILESTOUPLOAD < <(
-  find ~/documents ~/downloads ~/projects ~/pictures ~/temp/ ~/desktop -type f \
+  find ~/documents ~/downloads ~/OneDriver ~/pictures ~/temp/ ~/desktop -type f \
   | fzf -m \
       --bind 'tab:toggle+down,shift-tab:toggle+up' \
       --preview 'echo "Files to upload:"; echo; nl -w2 -s". " {+f}'
