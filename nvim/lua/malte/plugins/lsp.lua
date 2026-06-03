@@ -120,57 +120,59 @@ return {
         --     }
         -- }
 
+        --
+        -- vim.lsp.config.r_language_server = {
+        --     cmd = {
+        --         "R",
+        --         "--quiet",
+        --         "--no-save",
+        --         "--no-restore",
+        --         "--slave",
+        --         "-e",
+        --         "languageserver::run()"
+        --     },
+        --     filetypes = { "r", "rmd", "quarto" },
+        --     root_markers = { ".Rproj", ".git" },
+        --     capabilities = lsp_capabilities,
+        --     on_attach = function(client, bufnr)
+        --         client.server_capabilities.documentFormattingProvider = true
+        --         client.server_capabilities.documentRangeFormattingProvider = true
+        --         lsp_attach(client, bufnr)
+        --     end,
+        -- }
 
-        vim.lsp.config.r_language_server = {
-            cmd = {
-                "R",
-                "--quiet",
-                "--no-save",
-                "--no-restore",
-                "--slave",
-                "-e",
-                "languageserver::run()"
-            },
-            filetypes = { "r", "rmd", "quarto" },
-            root_markers = { ".Rproj", ".git" },
-            capabilities = lsp_capabilities,
-            on_attach = function(client, bufnr)
-                client.server_capabilities.documentFormattingProvider = true
-                client.server_capabilities.documentRangeFormattingProvider = true
-                lsp_attach(client, bufnr)
-            end,
-        }
+
         -- Rust LSP
-        vim.lsp.config.rust_analyzer = {
-            cmd = { 'rust-analyzer' },
-            filetypes = { 'rust' },
-            root_markers = { 'Cargo.toml', 'rust-project.json', '.git' },
-            capabilities = lsp_capabilities,
-            on_attach = lsp_attach,
-            settings = {
-                ['rust-analyzer'] = {
-                    cargo = {
-                        allFeatures = true,
-                    },
-                    check = {
-                        command = "clippy",
-                    },
-                },
-            },
-        }
+        -- vim.lsp.config.rust_analyzer = {
+        --     cmd = { 'rust-analyzer' },
+        --     filetypes = { 'rust' },
+        --     root_markers = { 'Cargo.toml', 'rust-project.json', '.git' },
+        --     capabilities = lsp_capabilities,
+        --     on_attach = lsp_attach,
+        --     settings = {
+        --         ['rust-analyzer'] = {
+        --             cargo = {
+        --                 allFeatures = true,
+        --             },
+        --             check = {
+        --                 command = "clippy",
+        --             },
+        --         },
+        --     },
+        -- }
 
         -- Enable the LSP servers
         vim.lsp.enable('lua_ls')
         vim.lsp.enable('gopls')
-        vim.lsp.enable('r_language_server')
         vim.lsp.enable('pyright')
-        vim.lsp.enable('rust_analyzer')
+        -- vim.lsp.enable('r_language_server')
+        -- vim.lsp.enable('rust_analyzer')
 
         -- Globally configure all LSP floating preview popups
         local open_floating_preview = vim.lsp.util.open_floating_preview
         function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
             opts = opts or {}
-            opts.border = opts.border or "rounded"
+            -- opts.border = opts.border or "rounded"
             return open_floating_preview(contents, syntax, opts, ...)
         end
 

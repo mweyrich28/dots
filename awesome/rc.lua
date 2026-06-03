@@ -518,24 +518,23 @@ client.connect_signal("mouse::enter", function(c)
 end)
 
 -- Border color and width 
-client.connect_signal("focus", function(c) c.border_color = "#d78787" end)
+-- client.connect_signal("focus", function(c) c.border_color = "#d78787" end)
 -- client.connect_signal("focus", function(c) c.border_color = "#eb6f92" end)
-client.connect_signal("focus", function(c) c.border_width = 1 end)
-client.connect_signal("unfocus", function(c) c.border_color = "#1f1d2e" end)
-client.connect_signal("unfocus", function(c) c.border_width = 1 end)
+client.connect_signal("focus", function(c) c.border_color = "#E7C173" end)
+client.connect_signal("focus", function(c) c.border_width = 0 end)
+client.connect_signal("unfocus", function(c) c.border_color = "#191D24" end)
+client.connect_signal("unfocus", function(c) c.border_width = 0 end)
 
 -- AUTOSTART
 awful.util.spawn_with_shell("pgrep -u $USER -x nm-applet > /dev/null || (nm-applet &)") -- Network Manager
--- rc.lua
 awful.spawn.with_shell("brave-browser --profile-directory='Default'")
--- awful.spawn.with_shell("brave-browser --profile-directory='Profile 1'")
 awful.spawn.with_shell("killall polybar; polybar top &")
--- awful.spawn.with_shell("ghostty -e tmux new-session -s home 'zsh -c \"nvim; exec zsh\"'")
 awful.spawn.with_shell("ghostty -e tmux new-session -s home")
 awful.spawn.with_shell("picom -b")
 awful.spawn.with_shell("/home/malte/.config/polybar/launch.sh")
 awful.spawn.with_shell("sleep 1 && ~/.config/awesome/scripts/random_wall.sh")
 awful.spawn.with_shell("/home/malte/.config/scripts/sync_onedrive_cache.sh") -- call script to update onedrive cache txt file containing paths
+awful.spawn.with_shell("/home/malte/.config/scripts/sync_onedrive_ablage.sh") -- call script to sync ablage to local
 
 
 
@@ -577,7 +576,7 @@ gears.timer {
             })
         end
 
-        if status == "Charging" and battery_warned == true then
+        if status == "Charging" and battery_warned == true and capacity >= 15 then
             battery_warned = false
         end
     end,

@@ -2,8 +2,8 @@ return {
     "SirVer/ultisnips",
     init = function()
         vim.g.UltiSnipsJumpForwardTrigger = '<tab>'
-        vim.g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
-        vim.g.UltiSnipsExpandTrigger = '<tab>'   -- ← disable it; cmp owns <Tab>
+        vim.g.UltiSnipsJumpForwardTrigger = '<c-j>'
+        vim.g.UltiSnipsJumpBackwardTrigger = '<c-k>'
         vim.g.snips_author = 'Malte Weyrich'
     end,
 }

@@ -55,7 +55,7 @@ return {
         dashboard.section.buttons.val = {
 
             -- button("b", "  > BA", ":e ~/documents/zettelkasten/4_atomic_notes/bachelorarbeit_Timeline.md<CR>" ),
-            button("b", "󱘿  > Backup", "",  {
+            button("b", "󱘿  > backup", "",  {
                 callback = function()
                         local buf = vim.api.nvim_create_buf(false, true)
                         local win = vim.api.nvim_open_win(buf, true, {
@@ -73,19 +73,23 @@ return {
                 end
                  }
              ),
-            button("c", "  > Config", ":e ~/.config/nvim/init.lua<CR> :cd ~/.config/nvim/ <CR>"),
-            button("d", "  > DaiSyBio", ":e ~/documents/zettelkasten/4_atomic_notes/DaiSyBio_WorkDoc.md<CR>"),
-            button("f", "󱁉 > FoPra", ":e ~/documents/personal_wiki/4_atomic_notes/FoPra_Timeline.md<CR>"),
-            button("r", "󱈖  > Recent ", ":Telescope oldfiles <CR>"),
-            button("s", "  > Snippets",
+            button(
+              "c",
+              "  > config",
+              ":cd ~/.config/nvim<CR>:e ~/.config/nvim/init.lua<CR>"
+            ),
+            button("d", "  > daisybio", ":e ~/documents/zettelkasten/4_atomic_notes/DaiSyBio_WorkDoc.md<CR>"),
+            button("f", "󱁉  > fopra", ":e ~/documents/personal_wiki/4_atomic_notes/FoPra_Timeline.md<CR>"),
+            button("r", "󱈖  > recent ", ":Telescope oldfiles <CR>"),
+            button("s", "  > snippets",
                 ":e ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/vimwiki.snippets<CR> :cd ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/ <CR>"),
-            button("t", "  > Tmux", "", {
+            button("t", "  > tmux", "", {
                 callback = function()
                     vim.cmd('terminal ~/.config/scripts/tmux-sessionizer.sh')
                     vim.cmd('startinsert')
                 end
             }),
-            button("q", "  > Quit ", ":qa<CR>"),
+            button("q", "  > quit ", ":qa<CR>"),
         }
         dashboard.section.buttons.opts = {
             spacing = 1,
@@ -102,8 +106,8 @@ return {
         end
         dashboard.section.footer.val = footer()
 
-        dashboard.section.footer.opts.hl = "Constant"
-        dashboard.section.header.opts.hl = "Constant"
+        dashboard.section.footer.opts.hl = "Keyword"
+        dashboard.section.header.opts.hl = "Keyword"
         dashboard.section.header.opts.spacing = "center"
 
         dashboard.opts.opts.noautocmd = true

@@ -1,12 +1,8 @@
 function ColorMyPencils(color)
     -- color = color or "catppuccin-mocha"
-    -- color = color or "everforest"
     -- color = color or "melange"
-    -- color = color or "kanagawa"
-    -- color = color or "nordic"
-    -- color = color or "tokyonight"
-    -- color = color or "rose-pine-moon"
-    color = color or "rose-pine"
+    color = color or "nordic"
+    -- color = color or "rose-pine"
     vim.cmd.colorscheme(color)
 
     -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -39,22 +35,38 @@ end
 --#DE9979
 --#FFAFAF
 --#d7827e
+
+
+-- rose pine
+-- vim.cmd([[
+--     highlight VimwikiHeader1 guifg=#FFAF87
+--     highlight VimwikiHeader2 guifg=#FFAF87
+--     highlight VimwikiHeader3 guifg=#FFAF87
+--     highlight VimwikiHeader4 guifg=#FFAF87
+--     highlight VimwikiHeader5 guifg=#FFAF87
+--     highlight VimwikiHeader6 guifg=#FFAF87
+--     highlight VimwikiCode guifg=#FFAFAF
+--     highlight VimwikiLink gui=underline guifg=#5C8283
+-- ]])
+
+
+-- rose nordic
 vim.cmd([[
-    highlight VimwikiHeader1 guifg=#FFAF87
-    highlight VimwikiHeader2 guifg=#FFAF87
-    highlight VimwikiHeader3 guifg=#FFAF87
-    highlight VimwikiHeader4 guifg=#FFAF87
-    highlight VimwikiHeader5 guifg=#FFAF87
-    highlight VimwikiHeader6 guifg=#FFAF87
-    highlight VimwikiCode guifg=#FFAFAF
-    highlight VimwikiLink gui=underline guifg=#5C8283
+    highlight VimwikiHeader1 guifg=#CB775D
+    highlight VimwikiHeader2 guifg=#CB775D
+    highlight VimwikiHeader3 guifg=#CB775D
+    highlight VimwikiHeader4 guifg=#CB775D
+    highlight VimwikiHeader5 guifg=#CB775D
+    highlight VimwikiHeader6 guifg=#CB775D
+    highlight VimwikiCode guifg=#BF616A
+    highlight VimwikiLink gui=underline guifg=#5E81AC
 ]])
 
 
 -- Make Telescope match your theme
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
 
 -- Telescope-specific (stronger override)
-vim.api.nvim_set_hl(0, "TelescopeNormal", { link = "NormalFloat" })
-vim.api.nvim_set_hl(0, "TelescopeBorder", { link = "FloatBorder" })
+-- vim.api.nvim_set_hl(0, "TelescopeNormal", { link = "NormalFloat" })
+-- vim.api.nvim_set_hl(0, "TelescopeBorder", { link = "FloatBorder" })

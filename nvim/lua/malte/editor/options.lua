@@ -59,3 +59,15 @@ vim.cmd[[syntax enable]]
 -- vim.opt.syntax = "off"
 
 vim.cmd('filetype plugin indent on')
+
+vim.g.R_args = { "--no-restore-data" }
+vim.g.R_objbr_auto_start = 0
+vim.g.R_objectbr_place = "NONE"
+vim.g.R_set_omnifunc = 0
+vim.g.R_start_libs = 0
+vim.g.R_complete = 0
+
+
+
+vim.g.loaded_snippet = 1
+vim.snippet = nil

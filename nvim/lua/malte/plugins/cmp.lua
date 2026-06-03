@@ -17,6 +17,7 @@ return {
             "micangl/cmp-vimtex",
             "kdheepak/cmp-latex-symbols",
             "andersevenrud/cmp-tmux",
+            "nvim-treesitter/nvim-treesitter"
         },
         config = function()
             local cmp_status_ok, cmp = pcall(require, "cmp")
@@ -33,8 +34,8 @@ return {
                     end,
                 },
                 window = {
-                    -- completion = cmp.config.window.bordered(),
-                    -- documentation = cmp.config.window.bordered(),
+                    completion = cmp.config.window.bordered(),
+                    documentation = cmp.config.window.bordered(),
                 },
                 mapping = cmp.mapping.preset.insert({
                     -- ["<Tab>"] = cmp.mapping(
