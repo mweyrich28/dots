@@ -52,14 +52,15 @@ end
 
 -- rose nordic
 vim.cmd([[
-    highlight VimwikiHeader1 guifg=#CB775D
-    highlight VimwikiHeader2 guifg=#CB775D
-    highlight VimwikiHeader3 guifg=#CB775D
-    highlight VimwikiHeader4 guifg=#CB775D
-    highlight VimwikiHeader5 guifg=#CB775D
-    highlight VimwikiHeader6 guifg=#CB775D
+    highlight VimwikiHeader1 guifg=#E7C173
+    highlight VimwikiHeader2 guifg=#E7C173
+    highlight VimwikiHeader3 guifg=#E7C173
+    highlight VimwikiHeader4 guifg=#E7C173
+    highlight VimwikiHeader5 guifg=#E7C173
+    highlight VimwikiHeader6 guifg=#E7C173
     highlight VimwikiCode guifg=#BF616A
     highlight VimwikiLink gui=underline guifg=#5E81AC
+    highlight VimwikiTodo guifg=#CB775D
 ]])
 
 

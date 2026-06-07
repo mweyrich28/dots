@@ -1,6 +1,5 @@
 vim.opt.backup = false                          -- creates a backup file
 vim.opt.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
-vim.opt.cmdheight = 1                           -- more space in the neovim command line for displaying messages
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 vim.opt.conceallevel = 1                        -- so that `` is visible in markdown files
 vim.opt.fileencoding = "utf-8"                  -- the encoding written to a file
@@ -28,7 +27,6 @@ vim.opt.tabstop = 4                             -- insert 2 spaces for a tab
 vim.opt.cursorline = true                    -- highlight the current line
 vim.opt.number = true                           -- set numbered lines
 vim.opt.relativenumber = true
-vim.opt.laststatus = 3
 vim.opt.showcmd = false
 vim.opt.ruler = true
 vim.opt.numberwidth = 2                         -- set number column width to 2 {default 4}
@@ -46,7 +44,8 @@ vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
 vim.g.python3_host_prog = '/home/malte/miniforge3/envs/uni/bin/python'
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.laststatus = 0 -- disable statusline
+vim.opt.laststatus = 3 -- disable statusline
+vim.opt.cmdheight = 1
 
 -- save last cursor position
 vim.cmd[[autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]

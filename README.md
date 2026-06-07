@@ -5,5 +5,4 @@ I am a big fan of [vimwiki](https://github.com/vimwiki/vimwiki) and use it for a
 
 ## Images
 ![Notes](./images/notes.png)  
-![Notes 1](./images/vimwiki.png)  
 ![Code](./images/code.png)

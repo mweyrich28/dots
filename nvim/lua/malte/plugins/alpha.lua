@@ -106,8 +106,8 @@ return {
         end
         dashboard.section.footer.val = footer()
 
-        dashboard.section.footer.opts.hl = "Keyword"
-        dashboard.section.header.opts.hl = "Keyword"
+        dashboard.section.footer.opts.hl = "Function"
+        dashboard.section.header.opts.hl = "Type"
         dashboard.section.header.opts.spacing = "center"
 
         dashboard.opts.opts.noautocmd = true

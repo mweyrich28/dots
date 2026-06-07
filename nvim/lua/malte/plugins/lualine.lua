@@ -27,9 +27,10 @@ return {
                 -- theme = 'nord',
                 -- theme = 'kanagawa',
                 theme = 'nordic',
-                -- theme = 'catppuccin',
-                component_separators = { left = '', right = '' },
-                section_separators = { left = '', right = '' },
+                -- component_separators = { left = '', right = '' },
+                -- section_separators = { left = '', right = '' },
+                component_separators = { left = '', right = '' },
+                section_separators = { left = '', right = '' },
                 -- component_separators = { '' },
                 -- section_separators = { '' },
                 disabled_filetypes = {
