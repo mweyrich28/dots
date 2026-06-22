@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 DEST="/home/malte/OneDriver/ablage"
-rclone sync "onedrive:new" "$DEST" & 
+rclone move "onedrive:new" "$DEST" & 

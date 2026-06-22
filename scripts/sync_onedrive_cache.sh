@@ -14,3 +14,12 @@ if [ ${PIPESTATUS[0]} -eq 0 ]; then
 else
     rm -f ~/.custom_cache/buff.txt
 fi
+
+
+rclone lsf -R --dirs-only onedrive:01_Dokumente | sort > ~/.custom_cache/buff_folders.txt
+if [ ${PIPESTATUS[0]} -eq 0 ]; then
+    mv ~/.custom_cache/buff_folders.txt ~/.custom_cache/onedrive_cache_folders.txt
+else
+    rm -f ~/.custom_cache/buff_folders.txt
+fi
+

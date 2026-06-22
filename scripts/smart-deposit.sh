@@ -26,7 +26,9 @@ fi
 
 # pick remote dest
 while :; do
-  DEST=$(rclone lsf -R --dirs-only $SERVICE:$PREFIX | fzf --bind 'tab:replace-query,alt-enter:print-query+accept' --print-query --layout=reverse --border-label="Pick Destination" | { read query; read selection; echo "${selection:-$query}"; })
+
+  mapfile -t DEST < <(cat ~/.custom_cache/onedrive_cache_folders.txt \
+  | fzf --bind 'tab:replace-query,alt-enter:print-query+accept' --print-query --no-sort --layout=reverse --border-label="Pick Destination" | { read query; read selection; echo "${selection:-$query}"; })
 
   [ -z "$DEST" ] && {
     echo "No destination selected. Aborting."
@@ -59,5 +61,5 @@ done
 
 rclone mkdir "$REMOTE_DEST"
 for file in "${FILESTOUPLOAD[@]}"; do
-    rclone copy "$file" "$REMOTE_DEST" --checksum --update &
+    rclone move "$file" "$REMOTE_DEST" --checksum --update &
 done
