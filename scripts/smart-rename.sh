@@ -1,17 +1,19 @@
 #!/usr/bin/env bash
 
 FILETORENAME="$1"
-open $FILETORENAME &
+
+old_base=$(basename "$FILETORENAME")
+old_ext="${old_base##*.}"
+
+if [[ "$old_ext" == "pdf" ]]; then
+    open $FILETORENAME &
+fi
+
 
 selected=$(
     fzf --no-sort \
         < ~/.custom_cache/onedrive_cache.txt
 ) || exit 1
-
-dir=$(dirname "$selected")
-
-old_base=$(basename "$FILETORENAME")
-old_ext="${old_base##*.}"
 
 tmp=$(mktemp)
 
