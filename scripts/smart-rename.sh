@@ -6,7 +6,7 @@ old_base=$(basename "$FILETORENAME")
 old_ext="${old_base##*.}"
 
 if [[ "$old_ext" == "pdf" ]]; then
-    open $FILETORENAME &
+    open "$FILETORENAME" &
 fi
 
 
