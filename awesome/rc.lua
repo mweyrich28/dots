@@ -517,13 +517,15 @@ client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", { raise = false })
 end)
 
--- Border color and width 
 -- client.connect_signal("focus", function(c) c.border_color = "#d78787" end)
 -- client.connect_signal("focus", function(c) c.border_color = "#eb6f92" end)
-client.connect_signal("focus", function(c) c.border_color = "#E7C173" end)
-client.connect_signal("focus", function(c) c.border_width = 0 end)
+-- blue0 = '#5E81AC',
+-- blue1 = '#81A1C1',
+-- blue2 = '#88C0D0',
+client.connect_signal("focus", function(c) c.border_color = "#5E81AC" end)
+client.connect_signal("focus", function(c) c.border_width = 2 end)
 client.connect_signal("unfocus", function(c) c.border_color = "#191D24" end)
-client.connect_signal("unfocus", function(c) c.border_width = 0 end)
+client.connect_signal("unfocus", function(c) c.border_width = 2 end)
 
 -- AUTOSTART
 awful.util.spawn_with_shell("pgrep -u $USER -x nm-applet > /dev/null || (nm-applet &)") -- Network Manager
