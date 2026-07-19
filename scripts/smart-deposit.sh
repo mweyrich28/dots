@@ -6,7 +6,7 @@ mapfile -t FILESTOUPLOAD < <(
   find ~/documents ~/downloads ~/OneDriver ~/pictures ~/temp/ ~/desktop -type f \
   | fzf -m \
       --bind 'tab:toggle+down,shift-tab:toggle+up' \
-      --preview 'echo "Files to upload:"; echo; nl -w2 -s". " {+f}'
+      --preview 'echo "Files to download:"; echo; cat {+f} | sed -e "s/.*\///" '
 )
 
 
@@ -63,3 +63,5 @@ rclone mkdir "$REMOTE_DEST"
 for file in "${FILESTOUPLOAD[@]}"; do
     rclone move "$file" "$REMOTE_DEST" --checksum --update &
 done
+
+bash "/home/malte/.config/scripts/sync_onedrive_cache.sh" &
