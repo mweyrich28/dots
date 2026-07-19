@@ -6,7 +6,8 @@ if [[ ! -d "$TMP_DEPOSIT" ]]; then
 fi
 
 mapfile -t FILESTODOWNLOAD < <(cat ~/.custom_cache/onedrive_cache.txt \
-| fzf --no-sort -m --bind 'tab:toggle+down,shift-tab:toggle+up' --preview 'echo "Files to download:"; echo; cat {+f} | sed -e "s/.*\///" ')
+| fzf --no-sort -m --bind 'tab:toggle+down,shift-tab:toggle+up' --preview 'echo "Files to download:"; echo; cat {+f} {f} | sed -e "s/.*\///" | uniq')
+# | fzf --no-sort -m --bind 'tab:toggle+down,shift-tab:toggle+up' --preview 'echo "Files to download:"; echo; cat {+f} | sed -e "s/.*\///" ')
 
 for file in "${FILESTODOWNLOAD[@]}"; do
     rclone copy "$PREF$file" "$TMP_DEPOSIT" & 
